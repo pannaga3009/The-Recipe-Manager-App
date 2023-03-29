@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="689.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="690.0" prefWidth="937.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="274.0" layoutY="200.0" mnemonicParsing="false" text="Button" />
-            <ListView layoutX="56.0" layoutY="113.0" prefHeight="200.0" prefWidth="200.0" />
+            <ImageView fitHeight="472.0" fitWidth="964.0" layoutX="-1.0" layoutY="2.0">
+               <image>
+                  <Image url="@../../assets/onboardpage.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
