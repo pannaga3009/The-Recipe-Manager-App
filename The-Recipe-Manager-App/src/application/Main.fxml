@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="689.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane prefHeight="690.0" prefWidth="937.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="472.0" fitWidth="964.0" layoutX="-1.0" layoutY="2.0">
+            <ImageView fitHeight="464.0" fitWidth="964.0" layoutX="-1.0" layoutY="2.0">
                <image>
                   <Image url="@../../assets/onboardpage.jpg" />
                </image>
             </ImageView>
+            <Circle fill="WHITE" layoutX="101.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="291.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#f7f7f7" layoutX="481.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="671.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="WHITE" layoutX="861.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button layoutX="402.0" layoutY="312.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-radius: 50Px; -fx-border-color: BLACK;" text="Register">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button layoutX="402.0" layoutY="398.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Login">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+               </padding>
+            </Button>
+            <Label layoutX="301.0" layoutY="222.0" text="Food Recipe Manager">
+               <font>
+                  <Font name="System Bold Italic" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="421.0" layoutY="368.0" text="Already a Member?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="466.0" text="Featured Chef">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
