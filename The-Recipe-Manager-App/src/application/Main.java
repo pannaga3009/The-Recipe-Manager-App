@@ -11,7 +11,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("The Recipe Manager App");
 			primaryStage.setScene(scene);
