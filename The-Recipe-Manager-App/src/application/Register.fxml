@@ -23,12 +23,12 @@
       <Text layoutX="99.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
       <Text layoutX="128.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <Text layoutX="80.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password" />
-      <TextField layoutX="185.0" layoutY="110.0" promptText="John" style="-fx-background-color: #bfebec;" />
-      <TextField layoutX="185.0" layoutY="149.0" promptText="john.adam@gmail.com" style="-fx-background-color: #bfebec;" />
-      <TextField layoutX="185.0" layoutY="187.0" promptText="8577027712" style="-fx-background-color: #bfebec;" />
-      <TextField layoutX="185.0" layoutY="223.0" style="-fx-background-color: #bfebec;" />
-      <TextField layoutX="185.0" layoutY="257.0" style="-fx-background-color: #bfebec;" />
-      <BottomNavigationButton contentDisplay="CENTER" layoutX="212.0" layoutY="294.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.95" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 30px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.7), 15, 0, 0, 0);" text="Register" textAlignment="CENTER" textFill="#383434" textOverrun="CENTER_WORD_ELLIPSIS">
+      <TextField fx:id="nameRegister" layoutX="185.0" layoutY="110.0" promptText="John" style="-fx-background-color: #bfebec;" />
+      <TextField fx:id="emailRegister" layoutX="185.0" layoutY="149.0" promptText="john.adam@gmail.com" style="-fx-background-color: #bfebec;" />
+      <TextField fx:id="phoneRegister" layoutX="185.0" layoutY="187.0" promptText="8577027712" style="-fx-background-color: #bfebec;" />
+      <TextField fx:id="passwordRegister" layoutX="185.0" layoutY="223.0" style="-fx-background-color: #bfebec;" />
+      <TextField fx:id="confirmPasswordRegister" layoutX="185.0" layoutY="257.0" style="-fx-background-color: #bfebec;" />
+      <BottomNavigationButton fx:id="registerButton" contentDisplay="CENTER" layoutX="212.0" layoutY="294.0" nodeOrientation="LEFT_TO_RIGHT" opacity="0.95" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 30px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.7), 15, 0, 0, 0);" text="Register" textAlignment="CENTER" textFill="#383434" textOverrun="CENTER_WORD_ELLIPSIS">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -36,20 +36,20 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </BottomNavigationButton>
-      <BottomNavigationButton alignment="CENTER" graphicTextGap="1.0" layoutX="229.0" layoutY="334.0" prefHeight="16.0" prefWidth="65.0" style="-fx-border-color: white; -fx-background-color: white; -fx-border-radius: 15px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2);" text="Back" />
+      <BottomNavigationButton fx:id="backRegister" alignment="CENTER" graphicTextGap="1.0" layoutX="229.0" layoutY="334.0" prefHeight="16.0" prefWidth="65.0" style="-fx-border-color: white; -fx-background-color: white; -fx-border-radius: 15px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2);" text="Back" />
       <ImageView fitHeight="72.0" fitWidth="117.0" layoutX="470.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../assets/Register1.png" />
+            <Image url="@../../assets/register_page_1.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="80.0" fitWidth="108.0" layoutX="437.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../assets/Register2.png" />
+            <Image url="@../../assets/register_page_2.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="393.0" layoutY="277.0" pickOnBounds="true">
          <image>
-            <Image url="@../../assets/Register3.png" />
+            <Image url="@../../assets/register_page_3.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="72.0" fitWidth="65.0" layoutX="260.0" pickOnBounds="true" preserveRatio="true">
