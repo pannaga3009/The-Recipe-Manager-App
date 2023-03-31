@@ -12,9 +12,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setTitle("Login Page");
+			primaryStage.setTitle("The Recipe Manager App");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -24,5 +24,6 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+		System.out.println("Testing1");
 	}
 }
