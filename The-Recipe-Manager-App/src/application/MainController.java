@@ -1,47 +1,138 @@
 package application;
 
+import java.io.IOException;
+
 import java.net.URL;
+
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class MainController implements Initializable {
-	@FXML
-    private Label label;
+	
+	
+	
     
     @FXML 
-    private Circle myCircle,myCircle2, myCircle3, myCircle4, myCircle5;
+    private Button OnboardLogin, OnboardRegister, CancelBtn;
+    
+    private Stage stage;
+    private Scene scene;
+    
+    @FXML
+	private Label LoginMessageLabel;
+    
+    @FXML
+    private TextField usernameLogin;
+    
+    @FXML
+    private PasswordField passwordLogin;
+    
+    
+    public void LoginPageBtAction(ActionEvent event) {
+    	if (usernameLogin.getText().isBlank() == false && passwordLogin.getText().isBlank() == false) {
+//    		
+    		validateLogin();
+    		
+    	}else {
+    		LoginMessageLabel.setText("Please Enter Username and Password");
+    	}
+    	
+    }
+    
+    public void validateLogin() {
+    	DatabaseConnection connectNow = new DatabaseConnection();
+    	Connection connectDB = connectNow.getConnection();
+    	String verifyLogin = "SELECT count(1) from UserAccount where username = '" + usernameLogin.getText() + "' AND password = '"+ passwordLogin.getText() + "'";
+    	try {
+    		Statement statement = connectDB.createStatement();
+    		ResultSet queryResult = statement.executeQuery(verifyLogin);
+    		
+    		while(queryResult.next()) {
+    			if(queryResult.getInt(1) == 1) {
+    				LoginMessageLabel.setText("Welcome");
+    			}else {
+    				LoginMessageLabel.setText("Invalid login. Please try again");
+    			}
+    		}
+    		
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void OnboardLoginBtAction(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+    }
+    
+    public void OnboardRegisterBtAction(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));;
+    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+    }
+    
+    
+    
+    public void CancelButtonAction(ActionEvent event) {
+    	Stage stage = (Stage) CancelBtn.getScene().getWindow();
+    	stage.close();
+    }
+    
+    @FXML
+    private Circle myCircle, myCircle2, myCircle3, myCircle4, myCircle5;
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
-        myCircle.setStroke(Color.SEAGREEN);
-        Image im1 = new Image( "C:/Users/Urmip/Downloads/The-Recipe-Manager-App/assets/download.jpeg" ,false);
+        this.myCircle.setStroke(Color.SEAGREEN);
+        Image im1 = new Image( "file:assets/download.jpeg" ,false);
         myCircle.setFill(new ImagePattern(im1));
         myCircle.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
         
         myCircle2.setStroke(Color.SEAGREEN);
-        Image im2 = new Image( "C:/Users/Urmip/Downloads/The-Recipe-Manager-App/assets/2.jpeg" ,false);
+        Image im2 = new Image( "file:assets/2.jpeg" ,false);
         myCircle2.setFill(new ImagePattern(im2));
         myCircle2.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
         
         myCircle3.setStroke(Color.SEAGREEN);
-        Image im3 = new Image( "C:/Users/Urmip/Downloads/The-Recipe-Manager-App/assets/3.jpeg" ,false);
+        Image im3 = new Image( "file:assets/3.jpeg" ,false);
         myCircle3.setFill(new ImagePattern(im3));
         myCircle3.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
         
         myCircle4.setStroke(Color.SEAGREEN);
-        Image im4 = new Image( "C:/Users/Urmip/Downloads/The-Recipe-Manager-App/assets/4.jpeg" ,false);
+        Image im4 = new Image( "file:assets/4.jpeg" ,false);
         myCircle4.setFill(new ImagePattern(im4));
         myCircle4.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
         
         myCircle5.setStroke(Color.SEAGREEN);
-        Image im5 = new Image( "C:/Users/Urmip/Downloads/The-Recipe-Manager-App/assets/5.jpeg" ,false);
+        Image im5 = new Image( "file:assets/5.jpeg" ,false);
         myCircle5.setFill(new ImagePattern(im5));
         myCircle5.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
+        
     }    
 }
