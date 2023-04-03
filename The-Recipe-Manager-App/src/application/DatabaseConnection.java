@@ -12,12 +12,17 @@ public class DatabaseConnection {
 		String databaseUser = "root";
 		String databasePassword = "Pass3009@";
 		
-		String url = "jdbc:mysql://localhost/" + databaseName;
+		String url = "jdbc:mysql://127.0.0.1:3306/" + databaseName;
 		
 		
 		try {
-			Class.forName("com.sql.cj.jdbc.driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+			if(databaseLink != null) {
+				System.out.println("Connection successful");
+			}else {
+				System.out.println("Failed to connect to the db");
+			}
 		}
 		catch(Exception e){
 			e.printStackTrace();

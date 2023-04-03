@@ -24,7 +24,7 @@
             <Circle fx:id="myCircle3" fill="WHITE" layoutX="481.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="myCircle4" fill="WHITE" layoutX="671.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="myCircle5" fill="WHITE" layoutX="861.0" layoutY="590.0" radius="80.0" stroke="BLACK" strokeType="INSIDE" />
-            <Button fx:id="Register" layoutX="402.0" layoutY="312.0" mnemonicParsing="false" onAction="#OnboardRegisterBtAction" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-radius: 50Px; -fx-border-color: BLACK;" text="Register">
+            <Button fx:id="OnboardRegister" layoutX="402.0" layoutY="312.0" mnemonicParsing="false" onAction="#OnboardRegisterBtAction" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-radius: 50Px; -fx-border-color: BLACK;" text="Register">
                <font>
                   <Font name="Calibri Bold" size="18.0" />
                </font>
@@ -32,7 +32,7 @@
                   <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
                </padding>
             </Button>
-            <Button fx:id="Login" layoutX="402.0" layoutY="398.0" mnemonicParsing="false" onAction="#OnboardLoginBtAction" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Login">
+            <Button fx:id="OnboardLogin" layoutX="402.0" layoutY="398.0" mnemonicParsing="false" onAction="#OnboardLoginBtAction" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Login">
                <font>
                   <Font name="Calibri Bold" size="18.0" />
                </font>
@@ -60,7 +60,6 @@
                   <Image url="@../../assets/logo1.png" />
                	</image>
             </ImageView>
-            <Label fx:id="LoginMessageLabel" layoutX="420.0" layoutY="278.0" prefHeight="17.0" prefWidth="135.0" text="LoginMessageLabel" />
          </children>
       </AnchorPane>
    </center>

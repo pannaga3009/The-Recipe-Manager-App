@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,17 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 216, 230, 0.1); -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="application.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 216, 230, 0.1); -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#edeff003" height="284.0" layoutX="279.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
-      <Text layoutX="352.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!">
+      <Text layoutX="372.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!">
          <font>
             <Font name="System Italic" size="27.0" />
          </font>
       </Text>
       <TextField fx:id="usernameLogin" layoutX="387.0" layoutY="108.0" promptText="John" style="-fx-background-color: #bfebec;" />
       <TextField fx:id="emailLogin" layoutX="387.0" layoutY="149.0" promptText="john.adams@gmail.com" style="-fx-background-color: #bfebec;" />
-      <TextField fx:id="passwordLogin" layoutX="387.0" layoutY="188.0" style="-fx-background-color: #bfebec;" />
       <Text layoutX="305.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
          <font>
             <Font size="15.0" />
@@ -36,48 +37,31 @@
             <Font size="15.0" />
          </font>
       </Text>
+       <PasswordField fx:id="passwordLogin" layoutX="387.0" layoutY="187.0" />
       <Text layoutX="387.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" />
-      <Button fx:id="forgotPasswordLogin" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="481.0" layoutY="217.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="55.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 10px;" text="Click Here" textAlignment="CENTER" textOverrun="CLIP">
+      <Button fx:id="forgotPasswordLogin" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="487.0" layoutY="220.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 10px;" text="Click Here" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="8.0" />
          </font>
       </Button>
       <CubicCurve controlX1="-81.56201934814453" controlX2="-54.65773010253906" controlY1="29.371543884277344" controlY2="104.22146606445312" endX="-3.3796329498291016" endY="129.48370361328125" fill="#d3d7db03" layoutX="244.0" layoutY="141.0" rotate="45.0" startX="-196.32322692871094" startY="115.20213317871094" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="5.0" />
-      <Button fx:id="loginButton" layoutX="411.0" layoutY="244.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="102.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2);" text="Login">
+      <Button fx:id="loginButton" onAction="#LoginPageBtAction" layoutX="411.0" layoutY="244.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2);" text="Login">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="backLogin" layoutX="442.0" layoutY="286.0" mnemonicParsing="false" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2); -fx-background-color: white; -fx-border-radius: 20px;" text="Back" />
+      <Button fx:id="backLogin" layoutX="412.0" layoutY="283.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="98.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2); -fx-background-color: white; -fx-border-radius: 20px;" text="Back" />
       <ImageView fitHeight="93.0" fitWidth="67.0" layoutX="30.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assets/login2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="41.0" layoutX="305.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="41.0" layoutX="326.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assets/logo1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="Login4" fitHeight="97.0" fitWidth="78.0" layoutX="35.0" layoutY="258.0" pickOnBounds="true" rotate="-142.4">
-         <image>
-            <Image url="@../../assets/login_page_4.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="Login2" fitHeight="58.0" fitWidth="73.0" layoutX="115.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../assets/login_page_2.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="Login3" fitHeight="67.0" fitWidth="73.0" layoutX="151.0" layoutY="265.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../assets/login_page_3.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="Login1" fitHeight="58.0" fitWidth="67.0" layoutX="30.0" layoutY="153.0" pickOnBounds="true" style="-fx:id: LoginPg1;">
-         <image>
-            <Image url="@../../assets/login_pg_1.png" />
-         </image>
-      </ImageView>
+      <Label fx:id="LoginMessageLabel" layoutX="413.0" layoutY="88.0" prefHeight="17.0" prefWidth="94.0" />
+     
    </children>
 </AnchorPane>

@@ -16,10 +16,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/pannaga/Developer/JavaFX-SDK/javafx-sdk-19.0.2.1/lib/mysql-connector-j-8.0.32.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="/Users/pannaga/Developer/JavaFX-SDK/javafx-sdk-19.0.2.1/lib/mysql-connector-java-8.0.30.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
