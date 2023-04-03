@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 216, 230, 0.1); -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 216, 230, 0.1); -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
    <children>
       <Text layoutX="119.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cooking is easy you know!" textAlignment="CENTER" wrappingWidth="389.4700622558594">
          <font>
@@ -50,7 +50,7 @@
          </image>
       </ImageView>
       
-      <Button fx:id="RegisterBtn" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" text="Register" />
+      <Button fx:id="RegisterBtn" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleRegister" text="Register" />
       <Button fx:id="Backbtn" layoutX="222.0" layoutY="336.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="65.0" text="Back" />
    </children>
 </AnchorPane>
