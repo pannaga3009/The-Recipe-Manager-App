@@ -26,12 +26,11 @@ public class RegisterController extends Register{
     private Scene scene;
 	
 	public void handleRegister(ActionEvent event) throws IOException {
-        // perform validation of input fields
-        if (nameRegister.getText().isEmpty() || passwordRegister.getText().isEmpty() || confirmPasswordRegister.getText().isEmpty()|| emailRegister.getText().isEmpty()) {
-            System.out.println("Please fill the fields");
-            return;
-        }
-
+        
+		
+		RegisterController rc = new RegisterController();
+		// perform validation of input fields
+		rc.ValidateDetails();
        
         register();
         
@@ -41,12 +40,8 @@ public class RegisterController extends Register{
     	stage.setScene(scene);
     	stage.show();
 
-        // clear the input fields
-        nameRegister.clear();
-        passwordRegister.clear();
-        confirmPasswordRegister.clear();
-        phoneRegister.clear();
-        emailRegister.clear();
+       // clear the input fields
+       rc.clearDetails();
     }
 	
 	@Override

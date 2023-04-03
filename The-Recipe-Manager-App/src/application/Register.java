@@ -13,5 +13,19 @@ public abstract class Register {
 
     protected abstract void register();
 
+    protected void ValidateDetails() {
+    	if (nameRegister.getText().isEmpty() || passwordRegister.getText().isEmpty() || confirmPasswordRegister.getText().isEmpty()|| emailRegister.getText().isEmpty()) {
+            System.out.println("Please fill the fields");
+            return;
+        }
+
+    }
     
+    protected void clearDetails() {
+    	 nameRegister.clear();
+         passwordRegister.clear();
+         confirmPasswordRegister.clear();
+         phoneRegister.clear();
+         emailRegister.clear();
+    }
 }
