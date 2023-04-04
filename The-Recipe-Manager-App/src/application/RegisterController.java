@@ -28,10 +28,11 @@ public class RegisterController extends Register{
 	public void handleRegister(ActionEvent event) throws IOException {
         
 		
-		RegisterController rc = new RegisterController();
+		
 		// perform validation of input fields
-		rc.ValidateDetails();
+		ValidateDetails();
        
+		System.out.println("printing name register-------"+this.nameRegister);
         register();
         
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -41,7 +42,7 @@ public class RegisterController extends Register{
     	stage.show();
 
        // clear the input fields
-       rc.clearDetails();
+       clearDetails();
     }
 	
 	@Override
