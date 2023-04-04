@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class LoginController extends Login{
-   
+
     
     @FXML 
     private Button loginButton;
@@ -22,8 +22,7 @@ public class LoginController extends Login{
     private Scene scene;
     
     public void LoginPageBtAction(ActionEvent event) throws IOException {
-    	if (usernameLogin.getText().isBlank() == false && passwordLogin.getText().isBlank() == false) {   
-    		
+    	if (usernameLogin.getText().isBlank() == false && passwordLogin.getText().isBlank() == false) {       		
     		LoginController lc = new LoginController();
     		if(lc.validateLogin(usernameLogin.getText(),passwordLogin.getText() ) == true) {
     		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
@@ -39,5 +38,4 @@ public class LoginController extends Login{
     	
     }
 
-	
 }
