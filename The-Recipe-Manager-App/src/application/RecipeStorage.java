@@ -1,5 +1,6 @@
 package application;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -71,8 +72,4 @@ public class RecipeStorage {
         // Close the database connection
         connectDB.close();
     }
-
-    
-
-
 }

@@ -16,7 +16,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <top>
+
       <HBox prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: #DCEDF2;" BorderPane.alignment="CENTER">
+
          <children>
             <ImageView fitHeight="57.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,7 +71,9 @@
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin></Hyperlink>
+
             <Hyperlink fx:id="mealPlan" text="Meal Plan">
+
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin>
@@ -83,7 +87,9 @@
       </HBox>
    </top>
    <center>
+
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+
          <children>
             <Label text="Discover Recipes">
                <font>
@@ -93,11 +99,14 @@
                   <Insets left="10.0" top="20.0" />
                </VBox.margin>
             </Label>
+
             <ScrollPane prefHeight="258.0" prefWidth="937.0">
+
                <padding>
                   <Insets top="10.0" />
                </padding>
                <content>
+
                   <HBox fx:id="cardLayout" prefHeight="243.0" prefWidth="862.0" />
                </content>
             </ScrollPane>
@@ -112,4 +121,5 @@
          </content>
       </ScrollPane>
    </bottom>
+
 </BorderPane>

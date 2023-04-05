@@ -1,5 +1,6 @@
 package application;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,12 +15,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+
 import javafx.stage.Stage;
+
 
 public class CardController {
 
@@ -36,6 +40,7 @@ public class CardController {
     private ImageView recipeImage;
     
 
+
     @FXML
     private Button MoreBtn;
 
@@ -51,6 +56,7 @@ public class CardController {
 
     
     
+
     private String[] colors =  {"DCEDF2", "FFFFF"};
     
     public void setData(Recipe recipe) {
@@ -73,6 +79,7 @@ public class CardController {
 //    	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
     	
     }
+
     
     public void setDataFromDb(Recipe recipe) throws SQLException {
         DatabaseConnection connectNow = new DatabaseConnection();
@@ -146,5 +153,6 @@ public class CardController {
     	stage.setScene(scene);
     	stage.show();
     }
+
 
 }
