@@ -139,6 +139,7 @@ public class CardController {
     
     @FXML
     void MoreBtnAction(ActionEvent event) throws IOException {
+    	//adding new design for detail
     	Parent root = FXMLLoader.load(getClass().getResource("Detailcard.fxml"));
     	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
