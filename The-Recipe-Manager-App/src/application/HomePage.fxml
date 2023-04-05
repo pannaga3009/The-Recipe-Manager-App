@@ -16,7 +16,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <top>
-      <HBox prefHeight="45.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+
+      <HBox prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: #DCEDF2;" BorderPane.alignment="CENTER">
+
          <children>
             <ImageView fitHeight="57.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,7 +71,9 @@
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin></Hyperlink>
-            <Hyperlink text="Meal Plan">
+
+            <Hyperlink fx:id="mealPlan" text="Meal Plan">
+
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin>
@@ -83,7 +87,9 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+
          <children>
             <Label text="Discover Recipes">
                <font>
@@ -93,15 +99,27 @@
                   <Insets left="10.0" top="20.0" />
                </VBox.margin>
             </Label>
-            <ScrollPane prefHeight="300.0" prefWidth="200.0">
+
+            <ScrollPane prefHeight="258.0" prefWidth="937.0">
+
                <padding>
                   <Insets top="10.0" />
                </padding>
                <content>
-                  <HBox fx:id="cardLayout" prefHeight="283.0" prefWidth="862.0" />
+
+                  <HBox fx:id="cardLayout" prefHeight="243.0" prefWidth="862.0" />
                </content>
             </ScrollPane>
+            <Label prefHeight="27.0" prefWidth="77.0" text="Categories" />
          </children>
       </VBox>
    </center>
+   <bottom>
+      <ScrollPane prefHeight="231.0" prefWidth="937.0" BorderPane.alignment="CENTER">
+         <content>
+            <HBox fx:id="cardAreaLayout" prefHeight="234.0" prefWidth="926.0" />
+         </content>
+      </ScrollPane>
+   </bottom>
+
 </BorderPane>

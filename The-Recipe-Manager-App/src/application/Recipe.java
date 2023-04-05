@@ -9,6 +9,11 @@ public class Recipe {
 	    private String ImgSrc;
 		private double rating;
 
+		private String description;
+		private String ingredients;
+		private Image image;
+
+
 	    
 
 	    public String getName() {
@@ -43,5 +48,31 @@ public class Recipe {
 	    public void setRating(double rating) {
 	        this.rating = rating;
 	    }
+
+
+	    public void setDescription(String description) {
+	    	 this.description = description;
+	    }
+		public String getDescription() {
+			
+			return description;
+		}
+		
+		public void setContents(String ingredients) {
+			this.ingredients = ingredients;
+		}
+		
+		public String getContents() {
+			return ingredients;
+		}
+		
+		public void setImageDetail(Image img) {
+			this.image = img;
+		}
+		
+		public Image getImageDetail(Image img) {
+			return img;
+		}
+
 	}
 
