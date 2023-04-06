@@ -97,7 +97,7 @@ public class CardController implements Initializable {
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		 //Intializing
+//		 //Initializing
         DetailrecipeImage = new ImageView();
         recipeNameDetailTo = new Label();
         chefNameDetail = new Label();
