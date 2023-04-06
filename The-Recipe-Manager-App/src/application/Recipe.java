@@ -8,9 +8,11 @@ public class Recipe {
 	    private String chefName;
 	    private String ImgSrc;
 		private double rating;
+
 		private String description;
 		private String ingredients;
 		private Image image;
+
 
 	    
 
@@ -47,6 +49,7 @@ public class Recipe {
 	        this.rating = rating;
 	    }
 
+
 	    public void setDescription(String description) {
 	    	 this.description = description;
 	    }
@@ -70,5 +73,6 @@ public class Recipe {
 		public Image getImageDetail(Image img) {
 			return img;
 		}
+
 	}
 

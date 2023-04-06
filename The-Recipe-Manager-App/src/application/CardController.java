@@ -1,5 +1,6 @@
 package application;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -17,14 +18,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+
 import javafx.stage.Stage;
 
+
+
 public class CardController implements Initializable {
+
 
 	@FXML
     private Label recipeName;
@@ -38,6 +44,7 @@ public class CardController implements Initializable {
     @FXML
     private ImageView recipeImage;
     
+
 
     @FXML
     private Button MoreBtn;
@@ -90,6 +97,8 @@ public class CardController implements Initializable {
     private Scene scene;
 
     
+
+
     private String[] colors =  {"DCEDF2", "FFFFF"};
     
     DatabaseConnection connectNow = new DatabaseConnection();
@@ -97,7 +106,7 @@ public class CardController implements Initializable {
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		 //Initializing
+
         DetailrecipeImage = new ImageView();
         recipeNameDetailTo = new Label();
         chefNameDetail = new Label();
@@ -145,6 +154,7 @@ public class CardController implements Initializable {
 //    	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
     	
     }
+
     
     public void setDataFromDb(Recipe recipe) throws SQLException {
         
@@ -311,6 +321,5 @@ public class CardController implements Initializable {
     	stage.setScene(scene);
     	stage.show();
 	}
-//pushing
-	
+
 }

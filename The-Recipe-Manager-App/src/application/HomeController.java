@@ -1,9 +1,12 @@
 package application;
+
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 
 import javafx.event.ActionEvent;
@@ -26,6 +29,7 @@ public class HomeController implements Initializable {
 	
 	@FXML
 	private HBox cardLayout;
+
 	
 	@FXML
 	private HBox cardAreaLayout;
@@ -35,6 +39,7 @@ public class HomeController implements Initializable {
 	
 	private List<Recipe> discoverRecipes;
 	private List<Recipe> addRecipesFromList;
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle arg1) {
@@ -174,6 +179,7 @@ public class HomeController implements Initializable {
 
 
 
+
 	private List<Recipe> discoverRecipes(){
 		List<Recipe> ls = new ArrayList<>();
 		Recipe recipe = new Recipe();
@@ -200,10 +206,12 @@ public class HomeController implements Initializable {
 		
 	}
 	
+
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
 		//adding
 		
 	}
 	
+
 	
 }
