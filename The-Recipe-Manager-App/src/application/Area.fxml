@@ -11,14 +11,18 @@
 
 <HBox fx:id="boxHome" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="222.0" prefWidth="283.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CardController">
          <children>
+
       <ImageView fx:id="recipeAreaImage" fitHeight="204.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+
          <image>
             <Image url="@../../../../../Downloads/Paneer_tikka.jpeg" />
          </image>
       </ImageView>
             <VBox prefHeight="210.0" prefWidth="126.0">
                <children>
+
                   <Label fx:id="recipeAreaName" prefHeight="74.0" prefWidth="210.0" text="Avocado&#10; Toast">
+
                      <font>
                         <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
@@ -26,17 +30,23 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </Label>
+
                   <Label fx:id="chefAreaName" prefHeight="30.0" prefWidth="201.0" text="By Gordan ramsay">
+
                      <font>
                         <Font name="Comic Sans MS" size="14.0" />
                      </font>
                   </Label>
+
                   <ImageView fx:id="recipeAreaRating" fitHeight="23.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+
                      <image>
                         <Image url="@../../assets/rating.png" />
                      </image>
                   </ImageView>
-            <Button fx:id="MoreBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="More">
+
+            <Button fx:id="MoreBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#MoreBtnAction" text="More">
+
                <VBox.margin>
                   <Insets left="30.0" top="10.0" />
                </VBox.margin>
