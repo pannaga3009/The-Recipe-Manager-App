@@ -311,6 +311,6 @@ public class CardController implements Initializable {
     	stage.setScene(scene);
     	stage.show();
 	}
-
+//pushing
 	
 }
