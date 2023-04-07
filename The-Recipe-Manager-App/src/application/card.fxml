@@ -2,17 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-
-<HBox fx:id="box" fx:controller="application.CardController" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="222.0" prefWidth="368.0" spacing="10.0">
+<HBox fx:id="box" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="222.0" prefWidth="368.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CardController">
          <children>
             <ImageView fx:id="recipeImage" fitHeight="115.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true">
                <cursor>
@@ -22,17 +20,18 @@
                   <Image url="@../../assets/avocado_toast.jpeg" />
                </image>
             </ImageView>
-            <VBox prefHeight="235.0" prefWidth="162.0">
+            <VBox alignment="CENTER" prefHeight="235.0" prefWidth="162.0">
                <children>
-                  <Label fx:id="recipeName" prefHeight="74.0" prefWidth="210.0" text="Avocado&#10; Toast">
+            <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#SaveBtnAction" style="-fx-background-radius: 40;" text="Save" />
+                  <Label fx:id="recipeName" prefHeight="74.0" prefWidth="102.0" text="Avocado&#10; Toast" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="50.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="chefName" prefHeight="30.0" prefWidth="201.0" text="By Gordan ramsay">
+                  <Label fx:id="chefName" prefHeight="30.0" prefWidth="119.0" text="By Gordan ramsay">
                      <font>
                         <Font name="Comic Sans MS" size="14.0" />
                      </font>
@@ -42,6 +41,7 @@
                         <Image url="@../../assets/rating.png" />
                      </image>
                   </ImageView>
+            <Button fx:id="MoreBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="More" />
                </children>
                <HBox.margin>
                   <Insets left="10.0" />
@@ -49,4 +49,3 @@
             </VBox>
          </children>
       </HBox>
-  

@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import java.util.ResourceBundle;
 
@@ -56,9 +55,6 @@ public class CardController implements Initializable {
 
 
     @FXML
-    private Button MoreBtn;
-    @FXML
-    private Button saveBtn;
     private Button MoreBtn = new Button("More details");;
 
     @FXML
@@ -109,7 +105,6 @@ public class CardController implements Initializable {
    
     private Stage stage;
     private Scene scene;
-
 
     
 
@@ -257,27 +252,21 @@ public class CardController implements Initializable {
 
         
     }
-    @FXML
-    void SaveBtnAction(ActionEvent event) throws IOException {
-    	//adding new design for detail
-    	
-    	Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
-    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
-    }
 
 	
 
 	
     void handleButtonClick(Recipe recipe) throws SQLException{
 	    // do something with the object
-    	 
-     
-
-}
-
-
+    }
+    @FXML
+    void SaveBtnAction(ActionEvent event) throws IOException {
+    	//adding new design for detail
+    	Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
+    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+    }
 
 }

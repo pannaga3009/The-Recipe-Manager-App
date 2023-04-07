@@ -50,7 +50,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="backLogin" layoutX="662.0" layoutY="433.0" mnemonicParsing="false" onAction="#BackBtnActoin" prefHeight="32.0" prefWidth="98.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2); -fx-background-color: white; -fx-border-radius: 20px;" text="Back" />
+      <Button fx:id="backLogin" layoutX="662.0" layoutY="433.0" mnemonicParsing="false" onAction="#BackBtnAction" prefHeight="32.0" prefWidth="98.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2); -fx-background-color: white; -fx-border-radius: 20px;" text="Back" />
       <ImageView fitHeight="93.0" fitWidth="67.0" layoutX="70.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assets/login2.png" />

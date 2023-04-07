@@ -17,7 +17,7 @@ public class LoginController extends Login{
     
     @FXML 
     private Button loginButton;
-    private Button backLogin;
+    
     private Stage stage;
     private Scene scene;
     
@@ -37,12 +37,13 @@ public class LoginController extends Login{
     	}
     	
     }
-    public void BackBtnActoin(ActionEvent event) throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
-    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+    public void BackBtnAction(ActionEvent event) throws IOException {
+    		Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
+	    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    	scene = new Scene(root);
+	    	stage.setScene(scene);
+	    	stage.show();
+    	
     }
 
 }

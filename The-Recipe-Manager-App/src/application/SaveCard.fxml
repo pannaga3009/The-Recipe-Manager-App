@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="217.0" prefWidth="693.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SaveCardController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Recipe Rating">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="ratingImage" fitHeight="46.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </VBox>
+      <VBox prefWidth="720.0">
+         <children>
+            <Label fx:id="RecipeName" prefHeight="17.0" prefWidth="128.0" text="Recipe Name" />
+            <Label fx:id="savechefName" prefHeight="17.0" prefWidth="128.0" text="Chef Name" />
+            <Label fx:id="recipeDescription" prefHeight="78.0" prefWidth="718.0" text="Recipe Description" />
+            <Label fx:id="recipeContents" prefHeight="50.0" prefWidth="720.0" text="Recipe Contents" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

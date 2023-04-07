@@ -22,6 +22,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+
+
+
 public class HomeController implements Initializable {
 
 	
@@ -34,49 +37,41 @@ public class HomeController implements Initializable {
 	
 	@FXML 
 	private Hyperlink mealPlan;
-	private Hyperlink savedRecipes;
+	
 	private List<Recipe> discoverRecipes;
 	private List<Recipe> addRecipesFromList;
-	private Stage stage;
-	private Scene scene;
+
+	   
+    private Stage stage;
+    private Scene scene;
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle arg1) {
 		System.out.println("Entering home intializable");
 		discoverRecipes = new ArrayList<>(discoverRecipes());
 		try {
-		for(int i =0; i < discoverRecipes.size(); i++)
-		{
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(getClass().getResource("Area.fxml"));
+			for(int i =0; i < discoverRecipes.size(); i++)
+			{
+				FXMLLoader fxmlLoader = new FXMLLoader();
+				fxmlLoader.setLocation(getClass().getResource("card.fxml"));
+				
+				HBox cardBox = fxmlLoader.load();
+				CardController cardController = fxmlLoader.getController();
+				cardController.setData(discoverRecipes.get(i));
+				cardLayout.getChildren().add(cardBox);	
+				
+			}
+			RecipeStorage rs = new RecipeStorage();
+			addRecipesFromList = new ArrayList<>(addRecipes());
+			rs.addRecipesToDb(addRecipesFromList);
 			
-			HBox cardBox = fxmlLoader.load();
-			CardController cardController = fxmlLoader.getController();
-			cardController.setData(discoverRecipes.get(i));
-			cardLayout.getChildren().add(cardBox);	
-			cardBox.setOnMouseClicked(event ->{
-				 try { 
-					 Parent root = FXMLLoader.load(getClass().getResource("Detailcard.fxml")); 
-					 Stage stage = new Stage(); 
-					 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-					 Scene scene = new Scene(root, 300, 200); 
-					 stage.setScene(scene); stage.show();
-					 }catch(IOException e){
-						 e.printStackTrace();
-					 }
-			});
-		}
+			ArrayList<String> RecipeNames = new ArrayList<String>();
 	
-		RecipeStorage rs = new RecipeStorage();
-		addRecipesFromList = new ArrayList<>(addRecipes());
-		rs.addRecipesToDb(addRecipesFromList);
-		
-		ArrayList<String> RecipeNames = new ArrayList<String>();
-
-		RecipeNames.add("Paneer Tikka");
-
-		RecipeNames.add("Veg Sandwich");
-		RecipeNames.add("Salad Bowl");
+			RecipeNames.add("Paneer Tikka");
+	
+			RecipeNames.add("Veg Sandwich");
+			RecipeNames.add("Salad Bowl");
 		
 		
 			for(int i =0; i < RecipeNames.size(); i++)
@@ -104,7 +99,7 @@ public class HomeController implements Initializable {
 		}
 		
 			
-	}
+		}
 	
 
 
@@ -191,6 +186,9 @@ public class HomeController implements Initializable {
 		return dbls;
 	}
 
+
+
+
 	private List<Recipe> discoverRecipes(){
 		List<Recipe> ls = new ArrayList<>();
 		Recipe recipe = new Recipe();
@@ -219,18 +217,11 @@ public class HomeController implements Initializable {
 	
 
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
-		System.out.println("Saved Recipe button triggered");
-    	Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
-    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+
 		
 	}
 	public void handleSavedRecipesClick(ActionEvent event) throws IOException {
-		
-		System.out.println("Saved Recipe button triggered");
-    	Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
     	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
     	stage.setScene(scene);
