@@ -13,10 +13,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 
 import javafx.scene.layout.HBox;
-
+import javafx.stage.Stage;
 
 
 
@@ -59,7 +63,9 @@ public class HomeController implements Initializable {
 		rs.addRecipesToDb(addRecipesFromList);
 		
 		ArrayList<String> RecipeNames = new ArrayList<String>();
-		RecipeNames.add("Panneer Tikka");
+
+		RecipeNames.add("Paneer Tikka");
+
 		RecipeNames.add("Veg Sandwich");
 		RecipeNames.add("Salad Bowl");
 		
@@ -74,11 +80,15 @@ public class HomeController implements Initializable {
 				CardController cardController = fxmlLoader.getController();
 				rc.setName(RecipeNames.get(i));
 				cardController.setDataFromDb(rc);
+
+				cardController.sendObj(rc);
+//				cardController.handleButtonClick(rc);
 				cardAreaLayout.getChildren().add(cardBox);	
 				
+				
 			}
-	
-		
+	  
+
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -203,7 +213,7 @@ public class HomeController implements Initializable {
 	
 
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
-		
+
 		
 	}
 	
