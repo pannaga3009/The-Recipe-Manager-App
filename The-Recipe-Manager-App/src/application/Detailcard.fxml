@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane  fx:controller="application.CardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane  fx:controller="application.DetailCardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="backbtn" layoutX="406.0" layoutY="632.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Back">
          <font>

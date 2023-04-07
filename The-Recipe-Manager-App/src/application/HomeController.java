@@ -78,11 +78,13 @@ public class HomeController implements Initializable {
 				rc.setName(RecipeNames.get(i));
 				cardController.setDataFromDb(rc);
 				cardController.sendObj(rc);
+//				cardController.handleButtonClick(rc);
 				cardAreaLayout.getChildren().add(cardBox);	
 				
 				
 			}
 	  
+			
 		
 		}
 		catch(Exception e) {
