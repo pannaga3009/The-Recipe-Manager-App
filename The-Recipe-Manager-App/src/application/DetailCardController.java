@@ -1,5 +1,6 @@
 package application;
 
+
 import java.io.ByteArrayInputStream;
 
 
@@ -187,7 +188,5 @@ public class DetailCardController implements Initializable{
         connectDB.close();
 		
 	}
-	
-	
-	
 }
+	

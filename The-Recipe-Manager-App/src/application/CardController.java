@@ -3,17 +3,23 @@ package application;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+
 import java.net.URL;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ResourceBundle;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
+
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,7 +35,9 @@ import javafx.stage.Stage;
 
 
 
+
 public class CardController implements Initializable {
+
 
 
 	@FXML
@@ -55,6 +63,7 @@ public class CardController implements Initializable {
 
     @FXML
     private ImageView recipeRating;
+
     
     @FXML
     private Label chefAreaName;
@@ -92,12 +101,12 @@ public class CardController implements Initializable {
     @FXML
     private ImageView recipeRatingDetail;
 
+
    
     private Stage stage;
     private Scene scene;
 
     
-
 
     private String[] colors =  {"DCEDF2", "FFFFF"};
     
@@ -168,8 +177,11 @@ public class CardController implements Initializable {
 
     
     public void setDataFromDb(Recipe recipe) throws SQLException {
-        
-      
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+
         String selectQuery = "SELECT * FROM RecipesInfo WHERE recipeName = ?";
         PreparedStatement selectStatement = connectDB.prepareStatement(selectQuery);
         selectStatement.setString(1, recipe.getName());
@@ -194,18 +206,20 @@ public class CardController implements Initializable {
             recipe.setImageDetail(image);
 
             // Set the data to the UI elements
-           
+
             try {
             	
                 System.out.println("Before--");
                 System.out.println("recipe.getImage()----"+recipe.getImageDetail(image));
                 //Setting up the Image view here
                 recipeAreaImage.setImage(recipe.getImageDetail(image));
+
                 System.out.println("after--");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             System.out.println("Recipe  name ----"+recipe.getName());
             System.out.println("Recipe  chef ---"+recipe.getchefName());
             recipeAreaName.setText(recipe.getName());
@@ -214,6 +228,7 @@ public class CardController implements Initializable {
             if(recipe.getRating() >= 4.0) {
             	Image img = new Image("File:assets/Four_star.png");
             	recipeAreaRating.setImage(img);
+
             	return;
             }
             else {
@@ -224,11 +239,17 @@ public class CardController implements Initializable {
             
            
             
-        } else {
+            	
+            	
+            }
+            
+
+         else {
             System.out.println("Recipe not found in the database");
         }
 
         // Close the database connection
+
         
     }
 
