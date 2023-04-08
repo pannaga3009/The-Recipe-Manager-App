@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -94,8 +95,16 @@ public class HomeController implements Initializable {
 			e.printStackTrace();
 		}
 		
-			
-		}
+		
+//		mealPlan.setOnAction(e ->  {
+//		    try {
+//		        handleMealPlanClick(e);
+//		    } catch (IOException ex) {
+//		        ex.printStackTrace();
+//		    }
+//		});
+
+	}
 	
 
 
@@ -211,11 +220,14 @@ public class HomeController implements Initializable {
 		
 	}
 	
-
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
-
-		
+	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
 	}
+	
 	
 
 	

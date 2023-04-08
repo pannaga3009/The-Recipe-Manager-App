@@ -72,7 +72,7 @@
                   <Insets right="10.0" top="23.0" />
                </HBox.margin></Hyperlink>
 
-            <Hyperlink fx:id="mealPlan" text="Meal Plan">
+            <Hyperlink fx:id="mealPlan" onAction="#handleMealPlanClick" text="Meal Plan">
 
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
