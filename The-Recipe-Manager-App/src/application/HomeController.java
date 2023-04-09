@@ -316,6 +316,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();
+
 	}
 	
 	

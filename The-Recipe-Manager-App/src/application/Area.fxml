@@ -47,6 +47,7 @@
                      </image>
                   </ImageView>
 
+
             <Button fx:id="MoreBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="More">
 
 
