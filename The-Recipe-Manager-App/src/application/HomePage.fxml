@@ -50,7 +50,7 @@
                         <Image url="@../../assets/search_icon.png" />
                      </image>
                   </ImageView>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="275.0" promptText="Search">
+                  <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleSearchButtonAction" prefHeight="25.0" prefWidth="275.0" promptText="Search">
                      <HBox.margin>
                         <Insets left="-260.0" top="8.0" />
                      </HBox.margin>
