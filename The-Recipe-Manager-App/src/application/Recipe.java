@@ -11,6 +11,7 @@ public class Recipe {
 
 		private String description;
 		private String ingredients;
+		private String prepTime;
 		private Image image;
 
 
@@ -72,6 +73,14 @@ public class Recipe {
 		
 		public Image getImageDetail(Image img) {
 			return img;
+		}
+		
+		public String getPrepTime() {
+			return prepTime;
+		}
+		
+		public void setPrepTime(String prepTime) {
+			this.prepTime = prepTime;
 		}
 
 	}
