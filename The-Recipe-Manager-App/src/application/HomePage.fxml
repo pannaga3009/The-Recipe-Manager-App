@@ -50,7 +50,7 @@
                         <Image url="@../../assets/search_icon.png" />
                      </image>
                   </ImageView>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="275.0" promptText="Search">
+                  <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleSearchButtonAction" prefHeight="25.0" prefWidth="275.0" promptText="Search">
                      <HBox.margin>
                         <Insets left="-260.0" top="8.0" />
                      </HBox.margin>
@@ -72,7 +72,7 @@
                   <Insets right="10.0" top="23.0" />
                </HBox.margin></Hyperlink>
 
-            <Hyperlink fx:id="mealPlan" text="Meal Plan">
+            <Hyperlink fx:id="mealPlan" onAction="#handleMealPlanClick" text="Meal Plan">
 
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
@@ -107,7 +107,7 @@
                </padding>
                <content>
 
-                  <HBox fx:id="cardLayout" prefHeight="243.0" prefWidth="862.0" />
+                  <HBox fx:id="cardLayout" prefHeight="243.0" prefWidth="933.0" style="-fx-background-color: #FFFFFF;" />
                </content>
             </ScrollPane>
             <Label prefHeight="27.0" prefWidth="77.0" text="Categories" />
@@ -117,7 +117,7 @@
    <bottom>
       <ScrollPane prefHeight="231.0" prefWidth="937.0" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="cardAreaLayout" prefHeight="234.0" prefWidth="926.0" />
+            <HBox fx:id="cardAreaLayout" prefHeight="234.0" prefWidth="926.0" style="-fx-background-color: #FFFFFF;" />
          </content>
       </ScrollPane>
    </bottom>
