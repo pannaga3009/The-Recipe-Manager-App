@@ -17,6 +17,7 @@ public class Recipe {
 		private Image image;
 		private byte[] imageData;
 		private String category;
+		private String comments;
 
 
 	    
@@ -104,6 +105,15 @@ public class Recipe {
 		
 		public String getCategory() {
 			return category;
+		}
+
+		public String getComments() {
+			
+			return comments;
+		}
+		
+		public void setComments(String comments) {
+			this.comments = comments;
 		}
 
 	}

@@ -17,5 +17,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/Users/pannaga/Developer/JavaFX-SDK/javafx-sdk-19.0.2.1/lib/mysql-connector-java-8.0.30.jar"/>
+	<classpathentry kind="lib" path="/Users/pannaga/Developer/javax.mail.jar"/>
+	<classpathentry kind="lib" path="/Users/pannaga/Developer/JavaFX-SDK/javafx-sdk-19.0.2.1/lib/activation.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
