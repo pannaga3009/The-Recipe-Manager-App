@@ -108,7 +108,9 @@
                </padding>
                <content>
 
+
                   <HBox fx:id="cardLayout" prefHeight="243.0" prefWidth="933.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+
                </content>
             </ScrollPane>
             <Label prefHeight="47.0" prefWidth="127.0" text="Categories">

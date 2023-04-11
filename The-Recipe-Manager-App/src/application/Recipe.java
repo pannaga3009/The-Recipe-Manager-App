@@ -16,8 +16,10 @@ public class Recipe {
 		private String prepTime;
 		private Image image;
 		private byte[] imageData;
+
 		private String category;
 		private String comments;
+
 
 
 	    
@@ -98,6 +100,7 @@ public class Recipe {
 		public byte[] getByteImage() {
 			return imageData;
 		}
+
 		
 		public void setCategory(String category) {
 			this.category = category;
@@ -106,6 +109,7 @@ public class Recipe {
 		public String getCategory() {
 			return category;
 		}
+
 
 		public String getComments() {
 			
