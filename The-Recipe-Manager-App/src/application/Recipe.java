@@ -17,6 +17,10 @@ public class Recipe {
 		private Image image;
 		private byte[] imageData;
 
+		private String category;
+		private String comments;
+
+
 
 	    
 
@@ -95,6 +99,25 @@ public class Recipe {
 		
 		public byte[] getByteImage() {
 			return imageData;
+		}
+
+		
+		public void setCategory(String category) {
+			this.category = category;
+		}
+		
+		public String getCategory() {
+			return category;
+		}
+
+
+		public String getComments() {
+			
+			return comments;
+		}
+		
+		public void setComments(String comments) {
+			this.comments = comments;
 		}
 
 	}

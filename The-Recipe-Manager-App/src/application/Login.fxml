@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="application.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 216, 230, 0.1); -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(173, 216, 230, 0.1); -fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#edeff003" height="284.0" layoutX="279.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
       <Text layoutX="372.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!">
@@ -39,13 +39,13 @@
       </Text>
        <PasswordField fx:id="passwordLogin" layoutX="387.0" layoutY="187.0" />
       <Text layoutX="387.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" />
-      <Button fx:id="forgotPasswordLogin" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="487.0" layoutY="220.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 10px;" text="Click Here" textAlignment="CENTER" textOverrun="CLIP">
+      <Button fx:id="forgotPasswordLogin" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="487.0" layoutY="220.0" mnemonicParsing="false" onAction="#forgotPasswordLogin" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 10px;" text="Click Here" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="8.0" />
          </font>
       </Button>
       <CubicCurve controlX1="-81.56201934814453" controlX2="-54.65773010253906" controlY1="29.371543884277344" controlY2="104.22146606445312" endX="-3.3796329498291016" endY="129.48370361328125" fill="#d3d7db03" layoutX="244.0" layoutY="141.0" rotate="45.0" startX="-196.32322692871094" startY="115.20213317871094" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="5.0" />
-      <Button fx:id="loginButton" onAction="#LoginPageBtAction" layoutX="411.0" layoutY="244.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2);" text="Login">
+      <Button fx:id="loginButton" layoutX="411.0" layoutY="244.0" mnemonicParsing="false" onAction="#LoginPageBtAction" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 2);" text="Login">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
