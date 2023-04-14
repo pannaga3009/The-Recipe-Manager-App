@@ -52,7 +52,8 @@ public class CardController implements Initializable {
     @FXML
     private ImageView recipeImage;
     
-
+    @FXML
+    private ImageView recipeRatingCard;
 
     @FXML
     private Button MoreBtn = new Button("More details");;
@@ -122,6 +123,7 @@ public class CardController implements Initializable {
         recipeDescriptionDetail = new Label();
         recipeContentsDetail = new Label();
         recipeRatingDetail = new ImageView();
+       
         
         
         
@@ -171,6 +173,47 @@ public class CardController implements Initializable {
     	
     	recipeName.setText(recipe.getName());
     	chefName.setText(recipe.getchefName());
+    	System.out.println("----Inside card controller set Data----");
+    	System.out.println("Recipe rating: " + recipe.getRating());
+    	try {
+    	    String imagePath;
+    	    switch((int) Math.floor(recipe.getRating())) {
+    	        case 4:
+    	            imagePath = "File:assets/Four_star.png";
+    	            break;
+    	        case 3:
+    	            imagePath = "File:assets/Three_star.jpeg";
+    	            break;
+    	        case 2:
+    	            imagePath = "File:assets/Two_star.png";
+    	            break;
+    	        default:
+    	            imagePath = "File:assets/One_star.jpeg";
+    	    }
+    	    System.out.println("Image path: " + imagePath);
+    	    Image image = new Image(imagePath);
+    	    recipeRatingCard = new ImageView(image);
+    	} catch (Exception e) {
+    	    System.err.println("Error loading image: " + e.getMessage());
+    	    e.printStackTrace();
+    	}
+
+//    	System.out.println(recipe.getRating());
+//    	recipeRatingCard = new ImageView();
+//    	switch((int) Math.floor(recipe.getRating())) {
+//        case 4:
+//        	recipeRatingCard.setImage(new Image("File:assets/Four_star.png"));
+//            break;
+//        case 3:
+//        	recipeRatingCard.setImage(new Image("File:assets/Three_star.jpeg"));
+//            break;
+//        case 2:
+//        	recipeRatingCard.setImage(new Image("File:assets/Two_star.png"));
+//            break;
+//        default:
+//        	recipeRatingCard.setImage(new Image("File:assets/One_star.jpeg"));
+//    }
+        
 //    	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
     	
     }
@@ -225,21 +268,24 @@ public class CardController implements Initializable {
             recipeAreaName.setText(recipe.getName());
             chefAreaName.setText(recipe.getchefName());
             
-            if(recipe.getRating() >= 4.0) {
-            	Image img = new Image("File:assets/Four_star.png");
-            	recipeAreaRating.setImage(img);
-
-            	return;
-            }
-            else {
-            	Image img = new Image("File:assets/Three_star.jpeg");
-            	recipeAreaRating.setImage(img);
-            	return;
-            }
+            switch((int) Math.floor(recipe.getRating())) {
+            case 5:
+            	recipeAreaRating.setImage(new Image("File:assets/Four_star.png"));
+	            break;
+	        case 4:
+	        	recipeAreaRating.setImage(new Image("File:assets/Four_star.png"));
+	            break;
+	        case 3:
+	        	recipeAreaRating.setImage(new Image("File:assets/Three_star.jpeg"));
+	            break;
+	        case 2:
+	        	recipeAreaRating.setImage(new Image("File:assets/Two_star.png"));
+	            break;
+	        default:
+	        	recipeAreaRating.setImage(new Image("File:assets/One_star.jpeg"));
+	    }
             
-           
-            
-            	
+	
             	
             }
             

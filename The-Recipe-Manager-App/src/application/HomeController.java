@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -81,24 +82,19 @@ public class HomeController implements Initializable {
 		RecipeNames.add("Veg Sandwich");
 		RecipeNames.add("Salad Bowl");
 		
-		
-			for(int i =0; i < RecipeNames.size(); i++)
-			{
-				Recipe rc = new Recipe();
-				FXMLLoader fxmlLoader = new FXMLLoader();
-				fxmlLoader.setLocation(getClass().getResource("Area.fxml"));
-				
-				HBox cardBox = fxmlLoader.load();
-				CardController cardController = fxmlLoader.getController();
-				rc.setName(RecipeNames.get(i));
-				cardController.setDataFromDb(rc);
-
-				cardController.sendObj(rc);
-//				cardController.handleButtonClick(rc);
-				cardAreaLayout.getChildren().add(cardBox);	
-				
-				
-			}
+		Iterator<String> iterator = RecipeNames.iterator();
+		while (iterator.hasNext()) {
+		    String recipeName = iterator.next();
+		    Recipe rc = new Recipe();
+		    FXMLLoader fxmlLoader = new FXMLLoader();
+		    fxmlLoader.setLocation(getClass().getResource("Area.fxml"));
+		    HBox cardBox = fxmlLoader.load();
+		    CardController cardController = fxmlLoader.getController();
+		    rc.setName(recipeName);
+		    cardController.setDataFromDb(rc);
+		    cardController.sendObj(rc);
+		    cardAreaLayout.getChildren().add(cardBox);
+		}
 	  
 
 		}
@@ -290,6 +286,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setName("Avocado\nToast");
 		recipe.setImage("file:assets/avocado_toast.jpeg");
 		recipe.setchefName("By Gordan Ramsay");
+		recipe.setRating(4.5);
 		
 		ls.add(recipe);
 	
@@ -297,6 +294,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setName("Tofu\nCurry");
 		recipe.setImage("file:assets/tofu_curry.jpeg");
 		recipe.setchefName("By Jamie Oliver");
+		recipe.setRating(4.0);
 		
 		ls.add(recipe);
 		
@@ -304,8 +302,19 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setName("Pink Sauce\nPasta");
 		recipe.setImage("file:assets/pink_pasta.jpeg");
 		recipe.setchefName("By Gordan Ramsay");
+		recipe.setRating(3.2);
+		
 		
 		ls.add(recipe);
+		
+		recipe = new Recipe();
+		recipe.setName("Brocolli\nSoup");
+		recipe.setImage("file:assets/brocolli_soup.jpeg");
+		recipe.setchefName("Pannaga Veeramohan");
+		recipe.setRating(4.5);
+		
+		ls.add(recipe);
+		
 		return ls;
 		
 	}
