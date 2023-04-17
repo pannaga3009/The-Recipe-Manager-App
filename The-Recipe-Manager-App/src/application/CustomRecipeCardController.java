@@ -15,6 +15,9 @@ public class CustomRecipeCardController implements Initializable{
 
     @FXML
     private VBox box;
+    
+    @FXML
+    private ImageView ImgSrc;
 
     @FXML
     private Label recipeContents;
@@ -57,6 +60,7 @@ public class CustomRecipeCardController implements Initializable{
             System.out.println("-----Inside custom recipe image printing----" + recipe.getImageFormat());
 
             recipeImg.setImage(recipe.getImageFormat());
+           
             
 	     } catch (Exception e) {
 	         e.printStackTrace();

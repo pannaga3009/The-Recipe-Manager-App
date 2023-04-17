@@ -164,8 +164,8 @@ public class MealPlanController implements Initializable {
         	            
         	            byte[] recipeImg = customMealPlans.getBytes("recipeImage");
         	            Image image = new Image(new ByteArrayInputStream(recipeImg));
-        	            customRecipe.setByteImage(recipeImg);
         	            customRecipe.setImageDetail(image);
+        	            
         	            System.out.println("-----Inside meal plan image printing----" + image);
 
         	            // Add the custom recipe to the meal plan
