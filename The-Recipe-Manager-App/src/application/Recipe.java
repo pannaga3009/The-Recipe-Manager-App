@@ -82,6 +82,10 @@ public class Recipe {
 			return img;
 		}
 		
+		public Image getImageFormat() {
+			return image;
+		}
+		
 		public String getPrepTime() {
 			return prepTime;
 		}

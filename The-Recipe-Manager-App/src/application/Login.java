@@ -35,6 +35,16 @@ public abstract class Login {
     			int count = queryResult.getInt(1);
     		    System.out.println("Count: " + count);
     			if(queryResult.getInt(1) == 1) {
+    				String getId = "SELECT idUserAccount from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
+    				 ResultSet queryId = statement.executeQuery(getId);
+    				if(queryId.next()) {
+    				int userId = queryId.getInt("idUserAccount");
+    				System.out.println("Query Result - userId "+ userId);
+
+    				 UserAccount useraccount = new UserAccount();
+    				 
+    				 UserAccount.idUserAccount = userId;
+    				}
     				return true;
     			}else {
     				return false;

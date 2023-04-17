@@ -21,7 +21,7 @@
             </ImageView>
             <VBox prefHeight="235.0" prefWidth="162.0">
                <children>
-                  <Label fx:id="recipeName" prefHeight="74.0" prefWidth="210.0" text="Avocado&#10; Toast">
+                  <Label fx:id="recipeName" prefHeight="74.0" prefWidth="119.0" text="Avocado&#10; Toast">
                      <font>
                         <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
@@ -29,12 +29,12 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="chefName" prefHeight="30.0" prefWidth="201.0" text="By Gordan ramsay">
+                  <Label fx:id="chefName" prefHeight="30.0" prefWidth="120.0" text="By Gordan ramsay">
                      <font>
                         <Font name="Comic Sans MS" size="14.0" />
                      </font>
                   </Label>
-            <ImageView fx:id="recipeRatingCard" fitHeight="42.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="recipeRatingCard" fitHeight="36.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../assets/Four_star.png" />
                </image></ImageView>

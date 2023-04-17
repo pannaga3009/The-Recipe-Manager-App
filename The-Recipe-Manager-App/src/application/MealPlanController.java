@@ -1,7 +1,12 @@
 package application;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -13,9 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -29,9 +36,15 @@ public class MealPlanController implements Initializable {
 
 	 @FXML
 	  private RadioButton ketoButton;
+	 
+	 @FXML
+	 private RadioButton CustomMealBtn;
 
     @FXML
     private RadioButton lowCarbButton;
+    
+    @FXML
+    private Button create;
     
     private MealPlan mealPlan = new MealPlan();
     
@@ -44,10 +57,12 @@ public class MealPlanController implements Initializable {
         ketoButton.setToggleGroup(toggleGroup);
         WeightLossButton.setToggleGroup(toggleGroup);
         lowCarbButton.setToggleGroup(toggleGroup);
+        CustomMealBtn.setToggleGroup(toggleGroup);
            
         ketoButton.setOnAction(this::onRadioButtonSelected);
         WeightLossButton.setOnAction(this::onRadioButtonSelected);
         lowCarbButton.setOnAction(this::onRadioButtonSelected);
+        CustomMealBtn.setOnAction(this::onRadioButtonSelected);
 
     }
     
@@ -125,6 +140,65 @@ public class MealPlanController implements Initializable {
 
             System.out.println("Low carb meal plan selected");
         }
+        else if (selectedRadioButton == CustomMealBtn) {
+
+        	    // Create a new database connection and retrieve the user ID
+        	    DatabaseConnection connectNow = new DatabaseConnection();
+        	    Connection connectDB = connectNow.getConnection();
+        	    int userId = UserAccount.idUserAccount;
+
+        	    try {
+        	        // Retrieve all custom meal plans from the database
+        	        PreparedStatement getallcustom = connectDB.prepareStatement("SELECT * FROM CustomMealPlan where idUserAccount = ?");
+        	        getallcustom.setInt(1, userId);
+        	        ResultSet customMealPlans = getallcustom.executeQuery();
+
+        	        // Iterate over the custom meal plans
+        	        while (customMealPlans.next()) {
+        	            // Create a new Recipe object and set its properties based on the custom meal plan
+        	            Recipe customRecipe = new Recipe();
+        	            customRecipe.setName(customMealPlans.getString("recipeName"));
+        	            customRecipe.setContents(customMealPlans.getString("recipeContents"));
+        	            customRecipe.setDescription(customMealPlans.getString("recipeDescription"));
+        	            customRecipe.setPrepTime(customMealPlans.getString("prepTime"));
+        	            
+        	            byte[] recipeImg = customMealPlans.getBytes("recipeImage");
+        	            Image image = new Image(new ByteArrayInputStream(recipeImg));
+        	            customRecipe.setByteImage(recipeImg);
+        	            customRecipe.setImageDetail(image);
+        	            System.out.println("-----Inside meal plan image printing----" + image);
+
+        	            // Add the custom recipe to the meal plan
+        	            mealPlan.addRecipe("Custom Meal Plan", customRecipe);
+
+        	            // Create a new CustomRecipeCardController and add its corresponding view to the display layout
+        	            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CustomRecipeCard.fxml"));
+        	            VBox customRecipeCardView = null;
+						try {
+							customRecipeCardView = fxmlLoader.load();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+        	            CustomRecipeCardController customCardController = fxmlLoader.getController();
+        	            if (customCardController == null) {
+        	                customCardController = new CustomRecipeCardController();
+        	                fxmlLoader.setController(customCardController);
+        	            }
+        	            customCardController.setRecipe(customRecipe);
+        	            displayLayout.getChildren().add(customRecipeCardView);
+        	        }
+
+        	        // Close the database connection
+        	        connectDB.close();
+        	    } catch (SQLException e) {
+        	        e.printStackTrace();
+        	    }
+
+        	    // Print a message indicating that the custom meal button was selected
+        	    System.out.println("Custom Meal Btn plan selected");
+        	}
+
     }
 
     
@@ -215,8 +289,21 @@ public class MealPlanController implements Initializable {
     	stage.setScene(scene);
     	stage.show();
 	}
+   
+
+@FXML
+public void createBtnAction(ActionEvent event) throws IOException {
+	
+	 FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateMealPlan.fxml"));
+     Parent root = loader.load();
     
-
-
+     
+     CreatePlanMeal controller = loader.getController();
+     
+     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     Scene scene = new Scene(root);
+     stage.setScene(scene);
+     stage.show();
+}
 	
 }

@@ -192,29 +192,13 @@ public class CardController implements Initializable {
     	    }
     	    System.out.println("Image path: " + imagePath);
     	    Image image = new Image(imagePath);
-    	    recipeRatingCard = new ImageView(image);
+    	    recipeRatingCard.setImage(image);
     	} catch (Exception e) {
     	    System.err.println("Error loading image: " + e.getMessage());
     	    e.printStackTrace();
     	}
 
-//    	System.out.println(recipe.getRating());
-//    	recipeRatingCard = new ImageView();
-//    	switch((int) Math.floor(recipe.getRating())) {
-//        case 4:
-//        	recipeRatingCard.setImage(new Image("File:assets/Four_star.png"));
-//            break;
-//        case 3:
-//        	recipeRatingCard.setImage(new Image("File:assets/Three_star.jpeg"));
-//            break;
-//        case 2:
-//        	recipeRatingCard.setImage(new Image("File:assets/Two_star.png"));
-//            break;
-//        default:
-//        	recipeRatingCard.setImage(new Image("File:assets/One_star.jpeg"));
-//    }
-        
-//    	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
+
     	
     }
 
