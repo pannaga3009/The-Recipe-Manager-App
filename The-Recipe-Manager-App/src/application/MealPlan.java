@@ -7,6 +7,7 @@ public class MealPlan {
     private Queue<Recipe> lowCarbRecipes = new LinkedList<>();
     private Queue<Recipe> ketoRecipes = new LinkedList<>();
     private Queue<Recipe> weightLossRecipes = new LinkedList<>();
+    private Queue<Recipe> customRecipes = new LinkedList<>();
     
     public void addRecipe(String mealPlan, Recipe recipe) {
         switch(mealPlan) {
@@ -19,6 +20,9 @@ public class MealPlan {
             case "Weight Loss":
                 weightLossRecipes.add(recipe);
                 break;
+            case "Custom Meal Plan":
+            	customRecipes.add(recipe);
+                break;  
         }
     }
     
@@ -30,6 +34,8 @@ public class MealPlan {
                 return ketoRecipes;
             case "Weight Loss":
                 return weightLossRecipes;
+            case "Custom Meal Plan":
+            	return customRecipes;
             default:
                 return null;
         }

@@ -57,9 +57,15 @@ public class CustomRecipeCardController implements Initializable{
 	        }
 	        
 	      
-            System.out.println("-----Inside custom recipe image printing----" + recipe.getImageFormat());
+            
 
-            recipeImg.setImage(recipe.getImageFormat());
+//            Image image = new Image(new ByteArrayInputStream(recipe.getByteImage()));
+//            
+//            System.out.println("--------recipe.getImageDetail(image)-----" +recipe.getImageDetail(image));
+//            recipeImg.setImage(recipe.getImageDetail(image));
+	     System.out.println("-----Inside custom recipe image printing----" + recipe.getImageFormat());
+         Image image = recipe.getImageFormat();
+         recipeImg.setImage(image);
            
             
 	     } catch (Exception e) {

@@ -12,6 +12,11 @@
    <children>
       <HBox prefHeight="317.0" prefWidth="920.0" style="-fx-border-color: #DCEDF2; -fx-background-color: #FFFFFF;">
          <children>
+            <ImageView fx:id="recipeImg" fitHeight="234.0" fitWidth="333.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" top="40.0" />
+               </HBox.margin>
+            </ImageView>
             <HBox prefHeight="320.0" prefWidth="251.0">
                <children>
                   <VBox prefHeight="315.0" prefWidth="139.0" style="-fx-background-color: #FFFFFF;">
@@ -63,11 +68,6 @@
                   </Label>
                </children>
             </VBox>
-            <ImageView fx:id="recipeImg" fitHeight="234.0" fitWidth="333.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" top="40.0" />
-               </HBox.margin>
-            </ImageView>
          </children>
       </HBox>
    </children>

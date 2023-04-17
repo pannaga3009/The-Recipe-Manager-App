@@ -152,11 +152,12 @@ public class MealPlanController implements Initializable {
         	        PreparedStatement getallcustom = connectDB.prepareStatement("SELECT * FROM CustomMealPlan where idUserAccount = ?");
         	        getallcustom.setInt(1, userId);
         	        ResultSet customMealPlans = getallcustom.executeQuery();
-
+        	        
+        	       
         	        // Iterate over the custom meal plans
         	        while (customMealPlans.next()) {
         	            // Create a new Recipe object and set its properties based on the custom meal plan
-        	            Recipe customRecipe = new Recipe();
+        	        	Recipe customRecipe = new Recipe();
         	            customRecipe.setName(customMealPlans.getString("recipeName"));
         	            customRecipe.setContents(customMealPlans.getString("recipeContents"));
         	            customRecipe.setDescription(customMealPlans.getString("recipeDescription"));
@@ -164,13 +165,18 @@ public class MealPlanController implements Initializable {
         	            
         	            byte[] recipeImg = customMealPlans.getBytes("recipeImage");
         	            Image image = new Image(new ByteArrayInputStream(recipeImg));
+        	            
+        	            customRecipe.setByteImage(recipeImg);
         	            customRecipe.setImageDetail(image);
         	            
         	            System.out.println("-----Inside meal plan image printing----" + image);
 
         	            // Add the custom recipe to the meal plan
         	            mealPlan.addRecipe("Custom Meal Plan", customRecipe);
-
+        	        }
+        	        
+        	        for (Recipe recipe : mealPlan.getRecipes("Custom Meal Plan")) {
+                       
         	            // Create a new CustomRecipeCardController and add its corresponding view to the display layout
         	            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CustomRecipeCard.fxml"));
         	            VBox customRecipeCardView = null;
@@ -185,7 +191,7 @@ public class MealPlanController implements Initializable {
         	                customCardController = new CustomRecipeCardController();
         	                fxmlLoader.setController(customCardController);
         	            }
-        	            customCardController.setRecipe(customRecipe);
+        	            customCardController.setRecipe(recipe);
         	            displayLayout.getChildren().add(customRecipeCardView);
         	        }
 
