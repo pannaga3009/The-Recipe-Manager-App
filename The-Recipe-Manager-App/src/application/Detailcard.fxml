@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane  fx:controller="application.DetailCardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="backbtn" layoutX="406.0" layoutY="632.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="46.0" prefWidth="160.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Back">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </Button>
+      <Label layoutX="335.0" layoutY="88.0" text="Food Recipe Manager">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="414.0" layoutY="138.0" text="Recipe Details">
+         <font>
+            <Font name="Comic Sans MS Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="448.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/logo1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="DetailrecipeImage" fitHeight="318.0" fitWidth="350.0" layoutX="81.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="603.0" layoutY="229.0" text="Recipe Name">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="recipeNameDetailTo" layoutX="755.0" layoutY="232.0" prefHeight="17.0" prefWidth="128.0" text="Label" />
+      <Label layoutX="605.0" layoutY="263.0" text="Recipe chef">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="chefNameDetail" layoutX="754.0" layoutY="266.0" prefHeight="17.0" prefWidth="128.0" text="Label" />
+      <Label layoutX="598.0" layoutY="376.0" text="Recipe Instructions">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="recipeDescriptionDetail" layoutX="730.0" layoutY="290.0" prefHeight="196.0" prefWidth="205.0" text="Label" />
+      <Label layoutX="596.0" layoutY="518.0" text="Recipe Ingredients">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="recipeContentsDetail" layoutX="721.0" layoutY="487.0" prefHeight="98.0" prefWidth="205.0" text="Label" />
+      <Label layoutX="100.0" layoutY="564.0" text="Recipe Rating">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="recipeRatingDetail" fitHeight="46.0" fitWidth="230.0" layoutX="217.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="commentsbtn" layoutX="616.0" layoutY="625.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="232.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Add Comments">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </Button>
+      <Label fx:id="Mymsg" layoutX="763.0" layoutY="199.0" text="Testing" />
+   </children>
+</AnchorPane>
+
