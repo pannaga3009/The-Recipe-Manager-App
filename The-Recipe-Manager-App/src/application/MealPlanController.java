@@ -3,6 +3,7 @@ package application;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +48,6 @@ public class MealPlanController implements Initializable {
     @FXML
     private Button create;
     
-    private MealPlan mealPlan = new MealPlan();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,7 +74,7 @@ public class MealPlanController implements Initializable {
         displayLayout.getChildren().clear();
         
         if (selectedRadioButton == WeightLossButton) {
-            for (Recipe recipe : mealPlan.getRecipes("Weight Loss")) {
+            for (Recipe recipe : MealPlan.getRecipes("Weight Loss")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
@@ -95,7 +96,7 @@ public class MealPlanController implements Initializable {
             }
             System.out.println("Weight loss meal plan selected");
         } else if (selectedRadioButton == ketoButton) {
-            for (Recipe recipe : mealPlan.getRecipes("Keto")) {
+            for (Recipe recipe : MealPlan.getRecipes("Keto")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
@@ -117,7 +118,7 @@ public class MealPlanController implements Initializable {
             }
             System.out.println("Keto meal plan selected");
         } else if (selectedRadioButton == lowCarbButton) {
-            for (Recipe recipe : mealPlan.getRecipes("Low Carb")) {
+            for (Recipe recipe : MealPlan.getRecipes("Low Carb")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
@@ -143,39 +144,8 @@ public class MealPlanController implements Initializable {
         else if (selectedRadioButton == CustomMealBtn) {
 
         	    // Create a new database connection and retrieve the user ID
-        	    DatabaseConnection connectNow = new DatabaseConnection();
-        	    Connection connectDB = connectNow.getConnection();
-        	    int userId = UserAccount.idUserAccount;
-
-        	    try {
-        	        // Retrieve all custom meal plans from the database
-        	        PreparedStatement getallcustom = connectDB.prepareStatement("SELECT * FROM CustomMealPlan where idUserAccount = ?");
-        	        getallcustom.setInt(1, userId);
-        	        ResultSet customMealPlans = getallcustom.executeQuery();
         	        
-        	       
-        	        // Iterate over the custom meal plans
-        	        while (customMealPlans.next()) {
-        	            // Create a new Recipe object and set its properties based on the custom meal plan
-        	        	Recipe customRecipe = new Recipe();
-        	            customRecipe.setName(customMealPlans.getString("recipeName"));
-        	            customRecipe.setContents(customMealPlans.getString("recipeContents"));
-        	            customRecipe.setDescription(customMealPlans.getString("recipeDescription"));
-        	            customRecipe.setPrepTime(customMealPlans.getString("prepTime"));
-        	            
-        	            byte[] recipeImg = customMealPlans.getBytes("recipeImage");
-        	            Image image = new Image(new ByteArrayInputStream(recipeImg));
-        	            
-        	            customRecipe.setByteImage(recipeImg);
-        	            customRecipe.setImageDetail(image);
-        	            
-        	            System.out.println("-----Inside meal plan image printing----" + image);
-
-        	            // Add the custom recipe to the meal plan
-        	            mealPlan.addRecipe("Custom Meal Plan", customRecipe);
-        	        }
-        	        
-        	        for (Recipe recipe : mealPlan.getRecipes("Custom Meal Plan")) {
+        	        for (Recipe recipe : MealPlan.getRecipes("Custom Meal Plan")) {
                        
         	            // Create a new CustomRecipeCardController and add its corresponding view to the display layout
         	            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CustomRecipeCard.fxml"));
@@ -195,12 +165,7 @@ public class MealPlanController implements Initializable {
         	            displayLayout.getChildren().add(customRecipeCardView);
         	        }
 
-        	        // Close the database connection
-        	        connectDB.close();
-        	    } catch (SQLException e) {
-        	        e.printStackTrace();
-        	    }
-
+        	       
         	    // Print a message indicating that the custom meal button was selected
         	    System.out.println("Custom Meal Btn plan selected");
         	}
@@ -277,13 +242,13 @@ public class MealPlanController implements Initializable {
        weightLossRecipe3.setDescription("This is a healthy and delicious\n weight loss recipe");
        weightLossRecipe3.setContents("Ingredients: fish fillets, zucchini, bell pepper,\n onion, garlic, lemon juice, olive oil, \nsalt, black pepper");
 
-       mealPlan.addRecipe("Low Carb", lowCarbRecipe1);
-       mealPlan.addRecipe("Low Carb", lowCarbRecipe2);
-       mealPlan.addRecipe("Keto", ketoRecipe1);
-       mealPlan.addRecipe("Keto", ketoRecipe2);
-       mealPlan.addRecipe("Weight Loss", weightLossRecipe1);
-       mealPlan.addRecipe("Weight Loss", weightLossRecipe2);
-       mealPlan.addRecipe("Weight Loss", weightLossRecipe3);
+       MealPlan.addRecipe("Low Carb", lowCarbRecipe1);
+       MealPlan.addRecipe("Low Carb", lowCarbRecipe2);
+       MealPlan.addRecipe("Keto", ketoRecipe1);
+       MealPlan.addRecipe("Keto", ketoRecipe2);
+       MealPlan.addRecipe("Weight Loss", weightLossRecipe1);
+       MealPlan.addRecipe("Weight Loss", weightLossRecipe2);
+       MealPlan.addRecipe("Weight Loss", weightLossRecipe3);
 		
 	}
 
