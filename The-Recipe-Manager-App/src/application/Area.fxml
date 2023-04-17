@@ -44,10 +44,14 @@
                         <Image url="@../../assets/rating.png" />
                      </image>
                   </ImageView>
+<<<<<<< Upstream, based on branch 'main' of git@github.com:pannaga3009/The-Recipe-Manager-App.git
 
             <Button fx:id="MoreBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="More">
 
 
+=======
+            <Button fx:id="MoreBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="More">
+>>>>>>> da3532c Removing onAction in Area.fxml
                <VBox.margin>
                   <Insets left="30.0" top="10.0" />
                </VBox.margin>
