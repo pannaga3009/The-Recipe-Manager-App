@@ -1,14 +1,17 @@
 package application;
 
 import java.io.ByteArrayInputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-public class CustomRecipeCardController {
+public class CustomRecipeCardController implements Initializable{
 
     @FXML
     private VBox box;
@@ -20,7 +23,8 @@ public class CustomRecipeCardController {
     private Label recipeDescription;
 
     @FXML
-    private ImageView recipeImage;
+    private ImageView recipeImg;
+
 
     @FXML
     private Label recipeName;
@@ -28,7 +32,11 @@ public class CustomRecipeCardController {
     @FXML
     private Label recipeTime;
     
-
+    @Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		
+	}
 
 	public void setRecipe(Recipe recipe) {
 		recipeName.setText(recipe.getName());
@@ -36,22 +44,20 @@ public class CustomRecipeCardController {
 	    recipeDescription.setText(recipe.getDescription());
 	    recipeTime.setText(recipe.getPrepTime());
 	   
-	    byte[] imageData = recipe.getByteImage();
+	    
 	    
 	    try {
-	        // Get the image data as a byte array
+	       
 	      
-	        if (imageData == null) {
+	        if (recipe.getImageFormat() == null) {
 	            throw new Exception("Image not found");
 	        }
 	        
-	        // Create an Image object from the byte array
-	        Image image = new Image(new ByteArrayInputStream(imageData));
+	      
             System.out.println("-----Inside custom recipe image printing----" + recipe.getImageFormat());
 
-	       recipeImage.setImage(recipe.getImageFormat());
-	        recipeImage.setFitWidth(200);
-	        recipeImage.setFitHeight(200);
+            recipeImg.setImage(recipe.getImageFormat());
+            
 	     } catch (Exception e) {
 	         e.printStackTrace();
 	     }
@@ -60,5 +66,9 @@ public class CustomRecipeCardController {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	
 
 }

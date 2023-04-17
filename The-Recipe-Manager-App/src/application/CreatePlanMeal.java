@@ -90,7 +90,8 @@ public class CreatePlanMeal {
         Image image = recipeImage.getImage();
         byte[] imageData = null;
         if (image != null) {
-            PixelReader pixelReader = image.getPixelReader();
+        	
+        	PixelReader pixelReader = image.getPixelReader();
             int width = (int) image.getWidth();
             int height = (int) image.getHeight();
             WritablePixelFormat<ByteBuffer> pixelFormat = PixelFormat.getByteBgraInstance();
