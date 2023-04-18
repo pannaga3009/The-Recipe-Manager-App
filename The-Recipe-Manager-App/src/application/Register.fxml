@@ -49,10 +49,10 @@
             <Image url="@../../assets/logo1.png" />
          </image>
       </ImageView>
-      
-
-      <Button fx:id="RegisterBtn" layoutX="222.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleRegister" text="Register" />
 
       <Button fx:id="Backbtn" layoutX="222.0" layoutY="336.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="65.0" text="Back" />
+
+      <Button fx:id="RegisterBtn" layoutX="225.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleRegister" text="Register" />
+
    </children>
 </AnchorPane>
