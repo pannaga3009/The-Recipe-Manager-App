@@ -25,7 +25,7 @@ public abstract class Login {
     	DatabaseConnection connectNow = new DatabaseConnection();
     	Connection connectDB = connectNow.getConnection();
     	System.out.println("username "+ username + " AND password = "+ password);
-    	String verifyLogin = "SELECT count(1) from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
+    	String verifyLogin = "SELECT count(1) from userAccount where userName = '" + username + "'  AND password = '"+ password + "'";
     	System.out.println(verifyLogin);
     	try {
     		Statement statement = connectDB.createStatement();
@@ -36,6 +36,7 @@ public abstract class Login {
     		    System.out.println("Count: " + count);
     			if(queryResult.getInt(1) == 1) {
     				String getId = "SELECT idUserAccount from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
+
     				 ResultSet queryId = statement.executeQuery(getId);
     				if(queryId.next()) {
     				int userId = queryId.getInt("idUserAccount");
@@ -45,6 +46,7 @@ public abstract class Login {
     				 
     				 UserAccount.idUserAccount = userId;
     				}
+
     				return true;
     			}else {
     				return false;
@@ -57,4 +59,6 @@ public abstract class Login {
     	}
 		return false;
     }
+	
+	
 }

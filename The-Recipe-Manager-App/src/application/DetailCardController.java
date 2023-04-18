@@ -24,7 +24,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+
 import javafx.scene.control.TextField;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -69,9 +71,11 @@ public class DetailCardController implements Initializable{
 	
 	@FXML
     private Label displayComments;
+
 	
 	@FXML
     private TextField ratingEdit;
+
 
 
 	
@@ -189,6 +193,7 @@ public class DetailCardController implements Initializable{
     		recipeDescriptionDetail.setText(recipe.getDescription());
     		recipeContentsDetail.setText(recipe.getContents());
     		displayComments.setText(recipe.getComments());
+
     		
     		
     		 switch((int) Math.floor(recipe.getRating())) {
@@ -208,8 +213,7 @@ public class DetailCardController implements Initializable{
  	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
  	    } 
     		
-//        	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
-        	
+
     	
 	}else {
         System.out.println("Recipe not found in the database");
@@ -240,7 +244,7 @@ public class DetailCardController implements Initializable{
         alert.showAndWait();
         
         displayComments.setText(comments);
-        
+
         
 	}
 	
@@ -264,6 +268,9 @@ public class DetailCardController implements Initializable{
         
         
         
+
+        connectDB.close();
+
 	}
 }
 	

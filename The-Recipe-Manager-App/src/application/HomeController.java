@@ -318,7 +318,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		return ls;
 		
 	}
-	
+	@FXML
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
 	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -329,6 +329,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	}
 	
 
+	@FXML
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("AppetizerPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -337,6 +338,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 	}
 
+	@FXML
 	public void handleBreakfastClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("BreakfastPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -345,6 +347,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 	}
 	
+	@FXML
 	public void handleLunchClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("LunchPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -353,9 +356,18 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 	}
 
-
+	@FXML
 	public void handleDinnerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("DinnerPage.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
+	}
+	
+	@FXML
+	public void handlemyProfileClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("MyProfile.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);

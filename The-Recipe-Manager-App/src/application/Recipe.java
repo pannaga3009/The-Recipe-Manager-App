@@ -10,6 +10,7 @@ public class Recipe {
 	    private String chefName;
 	    private String ImgSrc;
 		private double rating;
+	
 
 		private String description;
 		private String ingredients;
@@ -22,8 +23,7 @@ public class Recipe {
 
 
 
-	    
-
+	   
 	    public String getName() {
 	        return name;
 	    }
@@ -81,11 +81,13 @@ public class Recipe {
 		public Image getImageDetail(Image img) {
 			return img;
 		}
+
 		
 		public Image getImageFormat() {
 			return image;
 		}
 		
+
 		public String getPrepTime() {
 			return prepTime;
 		}
