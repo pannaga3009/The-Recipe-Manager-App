@@ -17,7 +17,7 @@
             </ImageView>
             <VBox alignment="CENTER" prefHeight="235.0" prefWidth="162.0">
                <children>
-                  <Label fx:id="recipeName" prefHeight="74.0" prefWidth="102.0" text="Avocado&#10; Toast" textAlignment="CENTER">
+         <Label fx:id="recipeName" prefHeight="74.0" prefWidth="102.0" text="Avocado&#10; Toast" textAlignment="CENTER">
 
                      <font>
                         <Font name="Comic Sans MS Bold" size="24.0" />
@@ -27,6 +27,7 @@
                      </VBox.margin>
                   </Label>
 
+
                   <Label fx:id="chefName" prefHeight="30.0" prefWidth="120.0" text="By Gordan ramsay">
 
                      <font>
@@ -35,15 +36,28 @@
                   </Label>
 
                 
-            <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="56.0" style="-fx-background-radius: 40; -fx-background-color: #FFFFFF;" text="♥" textFill="RED">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Button>
             <ImageView fx:id="recipeRatingCard" fitHeight="36.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../assets/5star.png" />
                </image></ImageView>
+
+        
+            <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" style="-fx-background-radius: 40; -fx-background-color: #FFFFFF;" textFill="RED">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="47.0">
+                     <image>
+                        <Image url="@../../assets/heart.jpeg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
+
 
                </children>
                <HBox.margin>

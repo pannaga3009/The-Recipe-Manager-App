@@ -28,6 +28,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+
 
 
 import javafx.scene.image.Image;
@@ -89,19 +91,15 @@ public class DetailCardController implements Initializable{
 	public void initData(Recipe recipe) {
 	  
 	    try {
-	    	System.out.println("----------Inside INIT DATA----------------");
-	        System.out.println("Get name"+ recipe.getName());
-	        System.out.println("Get chef name"+ recipe.getchefName());
-	        System.out.println("Get recipe name detail"+ recipe.getDescription());
-	        System.out.println("Get recipe contents"+ recipe.getContents());
-	        System.out.println("**************************"+recipeNameDetailTo);
 
 	        recipeNameDetailTo.setText(recipe.getName());
 	        chefNameDetail.setText(recipe.getchefName());
 	        recipeDescriptionDetail.setText(recipe.getDescription());
 	        recipeContentsDetail.setText(recipe.getContents());
 
+
 	        System.out.println("-------Printing the ratings image------- ");
+
 
 	        switch((int) Math.floor(recipe.getRating())) {
 	        case 5:
@@ -199,7 +197,9 @@ public class DetailCardController implements Initializable{
     		recipeDescriptionDetail.setText(recipe.getDescription());
     		recipeContentsDetail.setText(recipe.getContents());
     		displayComments.setText(recipe.getComments());
-	        handleDetailSaveBtn(recipe);
+	 
+
+    	        handleDetailSaveBtn(recipe);
 
     		
     		 switch((int) Math.floor(recipe.getRating())) {
@@ -218,6 +218,8 @@ public class DetailCardController implements Initializable{
  	        default:
  	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
  	    } 
+
+
 
 	}else {
         System.out.println("Recipe not found in the database");
@@ -253,6 +255,7 @@ public class DetailCardController implements Initializable{
         
 	}
 	
+
 	
 	void handleDetailSaveBtn(Recipe recipe) {
 		DetailSaveBtn.setOnAction(event -> { 
@@ -282,6 +285,7 @@ public class DetailCardController implements Initializable{
 	            
 	   		});
 	}
+
 	@FXML
 	void handleEditRating(ActionEvent event) throws SQLException {
 		String rating = ratingEdit.getText();

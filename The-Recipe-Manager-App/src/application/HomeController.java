@@ -365,6 +365,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "1 cup freshly shredded pizza mozzarella**\r\n");
 		recipe.setRating(3.2);
 
+
 		ls.add(recipe);
 
 		
@@ -425,44 +426,13 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "lemon juice for topping");
 		recipe.setRating(4.5);
 
-		ls.add(recipe);
-		
-		recipe = new Recipe();
-		recipe.setName("Brocolli\nSoup");
-		recipe.setImage("file:assets/brocolli_soup.jpeg");
-		recipe.setchefName("Pannaga Veeramohan");
-		recipe.setDescription("Wash both the rice two to three times and soak in six cups of water for at least four hours. Wash and soak split black gram with fenugreek seeds in three cups of water also for a similar time.\r\n"
-				+ "Drain and grind the rice and split black gram separately to a smooth texture and dropping consistency. Add salt and mix both the batters with hand thoroughly in a whipping motion.\r\n"
-				+ "Keep the batter in a large vessel, close tightly and rest the batter overnight or for about four to six hours at room temperature to ferment.\r\n"
-				+ "To make the potato bhaji, heat the oil in a kadai. Add the mustard seeds and when they splutter add the asafoetida and split Bengal gram and sauté till lightly browned.\r\n"
-				+ "Add the green chillies, curry leaves and onion and sauté till onion is lightly browned. Add the potatoes, turmeric powder and salt. Mix well. Sprinkle a tablespoon of water and cook till the potatoes are heated through.\r\n"
-				+ "Add the coriander leaves and lemon juice and mix well. Mix the batter well, adjust to pouring consistency. Heat a flat tawa (preferably non-stick), grease with a little oil. Pour a ladle full of batter and spread to as thin a pancake as possible.\r\n"
-				+ "Couple of dosas may go wrong but once the tawa gets seasoned the rest of the dosas will come out well. Pour the oil/ghee around the dosa and let it cook till it becomes crisp on the edges and turns golden brown.");
-		recipe.setContents("Parboiled rice(ukda chawal) 2 3/4 cups.\r\n"
-				+ "Split black gram skinless 1/4 cup.\r\n"
-				+ "Split black gram skinless (dhuli urad dal) 1 cup.\r\n"
-				+ "Fenugreek seeds (methi dana) 1 teaspoon.\r\n"
-				+ "Oil as required.\r\n"
-				+ "salt as required\r\n"
-				+ "potatoes boiled n peeled 3 large\r\n"
-				+ "Oil 1 tablespoon.\r\n"
-				+ "Split Bengal gram (chana dal) 1 teaspoon.\r\n"
-				+ "Asafoetida 1/4 teaspoon.\r\n"
-				+ "Mustard seeds 1/2 teaspoon.\r\n"
-				+ "Green chillies chopped 2.\r\n"
-				+ "onions chopped 2 large\r\n"
-				+ "Curry leaves 6-8.\r\n"
-				+ "turmeric powder 1/2 tbsp\r\n"
-				+ "fresh coriander for topping\r\n"
-				+ "lemon juice for topping");
-		recipe.setRating(4.5);
 
 		ls.add(recipe);
 		
 		return ls;
 		
 	}
-	
+
 	@FXML
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
 	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
@@ -472,6 +442,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 
 	}
+
 
   @FXML
 	public void handleSavedRecipesClick(ActionEvent event) throws IOException {
@@ -526,6 +497,18 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.setScene(scene);
 	    stage.show();
 	}
+
+ 	@FXML
+	public void handleLogoutClick(ActionEvent event) throws IOException {
+		
+		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	Scene scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+	}
+	
+	
 
  	@FXML
 	public void handleLogoutClick(ActionEvent event) throws IOException {
