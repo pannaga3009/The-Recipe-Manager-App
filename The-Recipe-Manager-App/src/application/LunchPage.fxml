@@ -20,6 +20,14 @@
    <children>
       <HBox layoutX="-2.0" layoutY="-4.0" prefHeight="77.0" prefWidth="941.0" style="-fx-background-color: #DCEDF2;">
          <children>
+            <ImageView fitHeight="78.0" fitWidth="75.0">
+               <image>
+                  <Image url="@../../assets/logo1.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
             <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="290.0">
                <cursor>
                   <Cursor fx:constant="NONE" />
@@ -75,7 +83,7 @@
                </effect></VBox>
          </content>
       </ScrollPane>
-      <Label layoutX="11.0" layoutY="79.0" prefHeight="30.0" prefWidth="197.0" text="Breakfast">
+      <Label layoutX="11.0" layoutY="79.0" prefHeight="30.0" prefWidth="197.0" text="Lunch">
          <font>
             <Font name="Comic Sans MS" size="18.0" />
          </font>

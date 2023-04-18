@@ -13,8 +13,8 @@ public class DatabaseConnection {
 
 		String databaseName = "Datahub_Dev";
 
-		String databaseUser = "";
-		String databasePassword = "";
+		String databaseUser = "root";
+		String databasePassword = "Pass3009@";
 
 
 		
