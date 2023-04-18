@@ -35,7 +35,7 @@ public abstract class Login {
     			int count = queryResult.getInt(1);
     		    System.out.println("Count: " + count);
     			if(queryResult.getInt(1) == 1) {
-    				String getId = "SELECT idUserAccount from userAccount where userName = '" + username + "'  AND password = '"+ password + "'";
+    				String getId = "SELECT idUserAccount from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
     				ResultSet queryId = statement.executeQuery(getId);
     				if(queryId.next()) {  // check if result set has at least one row
     	                int userId = queryId.getInt("idUserAccount");
