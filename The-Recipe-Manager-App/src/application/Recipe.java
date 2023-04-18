@@ -74,13 +74,19 @@ public class Recipe {
 			return ingredients;
 		}
 		
-		public void setImageDetail(Image img) {
-			this.image = img;
+		public void setImageDetail(Image image) {
+			this.image = image;
 		}
 		
 		public Image getImageDetail(Image img) {
 			return img;
 		}
+
+		
+		public Image getImageFormat() {
+			return image;
+		}
+		
 
 		public String getPrepTime() {
 			return prepTime;

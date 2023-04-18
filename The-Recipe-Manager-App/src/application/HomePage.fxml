@@ -68,7 +68,7 @@
                   <Insets right="10.0" top="23.0" />
                </HBox.margin>
             </Hyperlink>
-            <Hyperlink text="MyProfile">
+            <Hyperlink fx:id="myProfile" onAction="#handlemyProfileClick" text="MyProfile">
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin></Hyperlink>

@@ -24,21 +24,22 @@
                         <Insets />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="chefName" prefHeight="30.0" prefWidth="119.0" text="By Gordan ramsay">
+
+                  <Label fx:id="chefName" prefHeight="30.0" prefWidth="120.0" text="By Gordan ramsay">
                      <font>
                         <Font name="Comic Sans MS" size="14.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="17.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../assets/5star.png" />
-                     </image>
-                  </ImageView>
+
             <Button fx:id="saveBtn" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="56.0" style="-fx-background-radius: 40; -fx-background-color: #FFFFFF;" text="♥" textFill="RED">
                <font>
                   <Font size="28.0" />
                </font>
             </Button>
+            <ImageView fx:id="recipeRatingCard" fitHeight="36.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../assets/Four_star.png" />
+               </image></ImageView>
                </children>
                <HBox.margin>
                   <Insets left="10.0" />

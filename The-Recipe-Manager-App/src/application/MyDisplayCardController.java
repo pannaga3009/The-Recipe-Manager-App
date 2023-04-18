@@ -48,7 +48,7 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 		   System.out.println("Displaying recipe inside my displaycard ---- ");
 	       String selectQuery = "SELECT * FROM addmyrecipe WHERE idUserAccount = ?";
 	       PreparedStatement selectStatement = connectDB.prepareStatement(selectQuery);
-	       ArrayList<Integer> userIdList = UserAccount.getUserIdList();
+	      
 	       int userId = UserAccount.idUserAccount;
 	       selectStatement.setInt(1, userId);
 	       ResultSet resultSet = selectStatement.executeQuery();
