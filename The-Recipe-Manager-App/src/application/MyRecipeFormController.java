@@ -80,24 +80,17 @@ public class MyRecipeFormController extends MyRecipeForm {
         Parent root;
 		try {
 			// Get the stage (i.e., window) associated with the current event
-	        
-				root = FXMLLoader.load(getClass().getResource("Myprofile.fxml"));
-				Scene scene = new Scene(root);
-		        stage.setScene(scene);
-		        stage.show();
-		        
-		        
-//	Get the userId
-//		      write Sql query to get it from the table
-//		        I have to send the data to mydisplaycardcontroller
+	        insert();
 
+			root = FXMLLoader.load(getClass().getResource("Myprofile.fxml"));
+			Scene scene = new Scene(root);
+		    stage.setScene(scene);
+		    stage.show();
 		  
-		        insert();
 		     
 
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
@@ -107,7 +100,7 @@ public class MyRecipeFormController extends MyRecipeForm {
     public void insert() {
 		// TODO Auto-generated method stub
     	// Get a connection to the database
-    	
+    	ArrayList<Integer> userIdList = UserAccount.getUserIdList();
     	int userId = UserAccount.idUserAccount;
     	
     	System.out.println("Entering Method insert--------------------------");

@@ -48,7 +48,7 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 		   System.out.println("Displaying recipe inside my displaycard ---- ");
 	       String selectQuery = "SELECT * FROM addmyrecipe WHERE idUserAccount = ?";
 	       PreparedStatement selectStatement = connectDB.prepareStatement(selectQuery);
-	      
+	       ArrayList<Integer> userIdList = UserAccount.getUserIdList();
 	       int userId = UserAccount.idUserAccount;
 	       selectStatement.setInt(1, userId);
 	       ResultSet resultSet = selectStatement.executeQuery();
@@ -106,48 +106,55 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 			e.printStackTrace();
 		}
 	}
-	    
-	
-    @Override
-	void handleDeleteClick(){
 
- 	   System.out.println("Deleting recipe inside my displaycard ---- ");
-    	    String deleteQuery = "DELETE FROM addmyrecipe WHERE idUserAccount = ? AND recipeName = ?";
-    	    PreparedStatement deleteStatement = null;
-			try {
-				deleteStatement = connectDB.prepareStatement(deleteQuery);
-				deleteStatement.setInt(1, UserAccount.idUserAccount);
-				deleteStatement.setString(2, recipeName.getText());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	
-    	   
-    	   
-    	    int affectedRows;
-			try {
-				affectedRows = deleteStatement.executeUpdate();
-				 if (affectedRows > 0) {
-		    	        Alert alert = new Alert(AlertType.INFORMATION);
-		    	        alert.setTitle("Delete Recipe");
-		    	        alert.setHeaderText("Recipe Name: " + recipeName);
-		    	        alert.setContentText("Recipe deleted successfully!");
-		    	        alert.showAndWait();
-		    	    } else {
-		    	        Alert alert = new Alert(AlertType.ERROR);
-		    	        alert.setTitle("Error");
-		    	        alert.setHeaderText(null);
-		    	        alert.setContentText("Unable to delete recipe. Please try again.");
-		    	        alert.showAndWait();
-		    	    }
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	   
-    	
+	
+    @FXML
+    void handleDeleteClick(ActionEvent event){
+        String deleteQuery = "DELETE FROM addmyrecipe WHERE idUserAccount = ? AND recipeName = ?";
+        PreparedStatement deleteStatement = null;
+        try {
+            deleteStatement = connectDB.prepareStatement(deleteQuery);
+            deleteStatement.setInt(1, UserAccount.idUserAccount);
+            deleteStatement.setString(2, recipeName.getText());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        int affectedRows;
+        try {
+            affectedRows = deleteStatement.executeUpdate();
+            if (affectedRows > 0) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Delete Recipe");
+                alert.setHeaderText("Recipe Name: " + recipeName);
+                alert.setContentText("Recipe deleted successfully!");
+
+                alert.showAndWait();
+
+                // Get the current scene and stage
+                Scene scene = ((Node) event.getSource()).getScene();
+                Stage stage = (Stage) scene.getWindow();
+
+                // Load the FXML file you want to refresh the page with
+                Parent root = FXMLLoader.load(getClass().getResource("MyProfile.fxml"));
+
+                // Set the loaded FXML file as the new root of the scene
+                scene.setRoot(root);
+
+                // Show the stage containing the refreshed scene
+                stage.show();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Unable to delete recipe. Please try again.");
+                alert.showAndWait();
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
