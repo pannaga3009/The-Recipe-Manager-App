@@ -367,6 +367,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "1 cup freshly shredded pizza mozzarella**\r\n");
 		recipe.setRating(3.2);
 
+
 		ls.add(recipe);
 
 
@@ -427,6 +428,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "fresh coriander for topping\r\n"
 				+ "lemon juice for topping");
 		recipe.setRating(4.5);
+
 
 		ls.add(recipe);
 		
@@ -510,5 +512,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
     	stage.setScene(scene);
     	stage.show();
 	}
+	
+	
+
 	
 }

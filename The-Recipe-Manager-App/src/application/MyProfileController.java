@@ -31,44 +31,19 @@ import javafx.fxml.Initializable;
 public class MyProfileController implements Initializable{
 	
 	@FXML
-    private HBox mealBox;
-
-    @FXML
-    private Text mealText;
-    
-    @FXML
-    private HBox foodBox;
-
-    @FXML
-    private Text foodText;
-
-    @FXML
-    private HBox spiceBox;
-
-    @FXML
-    private Text spiceText;
-    
-    @FXML
-    private VBox myRecipeBox;
-  
-    @FXML
     private Button addRecipe;
 
     @FXML
     private RadioButton eggetarian;
 
     @FXML
-    private Hyperlink myProfile;
-
-  
-    @FXML
-    private RadioButton nonVegetarian;
+    private HBox foodBox;
 
     @FXML
-    private VBox profilePreference;
+    private ToggleGroup foodChoice;
 
     @FXML
-    private RadioButton vegetarian;
+    private Text foodText;
 
     @FXML
     private RadioButton glutenFree;
@@ -81,12 +56,55 @@ public class MyProfileController implements Initializable{
 
     @FXML
     private RadioButton lowCarb;
-    
+
+    @FXML
+    private HBox mealBox;
+
+    @FXML
+    private ToggleGroup mealChoice;
+
+    @FXML
+    private Text mealText;
+
     @FXML
     private RadioButton medium;
 
     @FXML
     private RadioButton mild;
+
+    @FXML
+    private Hyperlink myProfileBack;
+
+    @FXML
+    private VBox myRecipeBox;
+
+    @FXML
+    private RadioButton nonVegetarian;
+
+    @FXML
+    private Hyperlink profileLogout;
+
+    @FXML
+    private Hyperlink profileMealPlan;
+
+    @FXML
+    private VBox profilePreference;
+
+    @FXML
+    private Hyperlink profileSavedRecipe;
+
+    @FXML
+    private HBox spiceBox;
+
+    @FXML
+    private ToggleGroup spiceChoice;
+
+    @FXML
+    private Text spiceText;
+
+    @FXML
+    private RadioButton vegetarian;
+	
 
     @FXML
     void addRecipeClick(ActionEvent event) {
@@ -277,8 +295,42 @@ public class MyProfileController implements Initializable{
         }
         return recipes;
     }
+    @FXML
+	public void handleMealPlanClick(ActionEvent event) throws IOException {
+	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
 
-    
+	}
+    @FXML
+	public void handleSavedRecipesClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
+    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	Scene scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+	}
+    @FXML
+	public void handleBackClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	Scene scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+	}
+ 
+	
+	@FXML
+	public void handleLogoutClick(ActionEvent event) throws IOException {
+		
+		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	Scene scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+	}
 //
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {
