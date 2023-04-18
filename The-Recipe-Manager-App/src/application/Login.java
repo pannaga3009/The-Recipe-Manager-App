@@ -36,23 +36,16 @@ public abstract class Login {
     		    System.out.println("Count: " + count);
     			if(queryResult.getInt(1) == 1) {
     				String getId = "SELECT idUserAccount from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
-    				ResultSet queryId = statement.executeQuery(getId);
-    				if(queryId.next()) {  // check if result set has at least one row
-    	                int userId = queryId.getInt("idUserAccount");
-    	                System.out.println("Query Result - userId "+ userId);
-    	                
-    	               UserAccount useraccount = new UserAccount();
-    	               UserAccount.setUserId(userId);
-    	               UserAccount.addUserId(userId);
-    	               UserAccount.idUserAccount = userId;
+
+    				 ResultSet queryId = statement.executeQuery(getId);
+    				if(queryId.next()) {
+    				int userId = queryId.getInt("idUserAccount");
+    				System.out.println("Query Result - userId "+ userId);
+
+    				 UserAccount useraccount = new UserAccount();
+    				 
+    				 UserAccount.idUserAccount = userId;
     				}
-    	                
-//    				int userId = queryId.getInt("idUserAccount");
-//    				System.out.println("Query Result - userId "+ userId);
-//    				UserAccount useraccount = new UserAccount();
-//    				useraccount.setUserId(userId);
-//    				MyRecipeFormController myRecipeForm = new MyRecipeFormController();
-//    				myRecipeForm.insert(useraccount);
 
     				return true;
     			}else {
