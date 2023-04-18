@@ -10,10 +10,11 @@ public class DatabaseConnection {
 	public Connection getConnection() {
 
 
+
 		String databaseName = "Datahub_Dev";
 
-		String databaseUser = "root";
-		String databasePassword = "Pass3009@";
+		String databaseUser = "";
+		String databasePassword = "";
 
 
 		
