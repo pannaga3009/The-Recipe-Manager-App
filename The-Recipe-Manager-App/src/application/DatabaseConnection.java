@@ -8,7 +8,9 @@ public class DatabaseConnection {
 	public Connection databaseLink;
 	
 	public Connection getConnection() {
+
 		String databaseName = "datahub_dev";
+
 		String databaseUser = "root";
 		String databasePassword = "rajavi20";
 

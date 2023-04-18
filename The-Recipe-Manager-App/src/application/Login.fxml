@@ -62,6 +62,6 @@
          </image>
       </ImageView>
       <Label fx:id="LoginMessageLabel" layoutX="413.0" layoutY="88.0" prefHeight="17.0" prefWidth="94.0" />
-    
+
    </children>
 </AnchorPane>
