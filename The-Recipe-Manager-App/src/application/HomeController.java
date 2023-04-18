@@ -366,6 +366,33 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setRating(3.2);
 
 		ls.add(recipe);
+
+		
+		recipe = new Recipe();
+		recipe.setName("Brocolli\nSoup");
+		recipe.setImage("file:assets/brocolli_soup.jpeg");
+		recipe.setchefName("Pannaga Veeramohan");
+    recipe.setDescription("Bring a large pot of salted water to a boil and cook the penne pasta to al dente, according to the package instructions. \r\n"
+				+ "Heat a large non-stick skillet over medium heat, melt the butter and then add in the onions. Cook for about 5 minutes, or until they are translucent. Add the garlic and cook for another 1 - 2 minutes, or until aromatic. (Stir frequently to avoid burning  your garlic and onions.)\r\n"
+				+ "Now add the tomato sauce, chicken broth, dried basil, dried oregano, salt and stir. Bring to a simmer for 2 - 3 minutes, stirring occasionally.\r\n"
+				+ "Add in the milk and cream cheese and stir until melted, then mix in the shredded mozzarella cheese and let simmer for 7 - 8 minutes (it’s important to not let the sauce boil, but just simmer instead).\r\n"
+				+ "Mix the pasta in with the sauce. Garnish with the chopped parsley and a little extra mozzarella if desired then serve!");
+		recipe.setContents("3 cups dry penne pasta (300 grams)\r\n"
+				+ "1 Tablespoon butter\r\n"
+				+ "2 medium cloves garlic (minced)\r\n"
+				+ "1 large yellow onion (diced)\r\n"
+				+ "1 (8 ounce) can tomato sauce\r\n"
+				+ "1 teaspoon dried oregano\r\n"
+				+ "1/2 teaspoon fine sea salt\r\n"
+				+ "1/2 teaspoon dried basil\r\n"
+				+ "1/2 cup chicken broth\r\n"
+				+ "1/2 cup milk*\r\n"
+				+ "4 ounces full fat cream cheese (half a brick)\r\n"
+				+ "1 cup freshly shredded pizza mozzarella**\r\n");
+		recipe.setRating(4.5);
+    
+		ls.add(recipe);
+
 		
 		recipe = new Recipe();
 
@@ -396,6 +423,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "turmeric powder 1/2 tbsp\r\n"
 				+ "fresh coriander for topping\r\n"
 				+ "lemon juice for topping");
+		recipe.setRating(4.5);
+
 		ls.add(recipe);
 		
 		recipe = new Recipe();
@@ -427,7 +456,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "fresh coriander for topping\r\n"
 				+ "lemon juice for topping");
 		recipe.setRating(4.5);
-		
+
 		ls.add(recipe);
 		
 		return ls;
@@ -443,7 +472,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 
 	}
-	@FXML
+
+  @FXML
 	public void handleSavedRecipesClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
     	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -451,7 +481,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
     	stage.setScene(scene);
     	stage.show();
 	}
-
+	
 	@FXML
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("AppetizerPage.fxml"));
@@ -496,8 +526,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.setScene(scene);
 	    stage.show();
 	}
-	
-	@FXML
+
+ 	@FXML
 	public void handleLogoutClick(ActionEvent event) throws IOException {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));

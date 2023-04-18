@@ -24,13 +24,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-<<<<<<< HEAD
+
 import javafx.scene.control.Alert.AlertType;
-=======
 
 import javafx.scene.control.TextField;
 
->>>>>>> branch 'main' of https://github.com/pannaga3009/The-Recipe-Manager-App.git
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -97,13 +96,11 @@ public class DetailCardController implements Initializable{
 	        System.out.println("Get recipe contents"+ recipe.getContents());
 	        System.out.println("**************************"+recipeNameDetailTo);
 
-	    	
 	        recipeNameDetailTo.setText(recipe.getName());
 	        chefNameDetail.setText(recipe.getchefName());
 	        recipeDescriptionDetail.setText(recipe.getDescription());
 	        recipeContentsDetail.setText(recipe.getContents());
 
-	        
 	        System.out.println("-------Printing the ratings image------- ");
 
 	        switch((int) Math.floor(recipe.getRating())) {
@@ -204,7 +201,6 @@ public class DetailCardController implements Initializable{
     		displayComments.setText(recipe.getComments());
 	        handleDetailSaveBtn(recipe);
 
-    	 
     		
     		 switch((int) Math.floor(recipe.getRating())) {
  	        case 5:
@@ -222,7 +218,7 @@ public class DetailCardController implements Initializable{
  	        default:
  	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
  	    } 
-    		    	
+
 	}else {
         System.out.println("Recipe not found in the database");
     }
