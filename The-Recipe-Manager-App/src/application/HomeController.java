@@ -296,9 +296,6 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		return dbls;
 	}
 
-
-
-
 	private List<Recipe> discoverRecipes(){
 		List<Recipe> ls = new ArrayList<>();
 		Recipe recipe = new Recipe();
@@ -436,6 +433,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		return ls;
 		
 	}
+	
 	@FXML
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
 	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
@@ -453,9 +451,6 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
     	stage.setScene(scene);
     	stage.show();
 	}
-	
-  
-
 
 	@FXML
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
