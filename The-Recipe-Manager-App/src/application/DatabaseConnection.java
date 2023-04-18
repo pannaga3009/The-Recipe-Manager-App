@@ -9,10 +9,10 @@ public class DatabaseConnection {
 	
 	public Connection getConnection() {
 
-		String databaseName = "datahub_dev";
+		String databaseName = "";
 
-		String databaseUser = "root";
-		String databasePassword = "rajavi20";
+		String databaseUser = "";
+		String databasePassword = "";
 
 		
 		String url = "jdbc:mysql://127.0.0.1:3306/" + databaseName;
