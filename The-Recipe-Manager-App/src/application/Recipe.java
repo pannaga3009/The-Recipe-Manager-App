@@ -1,5 +1,7 @@
 package application;
 
+import java.io.ByteArrayInputStream;
+
 import javafx.scene.image.Image;
 
 public class Recipe {
@@ -12,7 +14,13 @@ public class Recipe {
 
 		private String description;
 		private String ingredients;
+		private String prepTime;
 		private Image image;
+		private byte[] imageData;
+
+		private String category;
+		private String comments;
+
 
 
 	   
@@ -73,8 +81,44 @@ public class Recipe {
 		public Image getImageDetail(Image img) {
 			return img;
 		}
+
+		public String getPrepTime() {
+			return prepTime;
+		}
 		
-		 
-	   
+		public void setPrepTime(String prepTime) {
+			this.prepTime = prepTime;
+		}
+
+		public void setByteImage(byte[] imageData) {
+			
+			    this.image = new Image(new ByteArrayInputStream(imageData));
+			    this.imageData = imageData;
+			
+		}
+		
+		public byte[] getByteImage() {
+			return imageData;
+		}
+
+		
+		public void setCategory(String category) {
+			this.category = category;
+		}
+		
+		public String getCategory() {
+			return category;
+		}
+
+
+		public String getComments() {
+			
+			return comments;
+		}
+		
+		public void setComments(String comments) {
+			this.comments = comments;
+		}
+
 	}
 

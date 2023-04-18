@@ -20,8 +20,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -58,8 +60,20 @@ public class DetailCardController implements Initializable{
 	@FXML
 	private Label Mymsg;
 	
+	@FXML 
+	private Button commentsbtn;
+	
+	@FXML
+    private TextArea addComments;
+	
+	@FXML
+    private Label displayComments;
+
+
+	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		
 	   
 	}
 
@@ -126,6 +140,7 @@ public class DetailCardController implements Initializable{
             double Rating = resultSet.getDouble("recipeRating");
             String Contents = resultSet.getString("recipeContents");
             byte[] recipeImg = resultSet.getBytes("recipesImg");
+            String comments = resultSet.getString("Comments");
 
             Image image = new Image(new ByteArrayInputStream(recipeImg));
             
@@ -139,6 +154,7 @@ public class DetailCardController implements Initializable{
             recipe.setRating(Rating);
             recipe.setContents(Contents);
             recipe.setImageDetail(image);
+            recipe.setComments(comments);
             
             System.out.println("Inside handle button action");
           
@@ -166,6 +182,7 @@ public class DetailCardController implements Initializable{
     		chefNameDetail.setText(recipe.getchefName());
     		recipeDescriptionDetail.setText(recipe.getDescription());
     		recipeContentsDetail.setText(recipe.getContents());
+    		displayComments.setText(recipe.getComments());
     		 if(recipe.getRating() >= 4.0) {
     			 recipeRatingDetail.setImage(new Image("File:assets/Four_star.png"));
              	return;
@@ -185,8 +202,30 @@ public class DetailCardController implements Initializable{
        
     
     
-        connectDB.close();
+        
 		
+	}
+	
+	@FXML
+	void handleAddComments(ActionEvent event) throws SQLException {
+		String comments = addComments.getText();
+	
+		PreparedStatement updateps = connectDB.prepareStatement("UPDATE recipesInfo SET Comments = ? WHERE recipeName = ?");
+		updateps.setString(1, comments);
+		updateps.setString(2, recipeNameDetailTo.getText());
+		updateps.executeUpdate();
+
+
+		
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Comments added");
+        alert.setHeaderText(null);
+        alert.setContentText("Comments added");
+        alert.showAndWait();
+        
+        displayComments.setText(comments);
+        
+        connectDB.close();
 	}
 }
 	

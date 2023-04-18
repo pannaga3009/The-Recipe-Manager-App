@@ -1,8 +1,13 @@
 package application;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -10,6 +15,7 @@ import java.util.ResourceBundle;
 
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,8 +23,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
-
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -27,10 +35,14 @@ import javafx.stage.Stage;
 
 public class HomeController implements Initializable {
 
+	 DatabaseConnection connectNow = new DatabaseConnection();
+	 Connection connectDB = connectNow.getConnection();
 	
 	@FXML
 	private HBox cardLayout;
 
+	@FXML
+	private TextField searchField;
 	
 	@FXML
 	private HBox cardAreaLayout;
@@ -94,8 +106,95 @@ public class HomeController implements Initializable {
 			e.printStackTrace();
 		}
 		
-			
-		}
+		
+//		mealPlan.setOnAction(e ->  {
+//		    try {
+//		        handleMealPlanClick(e);
+//		    } catch (IOException ex) {
+//		        ex.printStackTrace();
+//		    }
+//		});
+
+	}
+	
+
+@FXML
+private void handleSearchButtonAction(ActionEvent event) throws IOException, SQLException {
+    String query = searchField.getText();
+    List<Recipe> recipes = searchDatabase(query);
+    if (!recipes.isEmpty()) {
+        // Create a new FXML card to display the recipe information
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("RecipeCard.fxml"));
+        Parent root = loader.load();
+        RecipeCardController controller = loader.getController();
+        controller.setRecipe(recipes.get(0)); // Display the first recipe in the list
+       
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    } else {
+        // Show an alert box indicating that no recipes were found
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("No Recipes Found");
+        alert.setHeaderText(null);
+        alert.setContentText("Sorry, no recipes were found for your search query.");
+        alert.showAndWait();
+    }
+}
+
+
+	private List<Recipe> searchDatabase(String query) throws SQLException {
+		List<Recipe> ls = new ArrayList<>();
+		Recipe recipe = new Recipe();
+		String selectQuery = "SELECT * FROM RecipesInfo WHERE recipeName = ?";
+        PreparedStatement selectStatement = connectDB.prepareStatement(selectQuery);
+        selectStatement.setString(1, searchField.getText());
+        ResultSet resultSet = selectStatement.executeQuery();
+        System.out.println(resultSet);
+
+        if (resultSet.next()) {
+            String Name = resultSet.getString("recipeName");
+            String Description = resultSet.getString("recipeDescription");
+            String Chef = resultSet.getString("recipeChef");
+            double Rating = resultSet.getDouble("recipeRating");
+            String Contents = resultSet.getString("recipeContents");
+            byte[] recipeImg = resultSet.getBytes("recipesImg");
+
+            Image image = new Image(new ByteArrayInputStream(recipeImg));
+            
+           
+           
+           
+            // Set the retrieved data to the Recipe object
+            recipe.setName(Name);
+            recipe.setDescription(Description);
+            recipe.setchefName(Chef);
+            recipe.setRating(Rating);
+            recipe.setContents(Contents);
+            recipe.setImageDetail(image);
+            recipe.setByteImage(recipeImg);
+           
+            
+          
+          
+            
+            
+            
+            System.out.println("Inside search database function");
+          
+            
+            ls.add(recipe);
+        	
+    	
+           
+    	
+	}else {
+        System.out.println("Recipe not found in the database");
+    }
+		return ls;
+	}
+        
+	
 	
 
 
@@ -211,14 +310,44 @@ public class HomeController implements Initializable {
 		
 	}
 	
-
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
+	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
 
-		
 	}
 	
-	public void handlemyProfileClick(ActionEvent event) throws IOException {
-	    Parent root = FXMLLoader.load(getClass().getResource("Myprofile.fxml"));
+  
+	public void handleAppetizerClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("AppetizerPage.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
+	}
+
+	public void handleBreakfastClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("BreakfastPage.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
+	}
+	
+	public void handleLunchClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("LunchPage.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
+	}
+
+
+	public void handleDinnerClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("DinnerPage.fxml"));
+
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
