@@ -39,8 +39,8 @@
       </Text>
        <PasswordField fx:id="passwordLogin" layoutX="637.0" layoutY="337.0" />
       <Text layoutX="637.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password?" />
-      <Button fx:id="forgotPasswordLogin" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="737.0" layoutY="370.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 10px;" text="Click Here" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
+      <Button fx:id="forgotPasswordLogin" contentDisplay="CENTER" graphicTextGap="2.0" layoutX="737.0" layoutY="370.0" mnemonicParsing="false" onAction="#forgotPasswordLogin" prefHeight="17.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 10px;" text="Click Here" textAlignment="CENTER" textOverrun="CLIP">
+        <font>
             <Font size="8.0" />
          </font>
       </Button>
@@ -77,6 +77,6 @@
          </image>
       </ImageView>
       <Label fx:id="LoginMessageLabel" layoutX="663.0" layoutY="238.0" prefHeight="17.0" prefWidth="94.0" />
-     
+
    </children>
 </AnchorPane>

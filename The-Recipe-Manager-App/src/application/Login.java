@@ -25,7 +25,7 @@ public abstract class Login {
     	DatabaseConnection connectNow = new DatabaseConnection();
     	Connection connectDB = connectNow.getConnection();
     	System.out.println("username "+ username + " AND password = "+ password);
-    	String verifyLogin = "SELECT count(1) from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
+    	String verifyLogin = "SELECT count(1) from userAccount where userName = '" + username + "'  AND password = '"+ password + "'";
     	System.out.println(verifyLogin);
     	try {
     		Statement statement = connectDB.createStatement();
@@ -35,6 +35,25 @@ public abstract class Login {
     			int count = queryResult.getInt(1);
     		    System.out.println("Count: " + count);
     			if(queryResult.getInt(1) == 1) {
+    				String getId = "SELECT idUserAccount from UserAccount where userName = '" + username + "'  AND password = '"+ password + "'";
+    				ResultSet queryId = statement.executeQuery(getId);
+    				if(queryId.next()) {  // check if result set has at least one row
+    	                int userId = queryId.getInt("idUserAccount");
+    	                System.out.println("Query Result - userId "+ userId);
+    	                
+    	               UserAccount useraccount = new UserAccount();
+    	               UserAccount.setUserId(userId);
+    	               UserAccount.addUserId(userId);
+    	               UserAccount.idUserAccount = userId;
+    				}
+    	                
+//    				int userId = queryId.getInt("idUserAccount");
+//    				System.out.println("Query Result - userId "+ userId);
+//    				UserAccount useraccount = new UserAccount();
+//    				useraccount.setUserId(userId);
+//    				MyRecipeFormController myRecipeForm = new MyRecipeFormController();
+//    				myRecipeForm.insert(useraccount);
+
     				return true;
     			}else {
     				return false;
@@ -47,4 +66,6 @@ public abstract class Login {
     	}
 		return false;
     }
+	
+	
 }
