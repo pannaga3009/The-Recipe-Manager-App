@@ -93,6 +93,4 @@ public class MainController implements Initializable {
     	stage.close();
     }
      
-    
-
 }

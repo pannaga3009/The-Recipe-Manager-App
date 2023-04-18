@@ -25,7 +25,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
+import javafx.scene.control.Alert.AlertType;
+
 import javafx.scene.control.TextField;
+
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,12 +38,11 @@ public class DetailCardController implements Initializable{
 	
 	 DatabaseConnection connectNow = new DatabaseConnection();
 	 Connection connectDB = connectNow.getConnection();
-	 
+	@FXML
+	private Button DetailSaveBtn;
+	
 	@FXML
 	private ImageView DetailrecipeImage;
-
-//	@FXML
-//	private Label recipeNameDetail;
 
 	@FXML
 	private Label chefNameDetail;
@@ -87,12 +89,18 @@ public class DetailCardController implements Initializable{
 	public void initData(Recipe recipe) {
 	  
 	    try {
-	    	
+	    	System.out.println("----------Inside INIT DATA----------------");
+	        System.out.println("Get name"+ recipe.getName());
+	        System.out.println("Get chef name"+ recipe.getchefName());
+	        System.out.println("Get recipe name detail"+ recipe.getDescription());
+	        System.out.println("Get recipe contents"+ recipe.getContents());
+	        System.out.println("**************************"+recipeNameDetailTo);
+
 	        recipeNameDetailTo.setText(recipe.getName());
 	        chefNameDetail.setText(recipe.getchefName());
 	        recipeDescriptionDetail.setText(recipe.getDescription());
 	        recipeContentsDetail.setText(recipe.getContents());
-	        
+
 	        System.out.println("-------Printing the ratings image------- ");
 
 	        switch((int) Math.floor(recipe.getRating())) {
@@ -154,8 +162,6 @@ public class DetailCardController implements Initializable{
             Image image = new Image(new ByteArrayInputStream(recipeImg));
             
            
-           
-           
             // Set the retrieved data to the Recipe object
             recipe.setName(Name);
             recipe.setDescription(Description);
@@ -164,7 +170,8 @@ public class DetailCardController implements Initializable{
             recipe.setContents(Contents);
             recipe.setImageDetail(image);
             recipe.setComments(comments);
-            
+            recipe.setByteImage(recipeImg);
+            System.out.println("----image----" + recipeImg);
             System.out.println("Inside handle button action");
           
 //            DetailCardController dcl = new DetailCardController();
@@ -180,7 +187,7 @@ public class DetailCardController implements Initializable{
 //                    throw new Exception("Image not found");
 //                }
                 DetailrecipeImage.setImage(recipe.getImageDetail(image));
-                
+                System.out.print(DetailrecipeImage);
                 System.out.println("after--");
                
             } catch (Exception e) {
@@ -192,8 +199,8 @@ public class DetailCardController implements Initializable{
     		recipeDescriptionDetail.setText(recipe.getDescription());
     		recipeContentsDetail.setText(recipe.getContents());
     		displayComments.setText(recipe.getComments());
+	        handleDetailSaveBtn(recipe);
 
-    		
     		
     		 switch((int) Math.floor(recipe.getRating())) {
  	        case 5:
@@ -211,10 +218,7 @@ public class DetailCardController implements Initializable{
  	        default:
  	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
  	    } 
-    		
 
-
-    	
 	}else {
         System.out.println("Recipe not found in the database");
     }
@@ -249,6 +253,35 @@ public class DetailCardController implements Initializable{
         
 	}
 	
+	
+	void handleDetailSaveBtn(Recipe recipe) {
+		DetailSaveBtn.setOnAction(event -> { 
+	   		System.out.println("Entering Save Button Details Page");
+	   			// Create a new SavedRecipesController instance 
+	   			FXMLLoader loader = new FXMLLoader(getClass().getResource("SavedRecipes.fxml"));
+	   			try {
+	        		Parent root = loader.load();
+					SavedRecipesController controller = loader.getController();
+					if(SavedRecipesController.recipes.contains(recipe)) {
+		        		Alert alert = new Alert(AlertType.INFORMATION);
+		                alert.setTitle("Recipe Saved");
+		                alert.setHeaderText(null);
+		                alert.setContentText("The recipe is already saved.");
+		                alert.showAndWait();
+		        	}
+		        	else {
+		        		controller.handleSaveButtonClick(recipe);
+			        	System.out.println("Object recieved at cardController" + recipe);
+			        	SavedRecipesController.recipes.add(recipe);
+
+		        	}
+		        
+	        	} catch (IOException e) {
+					e.printStackTrace();
+	        	}
+	            
+	   		});
+	}
 	@FXML
 	void handleEditRating(ActionEvent event) throws SQLException {
 		String rating = ratingEdit.getText();
@@ -266,13 +299,6 @@ public class DetailCardController implements Initializable{
         alert.setHeaderText(null);
         alert.setContentText("Ratings added");
         alert.showAndWait();
-        
-        
-        
-        
-
-
-       
 
 
 	}
