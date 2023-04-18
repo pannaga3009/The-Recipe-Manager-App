@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -107,24 +108,19 @@ public class HomeController implements Initializable {
 			RecipeNames.add("Veg Sandwich");
 			RecipeNames.add("Salad Bowl");
 		
-		
-			for(int i =0; i < RecipeNames.size(); i++)
-			{
-				Recipe rc = new Recipe();
-				FXMLLoader fxmlLoader = new FXMLLoader();
-				fxmlLoader.setLocation(getClass().getResource("Area.fxml"));
-				
-				HBox cardBox = fxmlLoader.load();
-				CardController cardController = fxmlLoader.getController();
-				rc.setName(RecipeNames.get(i));
-				cardController.setDataFromDb(rc);
-
-				cardController.sendObj(rc);
-//				cardController.handleButtonClick(rc);
-				cardAreaLayout.getChildren().add(cardBox);	
-				
-				
-			}
+		Iterator<String> iterator = RecipeNames.iterator();
+		while (iterator.hasNext()) {
+		    String recipeName = iterator.next();
+		    Recipe rc = new Recipe();
+		    FXMLLoader fxmlLoader = new FXMLLoader();
+		    fxmlLoader.setLocation(getClass().getResource("Area.fxml"));
+		    HBox cardBox = fxmlLoader.load();
+		    CardController cardController = fxmlLoader.getController();
+		    rc.setName(recipeName);
+		    cardController.setDataFromDb(rc);
+		    cardController.sendObj(rc);
+		    cardAreaLayout.getChildren().add(cardBox);
+		}
 	  
 
 		}
@@ -325,6 +321,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				"2 tablespoons extra-virgin olive oil or unsalted butter, softened\n" + 
 				"Flaky sea salt, for serving \n" +
 				"Crushed red pepper flakes, optional");
+		recipe.setRating(4.5);
+		
 		ls.add(recipe);
 	
 		recipe = new Recipe();
@@ -350,6 +348,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "Salt to taste\r\n"
 				+ "2 tablespoon vegan butter\r\n"
 				+ "2 tablespoon cilantro");
+		recipe.setRating(4.0);
+		
 		ls.add(recipe);
 		
 		recipe = new Recipe();
@@ -373,7 +373,35 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "1/2 cup milk*\r\n"
 				+ "4 ounces full fat cream cheese (half a brick)\r\n"
 				+ "1 cup freshly shredded pizza mozzarella**\r\n");
+    recipe.setRating(3.2);
+	
 		ls.add(recipe);
+		
+		recipe = new Recipe();
+		recipe.setName("Brocolli\nSoup");
+		recipe.setImage("file:assets/brocolli_soup.jpeg");
+		recipe.setchefName("Pannaga Veeramohan");
+    recipe.setDescription("Bring a large pot of salted water to a boil and cook the penne pasta to al dente, according to the package instructions. \r\n"
+				+ "Heat a large non-stick skillet over medium heat, melt the butter and then add in the onions. Cook for about 5 minutes, or until they are translucent. Add the garlic and cook for another 1 - 2 minutes, or until aromatic. (Stir frequently to avoid burning  your garlic and onions.)\r\n"
+				+ "Now add the tomato sauce, chicken broth, dried basil, dried oregano, salt and stir. Bring to a simmer for 2 - 3 minutes, stirring occasionally.\r\n"
+				+ "Add in the milk and cream cheese and stir until melted, then mix in the shredded mozzarella cheese and let simmer for 7 - 8 minutes (it’s important to not let the sauce boil, but just simmer instead).\r\n"
+				+ "Mix the pasta in with the sauce. Garnish with the chopped parsley and a little extra mozzarella if desired then serve!");
+		recipe.setContents("3 cups dry penne pasta (300 grams)\r\n"
+				+ "1 Tablespoon butter\r\n"
+				+ "2 medium cloves garlic (minced)\r\n"
+				+ "1 large yellow onion (diced)\r\n"
+				+ "1 (8 ounce) can tomato sauce\r\n"
+				+ "1 teaspoon dried oregano\r\n"
+				+ "1/2 teaspoon fine sea salt\r\n"
+				+ "1/2 teaspoon dried basil\r\n"
+				+ "1/2 cup chicken broth\r\n"
+				+ "1/2 cup milk*\r\n"
+				+ "4 ounces full fat cream cheese (half a brick)\r\n"
+				+ "1 cup freshly shredded pizza mozzarella**\r\n");
+		recipe.setRating(4.5);
+    
+		ls.add(recipe);
+
 		
 		recipe = new Recipe();
 
@@ -404,11 +432,14 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "turmeric powder 1/2 tbsp\r\n"
 				+ "fresh coriander for topping\r\n"
 				+ "lemon juice for topping");
+    recipe.setRating(4.5);
+
 		ls.add(recipe);
+		
 		return ls;
 		
 	}
-	
+	@FXML
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
 	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -417,6 +448,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 
 	}
+  
+  @FXML
 	public void handleSavedRecipesClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("SavedRecipes.fxml"));
     	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -426,6 +459,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	}
 	
   
+
+	@FXML
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("AppetizerPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -434,6 +469,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 	}
 
+	@FXML
 	public void handleBreakfastClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("BreakfastPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -442,6 +478,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 	}
 	
+	@FXML
 	public void handleLunchClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("LunchPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -450,15 +487,25 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 	}
 
-
+	@FXML
 	public void handleDinnerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("DinnerPage.fxml"));
-
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.show();
 	}
+	
+	@FXML
+	public void handlemyProfileClick(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("MyProfile.fxml"));
+	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    Scene scene = new Scene(root);
+	    stage.setScene(scene);
+	    stage.show();
+	}
+  
+  @FXML
 	public void handleLogoutClick(ActionEvent event) throws IOException {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));

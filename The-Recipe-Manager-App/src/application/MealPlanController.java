@@ -1,10 +1,17 @@
 package application;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Blob;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,9 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -29,11 +38,16 @@ public class MealPlanController implements Initializable {
 
 	 @FXML
 	  private RadioButton ketoButton;
+	 
+	 @FXML
+	 private RadioButton CustomMealBtn;
 
     @FXML
     private RadioButton lowCarbButton;
     
-    private MealPlan mealPlan = new MealPlan();
+    @FXML
+    private Button create;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,10 +58,12 @@ public class MealPlanController implements Initializable {
         ketoButton.setToggleGroup(toggleGroup);
         WeightLossButton.setToggleGroup(toggleGroup);
         lowCarbButton.setToggleGroup(toggleGroup);
+        CustomMealBtn.setToggleGroup(toggleGroup);
            
         ketoButton.setOnAction(this::onRadioButtonSelected);
         WeightLossButton.setOnAction(this::onRadioButtonSelected);
         lowCarbButton.setOnAction(this::onRadioButtonSelected);
+        CustomMealBtn.setOnAction(this::onRadioButtonSelected);
 
     }
     
@@ -58,7 +74,7 @@ public class MealPlanController implements Initializable {
         displayLayout.getChildren().clear();
         
         if (selectedRadioButton == WeightLossButton) {
-            for (Recipe recipe : mealPlan.getRecipes("Weight Loss")) {
+            for (Recipe recipe : MealPlan.getRecipes("Weight Loss")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
@@ -80,7 +96,7 @@ public class MealPlanController implements Initializable {
             }
             System.out.println("Weight loss meal plan selected");
         } else if (selectedRadioButton == ketoButton) {
-            for (Recipe recipe : mealPlan.getRecipes("Keto")) {
+            for (Recipe recipe : MealPlan.getRecipes("Keto")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
@@ -102,7 +118,7 @@ public class MealPlanController implements Initializable {
             }
             System.out.println("Keto meal plan selected");
         } else if (selectedRadioButton == lowCarbButton) {
-            for (Recipe recipe : mealPlan.getRecipes("Low Carb")) {
+            for (Recipe recipe : MealPlan.getRecipes("Low Carb")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
@@ -125,6 +141,35 @@ public class MealPlanController implements Initializable {
 
             System.out.println("Low carb meal plan selected");
         }
+        else if (selectedRadioButton == CustomMealBtn) {
+
+        	    // Create a new database connection and retrieve the user ID
+        	        
+        	        for (Recipe recipe : MealPlan.getRecipes("Custom Meal Plan")) {
+                       
+        	            // Create a new CustomRecipeCardController and add its corresponding view to the display layout
+        	            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CustomRecipeCard.fxml"));
+        	            VBox customRecipeCardView = null;
+						try {
+							customRecipeCardView = fxmlLoader.load();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+        	            CustomRecipeCardController customCardController = fxmlLoader.getController();
+        	            if (customCardController == null) {
+        	                customCardController = new CustomRecipeCardController();
+        	                fxmlLoader.setController(customCardController);
+        	            }
+        	            customCardController.setRecipe(recipe);
+        	            displayLayout.getChildren().add(customRecipeCardView);
+        	        }
+
+        	       
+        	    // Print a message indicating that the custom meal button was selected
+        	    System.out.println("Custom Meal Btn plan selected");
+        	}
+
     }
 
     
@@ -197,13 +242,13 @@ public class MealPlanController implements Initializable {
        weightLossRecipe3.setDescription("This is a healthy and delicious\n weight loss recipe");
        weightLossRecipe3.setContents("Ingredients: fish fillets, zucchini, bell pepper,\n onion, garlic, lemon juice, olive oil, \nsalt, black pepper");
 
-       mealPlan.addRecipe("Low Carb", lowCarbRecipe1);
-       mealPlan.addRecipe("Low Carb", lowCarbRecipe2);
-       mealPlan.addRecipe("Keto", ketoRecipe1);
-       mealPlan.addRecipe("Keto", ketoRecipe2);
-       mealPlan.addRecipe("Weight Loss", weightLossRecipe1);
-       mealPlan.addRecipe("Weight Loss", weightLossRecipe2);
-       mealPlan.addRecipe("Weight Loss", weightLossRecipe3);
+       MealPlan.addRecipe("Low Carb", lowCarbRecipe1);
+       MealPlan.addRecipe("Low Carb", lowCarbRecipe2);
+       MealPlan.addRecipe("Keto", ketoRecipe1);
+       MealPlan.addRecipe("Keto", ketoRecipe2);
+       MealPlan.addRecipe("Weight Loss", weightLossRecipe1);
+       MealPlan.addRecipe("Weight Loss", weightLossRecipe2);
+       MealPlan.addRecipe("Weight Loss", weightLossRecipe3);
 		
 	}
 
@@ -215,8 +260,21 @@ public class MealPlanController implements Initializable {
     	stage.setScene(scene);
     	stage.show();
 	}
+   
+
+@FXML
+public void createBtnAction(ActionEvent event) throws IOException {
+	
+	 FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateMealPlan.fxml"));
+     Parent root = loader.load();
     
-
-
+     
+     CreatePlanMeal controller = loader.getController();
+     
+     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+     Scene scene = new Scene(root);
+     stage.setScene(scene);
+     stage.show();
+}
 	
 }

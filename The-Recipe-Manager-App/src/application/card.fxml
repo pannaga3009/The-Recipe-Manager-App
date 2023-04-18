@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="box" alignment="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="222.0" prefWidth="368.0" spacing="10.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #DCEDF2; -fx-border-width: 5; -fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CardController">
+
          <children>
             <ImageView fx:id="recipeImage" fitHeight="204.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
                
@@ -17,6 +18,7 @@
             <VBox alignment="CENTER" prefHeight="235.0" prefWidth="162.0">
                <children>
                   <Label fx:id="recipeName" prefHeight="74.0" prefWidth="102.0" text="Avocado&#10; Toast" textAlignment="CENTER">
+
                      <font>
                         <Font name="Comic Sans MS Bold" size="24.0" />
                      </font>
@@ -25,6 +27,7 @@
                      </VBox.margin>
                   </Label>
                   <Label fx:id="chefName" prefHeight="30.0" prefWidth="119.0" text="By Gordan ramsay">
+
                      <font>
                         <Font name="Comic Sans MS" size="14.0" />
                      </font>
@@ -39,6 +42,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
+
                </children>
                <HBox.margin>
                   <Insets left="10.0" />

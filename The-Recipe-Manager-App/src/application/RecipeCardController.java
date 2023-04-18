@@ -70,15 +70,7 @@ public class RecipeCardController implements Initializable{
  		chefNameDetail.setText(recipe.getchefName());
  		recipeDescriptionDetail.setText(recipe.getDescription());
  		recipeContentsDetail.setText(recipe.getContents());
- 		 if(recipe.getRating() >= 4.0) {
- 			 recipeRatingDetail.setImage(new Image("File:assets/Four_star.png"));
-          	return;
-          }
-          else {
-          	
-         	 recipeRatingDetail.setImage(new Image("File:assets/Three_star.jpeg"));
-          	return;
-          }
+ 		 
 //     	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
      	
 		

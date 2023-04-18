@@ -107,7 +107,7 @@ public class MyRecipeFormController extends MyRecipeForm {
     public void insert() {
 		// TODO Auto-generated method stub
     	// Get a connection to the database
-    	ArrayList<Integer> userIdList = UserAccount.getUserIdList();
+    	
     	int userId = UserAccount.idUserAccount;
     	
     	System.out.println("Entering Method insert--------------------------");
