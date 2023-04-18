@@ -328,7 +328,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 
 	}
 	
-
+  
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("AppetizerPage.fxml"));
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -356,6 +356,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 
 	public void handleDinnerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("DinnerPage.fxml"));
+
 	    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
