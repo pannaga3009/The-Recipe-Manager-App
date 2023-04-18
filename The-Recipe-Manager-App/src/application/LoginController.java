@@ -49,6 +49,7 @@ public class LoginController extends Login{
     	}
     	
     }
+    @FXML
     public void BackBtnAction(ActionEvent event) throws IOException {
     		Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
 	    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
