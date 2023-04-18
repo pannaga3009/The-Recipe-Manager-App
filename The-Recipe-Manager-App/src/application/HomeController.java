@@ -302,6 +302,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setName("Avocado\nToast");
 		recipe.setImage("file:assets/avocado_toast.jpg");
 		recipe.setchefName("By Gordan Ramsay");
+
 		recipe.setDescription("Mash the avocado with a fork in a shallow bowl until chunky. Season with fine salt and black pepper.\n" +
 				"Toast the bread until browned and crisp. Lightly rub 1 side of each slice with the cut side of the garlic until fragrant; discard the garlic. \n" +
 				"Lightly brush the toasts with oil, and season with fine salt and pepper. Divide the mashed avocado evenly among the toasts, and top with more flaky sea salt, more black pepper and red pepper flakes if using.");
@@ -319,6 +320,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setName("Tofu\nCurry");
 		recipe.setImage("file:assets/TofuCurry.jpeg");
 		recipe.setchefName("By Jamie Oliver");
+
 		recipe.setDescription("Place all the ingredients, except the vegetable oil, tofu, butter, cilantro and salt, into a blender and blitz into a very smooth paste.\r\n"
 				+ "Heat the oil in a wide saucepan or wok. Add the tomato-onion paste and cook it, covered, over a medium-high flame, stirring frequently, until the moisture is mostly gone, the paste looks darker, and shimmers with oil droplets. The paste should look quite sticky at this point and should not taste raw. This step should take you anywhere from 10-15 minutes.\r\n"
 				+ "Add 2-3 cups of water or vegetable stock, depending on the thickness you want for your curry, along with the tofu cubes. Add salt, stir to mix everything, bring back to a boil and cover and cook another five minutes. Stir in the vegan butter.\r\n"
@@ -366,6 +368,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setRating(3.2);
 
 		ls.add(recipe);
+
 
 		
 		recipe = new Recipe();
@@ -427,42 +430,10 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 
 		ls.add(recipe);
 		
-		recipe = new Recipe();
-		recipe.setName("Brocolli\nSoup");
-		recipe.setImage("file:assets/brocolli_soup.jpeg");
-		recipe.setchefName("Pannaga Veeramohan");
-		recipe.setDescription("Wash both the rice two to three times and soak in six cups of water for at least four hours. Wash and soak split black gram with fenugreek seeds in three cups of water also for a similar time.\r\n"
-				+ "Drain and grind the rice and split black gram separately to a smooth texture and dropping consistency. Add salt and mix both the batters with hand thoroughly in a whipping motion.\r\n"
-				+ "Keep the batter in a large vessel, close tightly and rest the batter overnight or for about four to six hours at room temperature to ferment.\r\n"
-				+ "To make the potato bhaji, heat the oil in a kadai. Add the mustard seeds and when they splutter add the asafoetida and split Bengal gram and sauté till lightly browned.\r\n"
-				+ "Add the green chillies, curry leaves and onion and sauté till onion is lightly browned. Add the potatoes, turmeric powder and salt. Mix well. Sprinkle a tablespoon of water and cook till the potatoes are heated through.\r\n"
-				+ "Add the coriander leaves and lemon juice and mix well. Mix the batter well, adjust to pouring consistency. Heat a flat tawa (preferably non-stick), grease with a little oil. Pour a ladle full of batter and spread to as thin a pancake as possible.\r\n"
-				+ "Couple of dosas may go wrong but once the tawa gets seasoned the rest of the dosas will come out well. Pour the oil/ghee around the dosa and let it cook till it becomes crisp on the edges and turns golden brown.");
-		recipe.setContents("Parboiled rice(ukda chawal) 2 3/4 cups.\r\n"
-				+ "Split black gram skinless 1/4 cup.\r\n"
-				+ "Split black gram skinless (dhuli urad dal) 1 cup.\r\n"
-				+ "Fenugreek seeds (methi dana) 1 teaspoon.\r\n"
-				+ "Oil as required.\r\n"
-				+ "salt as required\r\n"
-				+ "potatoes boiled n peeled 3 large\r\n"
-				+ "Oil 1 tablespoon.\r\n"
-				+ "Split Bengal gram (chana dal) 1 teaspoon.\r\n"
-				+ "Asafoetida 1/4 teaspoon.\r\n"
-				+ "Mustard seeds 1/2 teaspoon.\r\n"
-				+ "Green chillies chopped 2.\r\n"
-				+ "onions chopped 2 large\r\n"
-				+ "Curry leaves 6-8.\r\n"
-				+ "turmeric powder 1/2 tbsp\r\n"
-				+ "fresh coriander for topping\r\n"
-				+ "lemon juice for topping");
-		recipe.setRating(4.5);
-
-		ls.add(recipe);
-		
 		return ls;
 		
 	}
-	
+
 	@FXML
 	public void handleMealPlanClick(ActionEvent event) throws IOException {
 	    Parent root = FXMLLoader.load(getClass().getResource("MealPlan.fxml"));
@@ -472,6 +443,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 
 	}
+
 
   @FXML
 	public void handleSavedRecipesClick(ActionEvent event) throws IOException {
@@ -526,6 +498,8 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.setScene(scene);
 	    stage.show();
 	}
+	
+	
 
  	@FXML
 	public void handleLogoutClick(ActionEvent event) throws IOException {

@@ -25,9 +25,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-import javafx.scene.control.Alert.AlertType;
-
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 
 import javafx.scene.image.Image;
@@ -89,19 +88,18 @@ public class DetailCardController implements Initializable{
 	public void initData(Recipe recipe) {
 	  
 	    try {
-	    	System.out.println("----------Inside INIT DATA----------------");
-	        System.out.println("Get name"+ recipe.getName());
-	        System.out.println("Get chef name"+ recipe.getchefName());
-	        System.out.println("Get recipe name detail"+ recipe.getDescription());
-	        System.out.println("Get recipe contents"+ recipe.getContents());
-	        System.out.println("**************************"+recipeNameDetailTo);
+
+	    
+
 
 	        recipeNameDetailTo.setText(recipe.getName());
 	        chefNameDetail.setText(recipe.getchefName());
 	        recipeDescriptionDetail.setText(recipe.getDescription());
 	        recipeContentsDetail.setText(recipe.getContents());
+	        
 
 	        System.out.println("-------Printing the ratings image------- ");
+
 
 	        switch((int) Math.floor(recipe.getRating())) {
 	        case 5:
@@ -199,6 +197,31 @@ public class DetailCardController implements Initializable{
     		recipeDescriptionDetail.setText(recipe.getDescription());
     		recipeContentsDetail.setText(recipe.getContents());
     		displayComments.setText(recipe.getComments());
+
+
+    		
+    		
+    		 switch((int) Math.floor(recipe.getRating())) {
+ 	        case 5:
+ 	        	recipeRatingDetail.setImage(new Image("File:assets/Four_star.png"));
+ 	            break;
+ 	        case 4:
+ 	            recipeRatingDetail.setImage(new Image("File:assets/Four_star.png"));
+ 	            break;
+ 	        case 3:
+ 	            recipeRatingDetail.setImage(new Image("File:assets/Three_star.jpeg"));
+ 	            break;
+ 	        case 2:
+ 	            recipeRatingDetail.setImage(new Image("File:assets/Two_star.png"));
+ 	            break;
+ 	        default:
+ 	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
+ 	    } 
+    		
+
+
+    	
+
 	        handleDetailSaveBtn(recipe);
 
     		
@@ -218,6 +241,7 @@ public class DetailCardController implements Initializable{
  	        default:
  	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
  	    } 
+
 
 	}else {
         System.out.println("Recipe not found in the database");
@@ -253,6 +277,7 @@ public class DetailCardController implements Initializable{
         
 	}
 	
+
 	
 	void handleDetailSaveBtn(Recipe recipe) {
 		DetailSaveBtn.setOnAction(event -> { 
@@ -282,6 +307,7 @@ public class DetailCardController implements Initializable{
 	            
 	   		});
 	}
+	
 	@FXML
 	void handleEditRating(ActionEvent event) throws SQLException {
 		String rating = ratingEdit.getText();
