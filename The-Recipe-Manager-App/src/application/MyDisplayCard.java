@@ -20,11 +20,12 @@ public abstract class MyDisplayCard {
     }
     
     
+
     @FXML
-    void handleDeleteClick(){
-        // code to handle Delete Recipe button click
-    }
-    
+	void handleDeleteClick(ActionEvent event){
+		// TODO Auto-generated method stub
+		
+	}
 
     
     
