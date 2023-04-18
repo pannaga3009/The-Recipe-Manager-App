@@ -23,14 +23,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-
 import javafx.stage.Stage;
 
 
@@ -56,8 +57,27 @@ public class CardController implements Initializable {
     private ImageView recipeRatingCard;
 
     @FXML
-    private Button MoreBtn = new Button("More details");;
+    private Button MoreBtn = new Button("More details");
 
+    @FXML
+    private Button saveBtn = new Button("Save Details");
+    @FXML
+    private Label SaveRecipeName;
+
+    @FXML
+    private Label recipeContents;
+
+    @FXML
+    private Label recipeDescription;
+
+    @FXML
+    private ImageView saveRatingImage;
+
+    @FXML
+    private ImageView saveRecipeImage;
+
+    @FXML
+    private Label savechefName;
     @FXML
     private HBox boxHome;
 
@@ -102,14 +122,8 @@ public class CardController implements Initializable {
     @FXML
     private ImageView recipeRatingDetail;
 
-
-   
-    private Stage stage;
-    private Scene scene;
-
-    
-
-    private String[] colors =  {"DCEDF2", "FFFFF"};
+    @FXML
+    private Button MoreBtnCard;
     
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
@@ -127,7 +141,12 @@ public class CardController implements Initializable {
         
         
         
-        
+        SaveRecipeName = new Label();
+        recipeContents = new Label();
+        recipeDescription = new Label();
+        saveRatingImage = new ImageView();
+        saveRecipeImage = new ImageView();
+        savechefName  = new Label();
 		
 	}
     
@@ -150,11 +169,37 @@ public class CardController implements Initializable {
 			}
         });
     }
+    public void sendObject(Recipe recipe) { 
+    	System.out.println("Inside card Controller"); 
+    	saveBtn.setOnAction(event -> { 
+   		System.out.println("Entering Save Button");
+   			// Create a new SavedRecipesController instance 
+   			FXMLLoader loader = new FXMLLoader(getClass().getResource("SavedRecipes.fxml"));
+   			try {
+        		Parent root = loader.load();
+				SavedRecipesController controller = loader.getController();
+	        	
+	        	if(SavedRecipesController.recipes.contains(recipe)) {
+	        		Alert alert = new Alert(AlertType.INFORMATION);
+	                alert.setTitle("Recipe Saved");
+	                alert.setHeaderText(null);
+	                alert.setContentText("The recipe is already saved.");
+	                alert.showAndWait();
+	        	}
+	        	else {
+	        		controller.handleSaveButtonClick(recipe);
+		        	System.out.println("Object recieved at cardController" + recipe);
+		        	SavedRecipesController.recipes.add(recipe);
 
-    
-   public void MoreBtnAction(ActionEvent e) {
-	   
-   }
+	        	}
+        	} catch (IOException e) {
+				e.printStackTrace();
+        	}
+            
+   		});
+    }
+
+ 
     
     public void setData(Recipe recipe) {
     	try {

@@ -49,7 +49,14 @@ public class LoginController extends Login{
     	}
     	
     }
-    
+    @FXML
+    public void BackBtnAction(ActionEvent event) throws IOException {
+    		Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
+	    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    	scene = new Scene(root);
+	    	stage.setScene(scene);
+	    	stage.show();
+    }    
     @FXML
     public void forgotPasswordLogin(ActionEvent event) throws SQLException, AddressException, MessagingException {
     	

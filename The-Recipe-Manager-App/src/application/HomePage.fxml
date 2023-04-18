@@ -63,7 +63,7 @@
                   <Insets left="30.0" right="10.0" />
                </HBox.margin>
             </Separator>
-            <Hyperlink text="Saved Recipes">
+            <Hyperlink fx:id="savedRecipe" onAction="#handleSavedRecipesClick" text="Saved Recipes">
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin>
@@ -71,7 +71,8 @@
             <Hyperlink fx:id="myProfile" onAction="#handlemyProfileClick" text="MyProfile">
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
-               </HBox.margin></Hyperlink>
+               </HBox.margin>
+            </Hyperlink>
 
             <Hyperlink fx:id="mealPlan" onAction="#handleMealPlanClick" text="Meal Plan">
 
@@ -79,15 +80,12 @@
                   <Insets right="10.0" top="23.0" />
                </HBox.margin>
             </Hyperlink>
-            <Hyperlink text="Logout">
+            <Hyperlink fx:id="Logout" onAction="#handleLogoutClick" text="Logout">
                <HBox.margin>
                   <Insets right="10.0" top="23.0" />
                </HBox.margin>
             </Hyperlink>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
       </HBox>
    </top>
    <center>
@@ -104,15 +102,11 @@
                </VBox.margin>
             </Label>
 
-            <ScrollPane prefHeight="258.0" prefWidth="937.0">
-
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
+            <ScrollPane prefHeight="258.0" prefWidth="938.0">
                <content>
 
 
-                  <HBox fx:id="cardLayout" prefHeight="243.0" prefWidth="933.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+                  <HBox fx:id="cardLayout" prefHeight="228.0" prefWidth="934.0" spacing="10.0" style="-fx-background-color: #FFFFFF;" />
 
                </content>
             </ScrollPane>
@@ -178,7 +172,7 @@
    <bottom>
       <ScrollPane prefHeight="231.0" prefWidth="937.0" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="cardAreaLayout" prefHeight="234.0" prefWidth="926.0" style="-fx-background-color: #FFFFFF;" />
+            <HBox fx:id="cardAreaLayout" prefHeight="245.0" prefWidth="926.0" style="-fx-background-color: #FFFFFF;" />
          </content>
       </ScrollPane>
    </bottom>
