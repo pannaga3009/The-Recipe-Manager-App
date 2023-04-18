@@ -77,7 +77,6 @@ public class DetailCardController implements Initializable{
     private TextField ratingEdit;
 
 
-
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -214,6 +213,7 @@ public class DetailCardController implements Initializable{
  	    } 
     		
 
+
     	
 	}else {
         System.out.println("Recipe not found in the database");
@@ -223,6 +223,7 @@ public class DetailCardController implements Initializable{
     
     
         
+
 		
 	}
 	
@@ -258,6 +259,7 @@ public class DetailCardController implements Initializable{
 		updateps.executeUpdate();
 
 
+
 		
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Ratings added");
@@ -269,8 +271,12 @@ public class DetailCardController implements Initializable{
         
         
 
-        connectDB.close();
+
+       
+
 
 	}
+	
+
 }
 	

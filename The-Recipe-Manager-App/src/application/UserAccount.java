@@ -20,13 +20,9 @@ public class UserAccount {
  public static void setUserId(int idUserAccount) {
 	 	UserAccount.idUserAccount = idUserAccount;
  }
-//
-//    // Constructor to initialize the recipe data
-//    public UserAccount(int idUserAccount) {
-//        this.idUserAccount = idUserAccount;
-//    }
 
  
+
 
 
 
@@ -45,4 +41,12 @@ public class UserAccount {
 //    	return idUserAccount;
     	}
     
-}
+
+
+  
+
+      
+      }
+    
+    
+

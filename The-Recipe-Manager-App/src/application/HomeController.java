@@ -327,7 +327,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.show();
 
 	}
-	
+
 
 	@FXML
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
