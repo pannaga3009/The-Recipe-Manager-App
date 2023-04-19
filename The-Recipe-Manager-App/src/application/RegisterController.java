@@ -19,22 +19,22 @@ import javafx.stage.Stage;
 
 public class RegisterController extends Register{
 
-	
+
 	@FXML Button RegisterBtn;
-	
+
 	private Stage stage;
     private Scene scene;
-	
+
 	public void handleRegister(ActionEvent event) throws IOException {
-        
-		
-		
+
+
+
 		// perform validation of input fields
 		ValidateDetails();
-       
+
 		System.out.println("printing name register-------"+this.nameRegister);
         register();
-        
+
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
     	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
@@ -44,7 +44,7 @@ public class RegisterController extends Register{
        // clear the input fields
        clearDetails();
     }
-	
+
 	@Override
 	protected void register() {
 		// perform registration logic here
@@ -79,8 +79,8 @@ public class RegisterController extends Register{
 		            Insertps.setString(3, email);
 		            Insertps.setString(4, phoneno);
 		            Insertps.executeUpdate();
-		            
-		            
+
+
 		        }
 		    }
 		    catch(Exception e) {
@@ -88,18 +88,18 @@ public class RegisterController extends Register{
 		    }
    }
 	public void BackBtn(ActionEvent event) throws IOException {
-    	
+
     		Parent root = FXMLLoader.load(getClass().getResource("OnboardingPage.fxml"));
 	    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	    	scene = new Scene(root);
 	    	stage.setScene(scene);
 	    	stage.show();
-       	
+
     }
-   
-		
+
+
 	}
-	
-	
+
+
 
 

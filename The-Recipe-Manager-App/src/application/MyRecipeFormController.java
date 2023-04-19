@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,20 +12,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import application.Login;
 
 
 public class MyRecipeFormController extends MyRecipeForm {
 	 private int userId;
 
 	 @FXML
-	  private TextArea ingredients; 
-	 
+	  private TextArea ingredients;
+
 	 @FXML
 	    private TextField recipeName;
 
@@ -62,9 +58,9 @@ public class MyRecipeFormController extends MyRecipeForm {
   	  String recipeNameText = recipeName.getText();
         String ingredientsText = ingredients.getText();
         String stepsToCookText = stepsToCook.getText();
-    
+
         String dietType = "";
-        
+
         if (vegetarianDietType.isSelected()) {
             dietType = vegetarianDietType.getText();
         } else if (eggetarianDietType.isSelected()) {
@@ -72,16 +68,16 @@ public class MyRecipeFormController extends MyRecipeForm {
         } else if (nonvegetarianDietType.isSelected()) {
             dietType = nonvegetarianDietType.getText();
         }
-        
 
-      
+
+
         System.out.println("Recipe Name: " + recipeNameText);
         System.out.println("Ingredients: " + ingredientsText);
         System.out.println("Steps to Cook: " + stepsToCookText);
         System.out.println("Diet Type: " + dietType);
-      
 
-        
+
+
         // Get the stage (i.e., window) associated with the current event
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -98,17 +94,17 @@ public class MyRecipeFormController extends MyRecipeForm {
 			Scene scene = new Scene(root);
 		    stage.setScene(scene);
 		    stage.show();
-		  
-		     
+
+
 
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        
+
 
     }
-    
+
     public void insert() {
         // Get the recipe name and user ID
         String recipeName = this.recipeName.getText();
@@ -181,31 +177,31 @@ public class MyRecipeFormController extends MyRecipeForm {
 //    	// Get a connection to the database
 //    	ArrayList<Integer> userIdList = UserAccount.getUserIdList();
 //    	int userId = UserAccount.idUserAccount;
-//    	
+//
 //    	System.out.println("Entering Method insert--------------------------");
 //        DatabaseConnection connectNow = new DatabaseConnection();
 //        Connection connectDB = connectNow.getConnection();
-//        
+//
 //        String Name = recipeName.getText();
-//        
+//
 //        if(Name == null) {
 //        // SQL query to insert a new recipe with the logged-in user's userId
 //        String insertRecipe = "INSERT INTO addmyrecipe (recipeName, ingredients, stepsToCook, idUserAccount) VALUES (?,?,?,?)";
-//        
+//
 //        try {
 //            // Create a prepared statement for the SQL query
 //            PreparedStatement preparedStatement = connectDB.prepareStatement(insertRecipe);
 //            System.out.println("UserID " + userId);
-//        
+//
 //            // Set the parameters of the prepared statement to the recipe data
 //            preparedStatement.setString(1, recipeName.getText());
 //            preparedStatement.setString(2, ingredients.getText());
 //            preparedStatement.setString(3, stepsToCook.getText());
 //            preparedStatement.setInt(4, userId);
-//            
+//
 //            // Execute the prepared statement to insert the new recipe
 //            preparedStatement.executeUpdate();
-//            
+//
 //            // Print a message to confirm that the recipe was inserted successfully
 //            System.out.println("Recipe inserted successfully!");
 //        } catch (SQLException e) {
@@ -222,7 +218,7 @@ public class MyRecipeFormController extends MyRecipeForm {
 //        }else {
 //        	String update = "Update INTO addmyrecipe (recipeName, ingredients, stepsToCook, idUserAccount) VALUES (?,?,?,?)";
 //        }
-//		
+//
 //	}
 
 	@Override
@@ -233,11 +229,11 @@ public class MyRecipeFormController extends MyRecipeForm {
 
 	public void setRecipe(Recipe recipe) {
 		// TODO Auto-generated method stub
-		
+
 		recipeName.setText(recipe.getName());
 		ingredients.setText(recipe.getContents());
 		stepsToCook.setText(recipe.getDescription());
-		
+
 	}
- 
+
 }

@@ -2,7 +2,6 @@ package application;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,13 +12,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,30 +34,30 @@ public class HomeController implements Initializable {
 
 	 DatabaseConnection connectNow = new DatabaseConnection();
 	 Connection connectDB = connectNow.getConnection();
-	
+
 	@FXML
 	private HBox cardLayout;
 
 	@FXML
 	private TextField searchField;
-	
+
 	@FXML
 	private HBox cardAreaLayout;
-	
-	@FXML 
+
+	@FXML
 	private Hyperlink mealPlan;
-	
+
 	private List<Recipe> discoverRecipes;
 	private List<Recipe> addRecipesFromList;
 
-	   
+
     private Stage stage;
     private Scene scene;
 
-	@FXML 
+	@FXML
 	private Hyperlink Logout;
 	@FXML
-    private Hyperlink savedRecipe;	
+    private Hyperlink savedRecipe;
 	@FXML
     private Hyperlink myProfile;
 
@@ -86,8 +82,8 @@ public class HomeController implements Initializable {
 			{
 				FXMLLoader fxmlLoader = new FXMLLoader();
 				fxmlLoader.setLocation(getClass().getResource("card.fxml"));
-					
-				
+
+
 				HBox cardBox = fxmlLoader.load();
 				CardController cardController = fxmlLoader.getController();
 				cardController.setData(discoverRecipes.get(i));
@@ -96,20 +92,20 @@ public class HomeController implements Initializable {
 				System.out.println("**Seeing object from HomeController ********" + discoverRecipes.get(i));
 				cardController.sendObject(discoverRecipes.get(i));
 				System.out.print("\nEnd of Send Object method");
-				cardLayout.getChildren().add(cardBox);	
-				
+				cardLayout.getChildren().add(cardBox);
+
 			}
 			RecipeStorage rs = new RecipeStorage();
 			addRecipesFromList = new ArrayList<>(addRecipes());
 			rs.addRecipesToDb(addRecipesFromList);
-			
-			ArrayList<String> RecipeNames = new ArrayList<String>();
-	
+
+			ArrayList<String> RecipeNames = new ArrayList<>();
+
 			RecipeNames.add("Paneer Tikka");
-	
+
 			RecipeNames.add("Veg Sandwich");
 			RecipeNames.add("Salad Bowl");
-		
+
 		Iterator<String> iterator = RecipeNames.iterator();
 		while (iterator.hasNext()) {
 		    String recipeName = iterator.next();
@@ -123,14 +119,14 @@ public class HomeController implements Initializable {
 		    cardController.sendObj(rc);
 		    cardAreaLayout.getChildren().add(cardBox);
 		}
-	  
+
 
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 //		mealPlan.setOnAction(e ->  {
 //		    try {
 //		        handleMealPlanClick(e);
@@ -140,7 +136,7 @@ public class HomeController implements Initializable {
 //		});
 
 	}
-	
+
 
 @FXML
 private void handleSearchButtonAction(ActionEvent event) throws IOException, SQLException {
@@ -152,7 +148,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
         Parent root = loader.load();
         RecipeCardController controller = loader.getController();
         controller.setRecipe(recipes.get(0)); // Display the first recipe in the list
-       
+
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -186,7 +182,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 
             Image image = new Image(new ByteArrayInputStream(recipeImg));
 
-           
+
             // Set the retrieved data to the Recipe object
             recipe.setName(Name);
             recipe.setDescription(Description);
@@ -195,22 +191,22 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
             recipe.setContents(Contents);
             recipe.setImageDetail(image);
             recipe.setByteImage(recipeImg);
-           
- 
+
+
             System.out.println("Inside search database function");
-          
-            
+
+
             ls.add(recipe);
-   
-    	
+
+
 	}else {
         System.out.println("Recipe not found in the database");
     }
 		return ls;
 	}
-        
-	
-	
+
+
+
 
 
 	private List<Recipe> addRecipes() {
@@ -238,10 +234,10 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "Salt to taste\n"
 				+ "2 tbsp oil");
 		recipe1.setRating(4.8);
-		
+
 		dbls.add(recipe1);
-		
-		
+
+
 		Recipe recipe2 = new Recipe();
 		recipe2.setName("Veg Sandwich");
 		recipe2.setImage("assets/veg_sandwich.jpeg");
@@ -309,13 +305,13 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		recipe.setContents("One 8-ounce ripe avocado, halved, pitted and peeled\n" +"Fine salt and freshly ground black pepper\n" +
 				"4 slices whole grain or whole wheat bread\n" +
 				"1 clove garlic, peeled and halved\n" +
-				"2 tablespoons extra-virgin olive oil or unsalted butter, softened\n" + 
+				"2 tablespoons extra-virgin olive oil or unsalted butter, softened\n" +
 				"Flaky sea salt, for serving \n" +
 				"Crushed red pepper flakes, optional");
 		recipe.setRating(4.5);
-		
+
 		ls.add(recipe);
-	
+
 		recipe = new Recipe();
 		recipe.setName("Tofu\nCurry");
 		recipe.setImage("file:assets/TofuCurry.jpeg");
@@ -341,9 +337,9 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "2 tablespoon vegan butter\r\n"
 				+ "2 tablespoon cilantro");
 		recipe.setRating(4.0);
-		
+
 		ls.add(recipe);
-		
+
 		recipe = new Recipe();
 		recipe.setName("Pink Sauce\nPasta");
 		recipe.setImage("file:assets/PinkSausePasta.jpeg");
@@ -371,7 +367,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 		ls.add(recipe);
 
 
-		
+
 		recipe = new Recipe();
 		recipe.setName("Brocolli\nSoup");
 		recipe.setImage("file:assets/brocolli_soup.jpeg");
@@ -394,10 +390,10 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 				+ "4 ounces full fat cream cheese (half a brick)\r\n"
 				+ "1 cup freshly shredded pizza mozzarella**\r\n");
 		recipe.setRating(4.5);
-    
+
 		ls.add(recipe);
 
-		
+
 		recipe = new Recipe();
 
 		recipe.setName("Masala \nDosa");
@@ -431,9 +427,9 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 
 
 		ls.add(recipe);
-		
+
 		return ls;
-		
+
 	}
 
 	@FXML
@@ -455,7 +451,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
     	stage.setScene(scene);
     	stage.show();
 	}
-	
+
 	@FXML
 	public void handleAppetizerClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("AppetizerPage.fxml"));
@@ -473,7 +469,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.setScene(scene);
 	    stage.show();
 	}
-	
+
 	@FXML
 	public void handleLunchClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("LunchPage.fxml"));
@@ -491,7 +487,7 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.setScene(scene);
 	    stage.show();
 	}
-	
+
 	@FXML
 	public void handlemyProfileClick(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("MyProfile.fxml"));
@@ -500,20 +496,21 @@ private void handleSearchButtonAction(ActionEvent event) throws IOException, SQL
 	    stage.setScene(scene);
 	    stage.show();
 	}
-	
-	
+
+
 
  	@FXML
 	public void handleLogoutClick(ActionEvent event) throws IOException {
-		
+
+ 		UserAccount.idUserAccount = -1;
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	Scene scene = new Scene(root);
     	stage.setScene(scene);
     	stage.show();
 	}
-	
-	
 
-	
+
+
+
 }

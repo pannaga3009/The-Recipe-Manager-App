@@ -2,9 +2,6 @@ package application;
 
 
 import java.io.ByteArrayInputStream;
-
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -21,25 +18,22 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class DetailCardController implements Initializable{
-	
+
 	 DatabaseConnection connectNow = new DatabaseConnection();
 	 Connection connectDB = connectNow.getConnection();
 	@FXML
 	private Button DetailSaveBtn;
-	
+
 	@FXML
 	private ImageView DetailrecipeImage;
 
@@ -60,33 +54,33 @@ public class DetailCardController implements Initializable{
 
 	@FXML
 	private Label recipeNameDetailTo;
-	
+
 	@FXML
 	private Label Mymsg;
-	
-	@FXML 
+
+	@FXML
 	private Button commentsbtn;
-	
+
 	@FXML
     private TextArea addComments;
-	
+
 	@FXML
     private Label displayComments;
 
-	
+
 	@FXML
     private TextField ratingEdit;
 
 
-	
+
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		
-	   
+
+
 	}
 
 	public void initData(Recipe recipe) {
-	  
+
 	    try {
 
 
@@ -94,7 +88,7 @@ public class DetailCardController implements Initializable{
 	        chefNameDetail.setText(recipe.getchefName());
 	        recipeDescriptionDetail.setText(recipe.getDescription());
 	        recipeContentsDetail.setText(recipe.getContents());
-	        
+
 
 
 	        System.out.println("-------Printing the ratings image------- ");
@@ -121,11 +115,11 @@ public class DetailCardController implements Initializable{
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    
+
 	}
-	
+
 	public void setImage(Image img) {
-		
+
 		 DetailrecipeImage.setImage(img);
 	}
 
@@ -157,8 +151,8 @@ public class DetailCardController implements Initializable{
             String comments = resultSet.getString("Comments");
 
             Image image = new Image(new ByteArrayInputStream(recipeImg));
-            
-           
+
+
             // Set the retrieved data to the Recipe object
             recipe.setName(Name);
             recipe.setDescription(Description);
@@ -170,14 +164,14 @@ public class DetailCardController implements Initializable{
             recipe.setByteImage(recipeImg);
             System.out.println("----image----" + recipeImg);
             System.out.println("Inside handle button action");
-          
+
 //            DetailCardController dcl = new DetailCardController();
 //        	dcl.initData(recipe);
-        	
-    	
+
+
             try {
         		System.out.println("Before--");
-        		
+
                System.out.println("Inside handle button action");
                 System.out.println("recipe.getImage()----"+recipe.getImageDetail(image));
 //                if (image == null || image.equals(null)) {
@@ -186,7 +180,7 @@ public class DetailCardController implements Initializable{
                 DetailrecipeImage.setImage(recipe.getImageDetail(image));
                 System.out.print(DetailrecipeImage);
                 System.out.println("after--");
-               
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -197,12 +191,12 @@ public class DetailCardController implements Initializable{
     		recipeContentsDetail.setText(recipe.getContents());
     		displayComments.setText(recipe.getComments());
 
-	 
+
 
     	        handleDetailSaveBtn(recipe);
 
 
-    		
+
     		 switch((int) Math.floor(recipe.getRating())) {
  	        case 5:
  	        	recipeRatingDetail.setImage(new Image("File:assets/Four_star.png"));
@@ -218,49 +212,49 @@ public class DetailCardController implements Initializable{
  	            break;
  	        default:
  	            recipeRatingDetail.setImage(new Image("File:assets/One_star.jpeg"));
- 	    } 
+ 	    }
 
 
 	}else {
         System.out.println("Recipe not found in the database");
     }
         System.out.println("Received object: " );
-       
-    
-    
-        
 
-		
+
+
+
+
+
 	}
-	
+
 	@FXML
 	void handleAddComments(ActionEvent event) throws SQLException {
 		String comments = addComments.getText();
-	
+
 		PreparedStatement updateps = connectDB.prepareStatement("UPDATE recipesInfo SET Comments = ? WHERE recipeName = ?");
 		updateps.setString(1, comments);
 		updateps.setString(2, recipeNameDetailTo.getText());
 		updateps.executeUpdate();
 
 
-		
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Comments added");
         alert.setHeaderText(null);
         alert.setContentText("Comments added");
         alert.showAndWait();
-        
+
         displayComments.setText(comments);
 
-        
-	}
-	
 
-	
+	}
+
+
+
 	void handleDetailSaveBtn(Recipe recipe) {
-		DetailSaveBtn.setOnAction(event -> { 
+		DetailSaveBtn.setOnAction(event -> {
 	   		System.out.println("Entering Save Button Details Page");
-	   			// Create a new SavedRecipesController instance 
+	   			// Create a new SavedRecipesController instance
 	   			FXMLLoader loader = new FXMLLoader(getClass().getResource("SavedRecipes.fxml"));
 	   			try {
 	        		Parent root = loader.load();
@@ -278,18 +272,18 @@ public class DetailCardController implements Initializable{
 			        	SavedRecipesController.recipes.add(recipe);
 
 		        	}
-		        
+
 	        	} catch (IOException e) {
 					e.printStackTrace();
 	        	}
-	            
+
 	   		});
 	}
 
 	@FXML
 	void handleEditRating(ActionEvent event) throws SQLException {
 		String rating = ratingEdit.getText();
-		
+
 		PreparedStatement updateps = connectDB.prepareStatement("UPDATE recipesInfo SET recipeRating = ? WHERE recipeName = ?");
 		updateps.setString(1, rating);
 		updateps.setString(2, recipeNameDetailTo.getText());
@@ -297,7 +291,7 @@ public class DetailCardController implements Initializable{
 
 
 
-		
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Ratings added");
         alert.setHeaderText(null);
@@ -306,7 +300,7 @@ public class DetailCardController implements Initializable{
 
 
 	}
-	
+
 
 }
-	
+

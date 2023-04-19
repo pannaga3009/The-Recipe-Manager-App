@@ -29,7 +29,7 @@ public abstract class MyRecipeForm {
     void handleSubmitButton(ActionEvent event) {
         // Add your implementation for the submit button click event
     }
-    
+
     @FXML
     void handleDietType(ActionEvent event) {
         // Add your implementation for the vegetarian radio button click event

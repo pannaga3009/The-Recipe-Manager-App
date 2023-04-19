@@ -30,7 +30,7 @@ public class CategoriesCardController {
     private Label recipeTime;
 
 	public void setRecipe(Recipe recipe) {
-		
+
 		try {
     		System.out.println("Before--");
     		System.out.println("recipe.getImage()----"+recipe.getImage());
@@ -40,18 +40,18 @@ public class CategoriesCardController {
 //            }
           recipeImage.setImage(image);
             System.out.println("after--");
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    	
+
     	recipeName.setText(recipe.getName());
     	recipeChef.setText(recipe.getchefName());
     	recipeContents.setText(recipe.getContents());
     	recipeDescription.setText(recipe.getDescription());
     	recipeTime.setText(recipe.getPrepTime());
 //    	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
-    	
+
     }
 
 	}

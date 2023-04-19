@@ -3,35 +3,26 @@ package application;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-
 import java.net.URL;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ResourceBundle;
 
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.fxml.Initializable;
-
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-
-import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -52,7 +43,7 @@ public class CardController implements Initializable {
 
     @FXML
     private ImageView recipeImage;
-    
+
     @FXML
     private ImageView recipeRatingCard;
 
@@ -85,7 +76,7 @@ public class CardController implements Initializable {
     @FXML
     private ImageView recipeRating;
 
-    
+
     @FXML
     private Label chefAreaName;
 
@@ -97,7 +88,7 @@ public class CardController implements Initializable {
 
     @FXML
     private ImageView recipeAreaRating;
-    
+
     @FXML
     private ImageView DetailrecipeImage;
 
@@ -124,7 +115,7 @@ public class CardController implements Initializable {
 
     @FXML
     private Button MoreBtnCard;
-    
+
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
@@ -137,19 +128,19 @@ public class CardController implements Initializable {
         recipeDescriptionDetail = new Label();
         recipeContentsDetail = new Label();
         recipeRatingDetail = new ImageView();
-       
-        
-        
-        
+
+
+
+
         SaveRecipeName = new Label();
         recipeContents = new Label();
         recipeDescription = new Label();
         saveRatingImage = new ImageView();
         saveRecipeImage = new ImageView();
         savechefName  = new Label();
-		
+
 	}
-    
+
     public void sendObj(Recipe recipe) {
         MoreBtn.setOnAction(event -> {
             try {
@@ -169,16 +160,16 @@ public class CardController implements Initializable {
 			}
         });
     }
-    public void sendObject(Recipe recipe) { 
-    	System.out.println("Inside card Controller"); 
-    	saveBtn.setOnAction(event -> { 
+    public void sendObject(Recipe recipe) {
+    	System.out.println("Inside card Controller");
+    	saveBtn.setOnAction(event -> {
    		System.out.println("Entering Save Button");
-   			// Create a new SavedRecipesController instance 
+   			// Create a new SavedRecipesController instance
    			FXMLLoader loader = new FXMLLoader(getClass().getResource("SavedRecipes.fxml"));
    			try {
         		Parent root = loader.load();
 				SavedRecipesController controller = loader.getController();
-	        	
+
 	        	if(SavedRecipesController.recipes.contains(recipe)) {
 	        		Alert alert = new Alert(AlertType.INFORMATION);
 	                alert.setTitle("Recipe Saved");
@@ -195,12 +186,12 @@ public class CardController implements Initializable {
         	} catch (IOException e) {
 				e.printStackTrace();
         	}
-            
+
    		});
     }
 
- 
-    
+
+
     public void setData(Recipe recipe) {
     	try {
     		System.out.println("Before--");
@@ -211,11 +202,11 @@ public class CardController implements Initializable {
 //            }
           recipeImage.setImage(image);
             System.out.println("after--");
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    	
+
     	recipeName.setText(recipe.getName());
     	chefName.setText(recipe.getchefName());
     	System.out.println("----Inside card controller set Data----");
@@ -244,10 +235,10 @@ public class CardController implements Initializable {
     	}
 
 
-    	
+
     }
 
-    
+
     public void setDataFromDb(Recipe recipe) throws SQLException {
 
         DatabaseConnection connectNow = new DatabaseConnection();
@@ -268,7 +259,7 @@ public class CardController implements Initializable {
             byte[] recipeImg = resultSet.getBytes("recipesImg");
 
             Image image = new Image(new ByteArrayInputStream(recipeImg));
-           
+
             // Set the retrieved data to the Recipe object
             recipe.setName(Name);
             recipe.setDescription(Description);
@@ -280,7 +271,7 @@ public class CardController implements Initializable {
             // Set the data to the UI elements
 
             try {
-            	
+
                 System.out.println("Before--");
                 System.out.println("recipe.getImage()----"+recipe.getImageDetail(image));
                 //Setting up the Image view here
@@ -296,7 +287,7 @@ public class CardController implements Initializable {
             System.out.println("Recipe  chef ---"+recipe.getchefName());
             recipeAreaName.setText(recipe.getName());
             chefAreaName.setText(recipe.getchefName());
-            
+
             switch((int) Math.floor(recipe.getRating())) {
             case 5:
             	recipeAreaRating.setImage(new Image("File:assets/Four_star.png"));
@@ -313,11 +304,11 @@ public class CardController implements Initializable {
 	        default:
 	        	recipeAreaRating.setImage(new Image("File:assets/One_star.jpeg"));
 	    }
-            
-	
-            	
+
+
+
             }
-            
+
 
          else {
             System.out.println("Recipe not found in the database");
@@ -325,16 +316,16 @@ public class CardController implements Initializable {
 
         // Close the database connection
 
-        
+
     }
 
-	
 
-	
+
+
     void handleButtonClick(Recipe recipe) throws SQLException{
 	    // do something with the object
-    	 
-     
+
+
 
 }
 

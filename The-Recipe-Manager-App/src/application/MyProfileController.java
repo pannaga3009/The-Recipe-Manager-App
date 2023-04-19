@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,12 +25,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.fxml.Initializable;
 
 public class MyProfileController implements Initializable{
-	
+
 	@FXML
     private Button addRecipe;
 
@@ -104,7 +103,7 @@ public class MyProfileController implements Initializable{
 
     @FXML
     private RadioButton vegetarian;
-	
+
 
     @FXML
     void addRecipeClick(ActionEvent event) {
@@ -125,38 +124,38 @@ public class MyProfileController implements Initializable{
     void myProfileClick(ActionEvent event) {
 
     }
-    
+
     @FXML
     void profilePreferenceClick(MouseEvent event) {
 
     }
-    
+
 
     public void vegetarianClick(ActionEvent event) {
     	System.out.println(event);
         foodText.setText("Hello! You are on your way to a healthier lifestyle with a vegetarian diet");
         foodBox.setVisible(true);
     }
-    
+
     public void eggetarianClick(ActionEvent event) {
     	System.out.println(event);
         foodText.setText("You've chosen an eggetarian diet that is both nutritious and delicious.");
         foodBox.setVisible(true);
     }
-    
+
     public void nonVegetarianClick(ActionEvent event) {
     	System.out.println(event);
         foodText.setText("Welcome to the world of non-vegetarian cuisine! Get ready to explore!");
         foodBox.setVisible(true);
     }
-    
+
     @FXML
     public void glutenFreeClick(ActionEvent event) {
     	System.out.println(event);
         mealText.setText("Great choice! A gluten-free diet can help improve your overall health");
         mealBox.setVisible(true);
     }
-    
+
     @FXML
     public void lowCarbClick(ActionEvent event) {
     	System.out.println(event);
@@ -184,7 +183,7 @@ public class MyProfileController implements Initializable{
         spiceText.setText("Medium spice level it is! You like a little kick in your food, but nothing too overwhelming. Enjoy!");
         spiceBox.setVisible(true);
     }
-    
+
     @FXML
     public void highClick(ActionEvent event) {
     	System.out.println(event);
@@ -194,7 +193,7 @@ public class MyProfileController implements Initializable{
 
     @FXML
     private void handleAddRecipe(ActionEvent event) {
-    
+
     		try {
     			System.out.println("Add preference");
     			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -203,7 +202,7 @@ public class MyProfileController implements Initializable{
     		    Scene scene = new Scene(root);
     		    stage.setScene(scene);
     		    stage.show();
-    		    
+
 
     		} catch(Exception e) {
     			e.printStackTrace();
@@ -211,15 +210,15 @@ public class MyProfileController implements Initializable{
 //        HBox newRecipeHBox = new HBox();
 //        newRecipeHBox.setPrefSize(869, 50);
 //        // add any necessary child nodes to the new HBox
-//            
+//
 //        myRecipeBox.getChildren().add(newRecipeHBox);
     }
-    
-    
+
+
     private void profilePreferenceClick(ActionEvent event) {
     	System.out.println("profile preference");
     }
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -230,7 +229,7 @@ public class MyProfileController implements Initializable{
             vegetarian.setToggleGroup(foodChoice);
             eggetarian.setToggleGroup(foodChoice);
             nonVegetarian.setToggleGroup(foodChoice);
-            
+
             // Create a new ToggleGroup for the food radio buttons
             ToggleGroup mealChoice = new ToggleGroup();
 
@@ -238,7 +237,7 @@ public class MyProfileController implements Initializable{
             ketoDiet.setToggleGroup(mealChoice);
             lowCarb.setToggleGroup(mealChoice);
             glutenFree.setToggleGroup(mealChoice);
-            
+
             // Create a new ToggleGroup for the food radio buttons
             ToggleGroup spiceChoice = new ToggleGroup();
 
@@ -247,8 +246,8 @@ public class MyProfileController implements Initializable{
             medium.setToggleGroup(spiceChoice);
             high.setToggleGroup(spiceChoice);
 
-            
-             
+
+
             List<Recipe> recipes = getAll();
             for (Recipe recipe : recipes) {
                 // create a new instance of FXMLLoader and set the location of the FXML file
@@ -320,11 +319,11 @@ public class MyProfileController implements Initializable{
     	stage.setScene(scene);
     	stage.show();
 	}
- 
-	
+
+
 	@FXML
 	public void handleLogoutClick(ActionEvent event) throws IOException {
-		
+
 		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	Scene scene = new Scene(root);
@@ -359,7 +358,7 @@ public class MyProfileController implements Initializable{
 //	private void getAll() throws SQLException {
 //		DatabaseConnection connectNow = new DatabaseConnection();
 //	     Connection connectDB = connectNow.getConnection();
-//	
+//
 //		// TODO Auto-generated method stub
 //		String selectQuery = "SELECT * FROM addmyrecipe WHERE idUserAccount = ?";
 //	       PreparedStatement selectStatement = connectDB.prepareStatement(selectQuery);
@@ -374,10 +373,10 @@ public class MyProfileController implements Initializable{
 //	           String Ingredients = resultSet.getString("ingredients");
 //	           String StepsToCook = resultSet.getString("stepsToCook");
 //	           String recipeType = resultSet.getString("recipeType");
-//	           
 //
-//	         
-//	          
+//
+//
+//
 //	           // Set the retrieved data to the Recipe object
 //	           recipe.setName(Name);
 //	           recipe.setDescription(StepsToCook);
@@ -385,5 +384,5 @@ public class MyProfileController implements Initializable{
 //	       }
 //	}
 //
-//    
+//
 }

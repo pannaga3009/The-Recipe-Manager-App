@@ -29,8 +29,8 @@ public class BreakfastController implements Initializable{
 
     @FXML
     private TextField searchField;
-    
-   
+
+
 
     @FXML
     void backBtnAction(ActionEvent event) throws IOException {
@@ -41,24 +41,24 @@ public class BreakfastController implements Initializable{
     	stage.show();
     }
 
-   
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		addData();
-		
+
 	}
 
-	
+
 	private void addData() {
 		List<Recipe> BreakfastRecipes = new ArrayList<>(addBreakfastRecipes());
 		for (Recipe recipe : BreakfastRecipes) {
-			
+
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("Categories.fxml"));
-                
+
                 VBox card = fxmlLoader.load();
 
                 CategoriesCardController categoriesCardController = fxmlLoader.getController();
@@ -74,7 +74,7 @@ public class BreakfastController implements Initializable{
                 e.printStackTrace();
             }
         }
-		
+
 	}
 
 
@@ -83,20 +83,20 @@ public class BreakfastController implements Initializable{
 	    String name = searchField.getText();
 	    List<Recipe> addBreakfastRecipes = addBreakfastRecipes();
 	    boolean matchFound = false;
-	    
+
 	    for (Recipe recipe : addBreakfastRecipes) {
 	        if (recipe.getName().equalsIgnoreCase(name) && !name.isEmpty()) {
 	            displayRecipe(recipe);
 	            matchFound = true;
 	            break;
 	        }
-	       
-	        
-	        
+
+
+
 	    }
-	    
-	   
-	    
+
+
+
 	    if (!matchFound) {
 	        // Show an alert box indicating that no recipes were found
 	        Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -107,24 +107,24 @@ public class BreakfastController implements Initializable{
 	        displayLayout.getChildren().clear();
 	        addData();
 	    }
-	    
-	    
+
+
 	}
 
 	public void displayRecipe(Recipe recipe) {
 	    try {
 	        FXMLLoader fxmlLoader = new FXMLLoader();
 	        fxmlLoader.setLocation(getClass().getResource("Categories.fxml"));
-	        
+
 	        VBox card = fxmlLoader.load();
-	        
+
 	        CategoriesCardController categoriesCardController = fxmlLoader.getController();
 	        if (categoriesCardController == null) {
 	            categoriesCardController = new CategoriesCardController();
 	            fxmlLoader.setController(categoriesCardController);
 	        }
 	        categoriesCardController.setRecipe(recipe);
-	        
+
 	        displayLayout.getChildren().clear();
 	        displayLayout.getChildren().add(card);
 	    } catch (Exception e) {

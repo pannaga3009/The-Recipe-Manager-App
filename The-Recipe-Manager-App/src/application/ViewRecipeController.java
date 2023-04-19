@@ -27,7 +27,7 @@ public class ViewRecipeController implements Initializable{
 
 	DatabaseConnection connectNow = new DatabaseConnection();
      Connection connectDB = connectNow.getConnection();
-     
+
     @FXML
     private Button backButton;
 
@@ -52,19 +52,19 @@ public class ViewRecipeController implements Initializable{
         Parent root;
 		try {
 			// Get the stage (i.e., window) associated with the current event
-	        
+
 				root = FXMLLoader.load(getClass().getResource("Myprofile.fxml"));
 				Scene scene = new Scene(root);
 		        stage.setScene(scene);
 		        stage.show();
-		        
+
 
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+
 
     }
 
@@ -102,8 +102,8 @@ public class ViewRecipeController implements Initializable{
 		           recipe.setName(Name);
 		           recipe.setDescription(StepsToCook);
 		           recipe.setContents(Ingredients);
-		           
-		
+
+
 		           // Set the data to the UI elements
 		           recipeName.setText(recipe.getName());
 		           ingredients.setText(recipe.getContents());
@@ -113,9 +113,9 @@ public class ViewRecipeController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	   
-	         
-	        
+
+
+
 		}
 
 }

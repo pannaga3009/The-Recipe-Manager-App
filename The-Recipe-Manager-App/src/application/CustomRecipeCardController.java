@@ -1,6 +1,5 @@
 package application;
 
-import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,7 +14,7 @@ public class CustomRecipeCardController implements Initializable{
 
     @FXML
     private VBox box;
-    
+
     @FXML
     private ImageView ImgSrc;
 
@@ -34,11 +33,11 @@ public class CustomRecipeCardController implements Initializable{
 
     @FXML
     private Label recipeTime;
-    
+
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
+
+
 	}
 
 	public void setRecipe(Recipe recipe) {
@@ -46,39 +45,39 @@ public class CustomRecipeCardController implements Initializable{
 	    recipeContents.setText(recipe.getContents());
 	    recipeDescription.setText(recipe.getDescription());
 	    recipeTime.setText(recipe.getPrepTime());
-	   
-	    
-	    
+
+
+
 	    try {
-	       
-	      
+
+
 	        if (recipe.getImageFormat() == null) {
 	            throw new Exception("Image not found");
 	        }
-	        
-	      
-            
+
+
+
 
 //            Image image = new Image(new ByteArrayInputStream(recipe.getByteImage()));
-//            
+//
 //            System.out.println("--------recipe.getImageDetail(image)-----" +recipe.getImageDetail(image));
 //            recipeImg.setImage(recipe.getImageDetail(image));
 	     System.out.println("-----Inside custom recipe image printing----" + recipe.getImageFormat());
          Image image = recipe.getImageFormat();
          recipeImg.setImage(image);
-           
-            
+
+
 	     } catch (Exception e) {
 	         e.printStackTrace();
 	     }
-	    
-       
+
+
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 
-	
+
 
 }

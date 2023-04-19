@@ -1,6 +1,5 @@
 package application;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,18 +20,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
 public class MyDisplayCardController extends MyDisplayCard implements Initializable{
-    
+
 	 DatabaseConnection connectNow = new DatabaseConnection();
      Connection connectDB = connectNow.getConnection();
 
 	 @FXML
 	    private Button deleteButton;
-	 
+
 	    @FXML
 	    private Label ingredients;
 
@@ -42,17 +39,17 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 
 	    @FXML
 	    private Label recipeName;
-	    
+
 	    String Name;
-	    
+
 	    String Ingredients;
-	    
+
 	    String recipeType;
-	    
+
 	    String StepsToCook;
-	    
+
 	    void displayRecipe() throws SQLException {
-      
+
 		   System.out.println("Displaying recipe inside my displaycard ---- ");
 	       String selectQuery = "SELECT * FROM addmyrecipe WHERE idUserAccount = ?";
 	       PreparedStatement selectStatement = connectDB.prepareStatement(selectQuery);
@@ -66,30 +63,30 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 	            this.Ingredients = resultSet.getString("ingredients");
 	            this.StepsToCook = resultSet.getString("stepsToCook");
 	            this.recipeType = resultSet.getString("recipeType");
-	           
-	
-	         
-	          
+
+
+
+
 	           // Set the retrieved data to the Recipe object
 	           recipe.setName(Name);
 	           recipe.setDescription(StepsToCook);
 	           recipe.setContents(Ingredients);
-	           
-	
+
+
 	           // Set the data to the UI elements
 	           recipeName.setText(recipe.getName());
 	           stepsToCook.setText(recipe.getDescription());
 	           ingredients.setText(Ingredients);
-           
-       }  
-           
-           	
+
+       }
+
+
 
    }
-    
+
 	@Override
 	void handleViewClick(ActionEvent event) {
-	
+
 
 	 	// Get the stage (i.e., window) associated with the current event
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -101,12 +98,12 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
         Parent root;
 		try {
 			// Get the stage (i.e., window) associated with the current event
-	        
+
 				root = FXMLLoader.load(getClass().getResource("ViewRecipe.fxml"));
 				Scene scene = new Scene(root);
 		        stage.setScene(scene);
 		        stage.show();
-		        
+
 
 
 		} catch (IOException e) {
@@ -114,14 +111,14 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	void handleUpdateClick(ActionEvent event){
 	    try {
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyRecipeForm.fxml"));
 	        Parent root = loader.load();
 	        MyRecipeFormController controller = loader.getController();
-	       
+
 	        // Pass the display recipe object to MyRecipeFormController
 	        Recipe recipe = new Recipe();
 	        recipe.setName(recipeName.getText());
@@ -138,8 +135,9 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
 	    }
 	}
 
-	
-    @FXML
+
+    @Override
+	@FXML
     void handleDeleteClick(ActionEvent event){
         String deleteQuery = "DELETE FROM addmyrecipe WHERE idUserAccount = ? AND recipeName = ?";
         PreparedStatement deleteStatement = null;
@@ -210,5 +208,5 @@ public class MyDisplayCardController extends MyDisplayCard implements Initializa
         ingredients.setText(recipe.getContents());
 
 	}
-    
+
 }
