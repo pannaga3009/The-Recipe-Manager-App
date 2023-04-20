@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 
@@ -34,24 +33,24 @@ public class DietCardController implements Initializable{
 
     @FXML
     private Label recipeTime;
-    
-//    @FXML 
+
+//    @FXML
 //    private Label prepTime;
-    
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
+
+
 	}
 	public void setRecipe(Recipe recipe) {
-		
+
 		System.out.println("----Insite Diet card controller----");
 		System.out.println(recipe.getName());
 		System.out.println(recipe.getchefName());
 		System.out.println(recipe.getContents());
-		
-		
-		
+
+
+
 		recipeName.setText(recipe.getName());
 	    recipeChef.setText(recipe.getchefName());
 	    recipeContents.setText(recipe.getContents());
@@ -59,8 +58,8 @@ public class DietCardController implements Initializable{
 	    recipeTime.setText(recipe.getPrepTime());
 	    Image image = new Image(recipe.getImage());
 	    recipeImage.setImage(image);
-		
+
 	}
-	
+
 
 }

@@ -26,7 +26,7 @@ public class DinnerController implements Initializable{
 		// TODO Auto-generated method stub
 		addData();
 	}
-	
+
 
 	@FXML
     private Button backBtn;
@@ -36,8 +36,8 @@ public class DinnerController implements Initializable{
 
     @FXML
     private TextField searchField;
-    
-   
+
+
 
     @FXML
     void backBtnAction(ActionEvent event) throws IOException {
@@ -47,8 +47,8 @@ public class DinnerController implements Initializable{
     	stage.setScene(scene);
     	stage.show();
     }
-    
-    
+
+
     private void addData() {
         List<Recipe> DinnerRecipes = new ArrayList<>(addDinnerRecipes());
         for (Recipe recipe : DinnerRecipes) {
@@ -190,6 +190,6 @@ public class DinnerController implements Initializable{
 	    return dinnerRecipes;
 	}
 
-	
+
 
 }

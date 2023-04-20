@@ -1,17 +1,8 @@
 package application;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,10 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -38,47 +26,47 @@ public class MealPlanController implements Initializable {
 
 	 @FXML
 	  private RadioButton ketoButton;
-	 
+
 	 @FXML
 	 private RadioButton CustomMealBtn;
 
     @FXML
     private RadioButton lowCarbButton;
-    
+
     @FXML
     private Button create;
-    
-    
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addData();
-        
+
 
         ToggleGroup toggleGroup = new ToggleGroup();
         ketoButton.setToggleGroup(toggleGroup);
         WeightLossButton.setToggleGroup(toggleGroup);
         lowCarbButton.setToggleGroup(toggleGroup);
         CustomMealBtn.setToggleGroup(toggleGroup);
-           
+
         ketoButton.setOnAction(this::onRadioButtonSelected);
         WeightLossButton.setOnAction(this::onRadioButtonSelected);
         lowCarbButton.setOnAction(this::onRadioButtonSelected);
         CustomMealBtn.setOnAction(this::onRadioButtonSelected);
 
     }
-    
-    
+
+
     void onRadioButtonSelected(ActionEvent event) {
         RadioButton selectedRadioButton = (RadioButton) event.getSource();
 
         displayLayout.getChildren().clear();
-        
+
         if (selectedRadioButton == WeightLossButton) {
             for (Recipe recipe : MealPlan.getRecipes("Weight Loss")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
-                    
+
                     VBox dietCard = fxmlLoader.load();
 
                     DietCardController dietCardController = fxmlLoader.getController();
@@ -100,7 +88,7 @@ public class MealPlanController implements Initializable {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
-                    
+
                     VBox dietCard = fxmlLoader.load();
 
                     DietCardController dietCardController = fxmlLoader.getController();
@@ -122,7 +110,7 @@ public class MealPlanController implements Initializable {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Diet.fxml"));
-                    
+
                     VBox dietCard = fxmlLoader.load();
 
                     DietCardController dietCardController = fxmlLoader.getController();
@@ -144,9 +132,12 @@ public class MealPlanController implements Initializable {
         else if (selectedRadioButton == CustomMealBtn) {
 
         	    // Create a new database connection and retrieve the user ID
-        	        
-        	        for (Recipe recipe : MealPlan.getRecipes("Custom Meal Plan")) {
-                       
+        	
+        		
+        	        Integer userId = UserAccount.idUserAccount;
+        	    	System.out.println("-----Inside controller ---"+ userId);
+        	        for (Recipe recipe : MealPlan.getCustomRecipes("Custom Meal Plan", userId)) {
+
         	            // Create a new CustomRecipeCardController and add its corresponding view to the display layout
         	            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CustomRecipeCard.fxml"));
         	            VBox customRecipeCardView = null;
@@ -165,17 +156,17 @@ public class MealPlanController implements Initializable {
         	            displayLayout.getChildren().add(customRecipeCardView);
         	        }
 
-        	       
+
         	    // Print a message indicating that the custom meal button was selected
         	    System.out.println("Custom Meal Btn plan selected");
         	}
 
     }
 
-    
-    
 
-    
+
+
+
     private void addData() {
    	 // Initialize some recipes for each meal plan
 	   Recipe lowCarbRecipe1 = new Recipe();
@@ -186,7 +177,7 @@ public class MealPlanController implements Initializable {
 	   lowCarbRecipe1.setPrepTime("30 mins");
 	   lowCarbRecipe1.setDescription("A low carb version of the classic Italian dish\n made with chicken breast, tomato sauce, and mozzarella cheese.");
 	   lowCarbRecipe1.setContents("Ingredients: 4 boneless, skinless chicken breasts, \n1 cup almond flour, 1 tsp Italian seasoning, \n1 tsp garlic powder, 1/2 tsp salt, 1/4 tsp black pepper, 1 egg, beaten, 1/4 cup olive oil, 1 cup marinara sauce, 1 cup shredded mozzarella cheese, 1/4 cup grated Parmesan cheese.");
-	   
+
        Recipe lowCarbRecipe2 = new Recipe();
        lowCarbRecipe2.setName("Low Carb Cauliflower Fried Rice");
        lowCarbRecipe2.setchefName("Chef 2");
@@ -223,7 +214,7 @@ public class MealPlanController implements Initializable {
        weightLossRecipe1.setPrepTime("30 mins");
        weightLossRecipe1.setDescription("This is a delicious weight loss recipe\n featuring a spicy grilled chicken breast over a bed \nof mixed greens and veggies.");
        weightLossRecipe1.setContents("Ingredients: chicken breast, mixed greens, tomatoes, \ncucumber, red onion, avocado, \nlime, jalapeno");
-       
+
        Recipe weightLossRecipe2 = new Recipe();
        weightLossRecipe2.setName("Quinoa Salad with Avocado and Mango");
        weightLossRecipe2.setchefName("Chef Sarah");
@@ -249,7 +240,7 @@ public class MealPlanController implements Initializable {
        MealPlan.addRecipe("Weight Loss", weightLossRecipe1);
        MealPlan.addRecipe("Weight Loss", weightLossRecipe2);
        MealPlan.addRecipe("Weight Loss", weightLossRecipe3);
-		
+
 	}
 
 
@@ -260,21 +251,21 @@ public class MealPlanController implements Initializable {
     	stage.setScene(scene);
     	stage.show();
 	}
-   
+
 
 @FXML
 public void createBtnAction(ActionEvent event) throws IOException {
-	
+
 	 FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateMealPlan.fxml"));
      Parent root = loader.load();
-    
-     
+
+
      CreatePlanMeal controller = loader.getController();
-     
+
      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
      Scene scene = new Scene(root);
      stage.setScene(scene);
      stage.show();
 }
-	
+
 }

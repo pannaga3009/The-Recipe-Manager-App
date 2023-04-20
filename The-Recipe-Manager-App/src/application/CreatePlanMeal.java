@@ -1,12 +1,8 @@
 package application;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.sql.Blob;
 import java.sql.Connection;
@@ -14,9 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.imageio.ImageIO;
-
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,13 +22,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelFormat;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritablePixelFormat;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 public class CreatePlanMeal {
 	@FXML
@@ -58,14 +47,14 @@ public class CreatePlanMeal {
 
     @FXML
     private Button uploadPicture;
-    
+
     @FXML
     private TextField recipeName;
 
     static File selectedFile;
-    
-    
-    @FXML 
+
+
+    @FXML
     public void uploadPhoto(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image File");
@@ -73,13 +62,13 @@ public class CreatePlanMeal {
                 new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif"));
         selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-           
+
             Image image = new Image(selectedFile.toURI().toString());
-            recipeImage .setImage(image); 
+            recipeImage .setImage(image);
             // do something with the imageView...
         }
     }
-    
+
     @FXML
     public void submitBtnAction(ActionEvent event) {
         String name = recipeName.getText();
@@ -140,22 +129,23 @@ public class CreatePlanMeal {
             alert.showAndWait();
             e.printStackTrace();
         }
-        
+
         addToTable();
     }
-    
+
     private void addToTable() {
     	DatabaseConnection connectNow = new DatabaseConnection();
 	    Connection connectDB = connectNow.getConnection();
 	    int userId = UserAccount.idUserAccount;
+
 
 	    try {
 	        // Retrieve all custom meal plans from the database
 	        PreparedStatement getallcustom = connectDB.prepareStatement("SELECT * FROM CustomMealPlan where idUserAccount = ?");
 	        getallcustom.setInt(1, userId);
 	        ResultSet customMealPlans = getallcustom.executeQuery();
-	        
-	       
+
+
 	        // Iterate over the custom meal plans
 	        while (customMealPlans.next()) {
 	            // Create a new Recipe object and set its properties based on the custom meal plan
@@ -164,9 +154,9 @@ public class CreatePlanMeal {
 	            customRecipe.setContents(customMealPlans.getString("recipeContents"));
 	            customRecipe.setDescription(customMealPlans.getString("recipeDescription"));
 	            customRecipe.setPrepTime(customMealPlans.getString("prepTime"));
-	            
+
 	            Blob blob = customMealPlans.getBlob("recipeImage");
-	            
+
 	            if (blob != null) {
 	                // Convert the blob data to a byte array
 	                byte[] recipeImg = blob.getBytes(1, (int)blob.length());
@@ -178,15 +168,17 @@ public class CreatePlanMeal {
 	                customRecipe.setImageDetail(image);
 	               // recipeImgView.setImage(image);
 	            }
-	            
+
 	            MealPlan.addRecipe("Custom Meal Plan", customRecipe);
+	            System.out.println("----UserId---" + userId);
+	            MealPlan.addRecipeCustom("Custom Meal Plan", customRecipe, userId);
 	        } // Close the database connection
 	        connectDB.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 
-		
+
 	}
 
 	@FXML
@@ -197,7 +189,7 @@ public class CreatePlanMeal {
     	stage.setScene(scene);
     	stage.show();
 	}
-    
+
 
 
 }

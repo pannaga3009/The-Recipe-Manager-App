@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class LunchController implements Initializable{
-	
+
 	@FXML
     private Button backBtn;
 
@@ -29,8 +29,8 @@ public class LunchController implements Initializable{
 
     @FXML
     private TextField searchField;
-    
-   
+
+
 
     @FXML
     void backBtnAction(ActionEvent event) throws IOException {
@@ -41,30 +41,30 @@ public class LunchController implements Initializable{
     	stage.show();
     }
 
-	
 
 
 
-	
+
+
 
 	public void handleSearchButtonAction(ActionEvent event) {
 	    String name = searchField.getText();
 	    List<Recipe> lunchRecipes = addLunchRecipes();
 	    boolean matchFound = false;
-	    
+
 	    for (Recipe recipe : lunchRecipes) {
 	        if (recipe.getName().equalsIgnoreCase(name) && !name.isEmpty()) {
 	            displayRecipe(recipe);
 	            matchFound = true;
 	            break;
 	        }
-	       
-	        
-	        
+
+
+
 	    }
-	    
-	   
-	    
+
+
+
 	    if (!matchFound) {
 	        // Show an alert box indicating that no recipes were found
 	        Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -75,24 +75,24 @@ public class LunchController implements Initializable{
 	        displayLayout.getChildren().clear();
 	        addData();
 	    }
-	    
-	    
+
+
 	}
 
 	public void displayRecipe(Recipe recipe) {
 	    try {
 	        FXMLLoader fxmlLoader = new FXMLLoader();
 	        fxmlLoader.setLocation(getClass().getResource("Categories.fxml"));
-	        
+
 	        VBox card = fxmlLoader.load();
-	        
+
 	        CategoriesCardController categoriesCardController = fxmlLoader.getController();
 	        if (categoriesCardController == null) {
 	            categoriesCardController = new CategoriesCardController();
 	            fxmlLoader.setController(categoriesCardController);
 	        }
 	        categoriesCardController.setRecipe(recipe);
-	        
+
 	        displayLayout.getChildren().clear();
 	        displayLayout.getChildren().add(card);
 	    } catch (Exception e) {
@@ -106,17 +106,17 @@ public class LunchController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		addData();
-		
+
 	}
-	
+
 	private void addData() {
 		List<Recipe> lunchRecipes = new ArrayList<>(addLunchRecipes());
 		for (Recipe recipe : lunchRecipes) {
-			
+
 	        try {
 	            FXMLLoader fxmlLoader = new FXMLLoader();
 	            fxmlLoader.setLocation(getClass().getResource("Categories.fxml"));
-	            
+
 	            VBox card = fxmlLoader.load();
 
 	            CategoriesCardController categoriesCardController = fxmlLoader.getController();
@@ -132,12 +132,12 @@ public class LunchController implements Initializable{
 	            e.printStackTrace();
 	        }
 	    }
-		
+
 	}
-	
+
 	private List<Recipe> addLunchRecipes() {
 		List<Recipe> lunchRecipes = new ArrayList<>();
-		
+
 	    Recipe recipe1 = new Recipe();
 	    recipe1.setName("Chicken Caesar Salad");
 	    recipe1.setImage("File:assets/caesar_salad.jpeg");

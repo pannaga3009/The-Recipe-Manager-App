@@ -10,7 +10,7 @@ public class Recipe {
 	    private String chefName;
 	    private String ImgSrc;
 		private double rating;
-	
+
 
 		private String description;
 		private String ingredients;
@@ -23,7 +23,7 @@ public class Recipe {
 
 
 
-	   
+
 	    public String getName() {
 	        return name;
 	    }
@@ -48,7 +48,7 @@ public class Recipe {
 	    	System.out.println("----img----"+ImgSrc);
 	        this.ImgSrc = ImgSrc;
 	    }
-	    
+
 	    public double getRating() {
 	        return rating;
 	    }
@@ -62,66 +62,66 @@ public class Recipe {
 	    	 this.description = description;
 	    }
 		public String getDescription() {
-			
+
 			return description;
 		}
-		
+
 		public void setContents(String ingredients) {
 			this.ingredients = ingredients;
 		}
-		
+
 		public String getContents() {
 			return ingredients;
 		}
-		
+
 		public void setImageDetail(Image image) {
 			this.image = image;
 		}
-		
+
 		public Image getImageDetail(Image img) {
 			return img;
 		}
 
-		
+
 		public Image getImageFormat() {
 			return image;
 		}
-		
+
 
 		public String getPrepTime() {
 			return prepTime;
 		}
-		
+
 		public void setPrepTime(String prepTime) {
 			this.prepTime = prepTime;
 		}
 
 		public void setByteImage(byte[] imageData) {
-			
+
 			    this.image = new Image(new ByteArrayInputStream(imageData));
 			    this.imageData = imageData;
-			
+
 		}
-		
+
 		public byte[] getByteImage() {
 			return imageData;
 		}
 
-		
+
 		public void setCategory(String category) {
 			this.category = category;
 		}
-		
+
 		public String getCategory() {
 			return category;
 		}
 
 
 		public String getComments() {
-			
+
 			return comments;
 		}
-		
+
 		public void setComments(String comments) {
 			this.comments = comments;
 		}

@@ -7,11 +7,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -22,7 +18,7 @@ import javafx.stage.Stage;
 
 
 public class RecipeCardController implements Initializable{
-	
+
 	   @FXML
 	    private ImageView DetailrecipeImage;
 
@@ -58,7 +54,7 @@ public class RecipeCardController implements Initializable{
 		        if (imageData == null) {
 		            throw new Exception("Image not found");
 		        }
-		        
+
 		        // Create an Image object from the byte array
 		        Image image = new Image(new ByteArrayInputStream(imageData));
 		        DetailrecipeImage.setImage(image);
@@ -70,16 +66,16 @@ public class RecipeCardController implements Initializable{
  		chefNameDetail.setText(recipe.getchefName());
  		recipeDescriptionDetail.setText(recipe.getDescription());
  		recipeContentsDetail.setText(recipe.getContents());
- 		 
+
 //     	box.setStyle("-fx-background-color:" + Color.web(colors[(int)(Math.random()*colors.length)]));
-     	
-		
+
+
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -5,17 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
-
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-
 <?import javafx.scene.paint.Color?>
-
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="914.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DetailCardController">
@@ -57,13 +53,13 @@
       </Label>
 
 
-      <Label layoutX="100.0" layoutY="564.0" text="Recipe Rating">
+      <Label layoutX="66.0" layoutY="563.0" text="Recipe Rating">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
 
-      <ImageView fx:id="recipeRatingDetail" fitHeight="44.0" fitWidth="230.0" layoutX="214.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="recipeRatingDetail" fitHeight="47.0" fitWidth="201.0" layoutX="168.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true" />
 
       <Button fx:id="commentsbtn" layoutX="97.0" layoutY="708.0" mnemonicParsing="false" onAction="#handleAddComments" prefHeight="40.0" prefWidth="200.0" style="-fx-background-radius: 50Px; -fx-background-color: #ffffff; -fx-border-color: BLACK; -fx-border-radius: 50Px;" text="Add Comments">
 
@@ -121,9 +117,9 @@
             <Font size="14.0" />
          </font>
       </Label>
- 
+
       <Label fx:id="displayComments" layoutX="601.0" layoutY="644.0" prefHeight="58.0" prefWidth="299.0" text="None" />
-      <TextArea fx:id="addComments" layoutX="127.0" layoutY="620.0" prefHeight="80.0" prefWidth="287.0" />
+      <TextArea fx:id="addComments" layoutX="54.0" layoutY="621.0" prefHeight="80.0" prefWidth="287.0" />
 
 
       <TextField fx:id="ratingEdit" layoutX="784.0" layoutY="648.0" prefHeight="26.0" prefWidth="77.0" />

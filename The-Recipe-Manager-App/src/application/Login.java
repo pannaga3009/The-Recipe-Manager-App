@@ -10,17 +10,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public abstract class Login {
-	
-	
+
+
 	@FXML
 	protected Label LoginMessageLabel;
-    
+
     @FXML
     protected TextField usernameLogin;
-    
+
     @FXML
     protected PasswordField passwordLogin;
-    
+
 	protected boolean validateLogin(String username, String password) {
     	DatabaseConnection connectNow = new DatabaseConnection();
     	Connection connectDB = connectNow.getConnection();
@@ -30,7 +30,7 @@ public abstract class Login {
     	try {
     		Statement statement = connectDB.createStatement();
     		ResultSet queryResult = statement.executeQuery(verifyLogin);
-    		
+
     		while(queryResult.next()) {
     			int count = queryResult.getInt(1);
     		    System.out.println("Count: " + count);
@@ -43,7 +43,7 @@ public abstract class Login {
     				System.out.println("Query Result - userId "+ userId);
 
     				 UserAccount useraccount = new UserAccount();
-    				 
+
     				 UserAccount.idUserAccount = userId;
     				}
 
@@ -52,13 +52,13 @@ public abstract class Login {
     				return false;
     			}
     		}
-    		
+
     	}
     	catch(Exception e) {
     		e.printStackTrace();
     	}
 		return false;
     }
-	
-	
+
+
 }

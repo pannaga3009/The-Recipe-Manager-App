@@ -9,7 +9,7 @@ public abstract class Register {
     @FXML protected TextField emailRegister;
     @FXML protected TextField phoneRegister;
     @FXML protected TextField confirmPasswordRegister;
-   
+
 
     protected abstract void register();
 
@@ -20,7 +20,7 @@ public abstract class Register {
         }
 
     }
-    
+
     protected void clearDetails() {
     	 nameRegister.clear();
          passwordRegister.clear();

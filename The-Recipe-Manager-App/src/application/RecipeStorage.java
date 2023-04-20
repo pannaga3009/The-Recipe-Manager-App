@@ -15,13 +15,13 @@ public class RecipeStorage {
 
 	DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
-    
+
     public void addRecipesToDb(List<Recipe> addRecipesFromList) throws SQLException {
         String checkRecipeExists = "SELECT * from RecipesInfo where recipeName = ?";
         PreparedStatement checkInfo = connectDB.prepareStatement(checkRecipeExists);
         PreparedStatement insertInfo = null;
         int batchSize = 0;
-        
+
         for (Recipe recipe : addRecipesFromList) {
             checkInfo.setString(1, recipe.getName());
             ResultSet queryResult = checkInfo.executeQuery();
@@ -49,7 +49,7 @@ public class RecipeStorage {
                 } catch (IOException e) {
                     System.err.println("Could not set the image file as a binary stream: " + e.getMessage());
                 }
-                
+
                 insertInfo.setString(2, recipe.getName());
                 insertInfo.setString(3, recipe.getDescription());
                 insertInfo.setString(4, recipe.getchefName());
