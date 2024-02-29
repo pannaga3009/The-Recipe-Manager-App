@@ -22,4 +22,6 @@ The project utilized Trello for management, Eclipse for Java implementation, Jav
 ## Conclusions and Future Work:
 The Recipe Manager app simplifies recipe management and accessibility, offering customizable meal planning options and features like setting food preferences and saving custom recipes. Future improvements could include sharing features, grocery list generation, integration with smart devices, interactive tutorials, and support for importing and exporting recipes in various formats.
 
+## Flow Diagram
+![image](https://github.com/pannaga3009/The-Recipe-Manager-App/assets/29578683/efe329b5-e242-4c59-8a66-98d3db0429f5)
 
