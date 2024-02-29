@@ -28,4 +28,8 @@ The Recipe Manager app simplifies recipe management and accessibility, offering 
 ## Database UML diagram
 ![image](https://github.com/pannaga3009/The-Recipe-Manager-App/assets/29578683/f16e1391-e940-48e2-a883-098115b21ca1)
 
-
+## References
+[1] W3Schools. (n.d.). Connect to MySQL Database With JDBC Driver. Retrieved from https://www.w3schools.blog/connect-to-mysql-database-with-jdbc-driver
+[2] MainJava. (n.d.). Java JDBC – Save, Retrieve And Update Image To MySQL Database. Retrieved from https://www.mainjava.com/jdbc/java-jdbc-save-retrieve-and-update-image-to-mysql-database/
+[3] Software Testing Help. (2023, March 25). Java Queue – Queue Methods, Queue Implementation With Examples. Retrieved from https://www.softwaretestinghelp.com/java-queue-interface/
+[4] Singh, C. (n.d.). ArrayList in Java With Examples. Retrieved from https://beginnersbook.com/2013/12/java-arraylist/
