@@ -25,3 +25,7 @@ The Recipe Manager app simplifies recipe management and accessibility, offering 
 ## Flow Diagram
 ![image](https://github.com/pannaga3009/The-Recipe-Manager-App/assets/29578683/efe329b5-e242-4c59-8a66-98d3db0429f5)
 
+## Database UML diagram
+![image](https://github.com/pannaga3009/The-Recipe-Manager-App/assets/29578683/f16e1391-e940-48e2-a883-098115b21ca1)
+
+
